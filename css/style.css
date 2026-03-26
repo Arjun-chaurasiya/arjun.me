@@ -948,6 +948,8 @@ p {
   padding: 9px 14px;
   font-size: 13px;
   line-height: 1.5;
+  word-break: break-all;
+  overflow-wrap: anywhere;
 }
 
 .pm-kv-key {
@@ -1015,6 +1017,8 @@ p {
   padding: 9px 14px;
   font-size: 13px;
   line-height: 1.5;
+  word-break: break-all;
+  overflow-wrap: anywhere;
 }
 
 .pm-kv-key {

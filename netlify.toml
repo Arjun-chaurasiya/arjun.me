@@ -12,4 +12,4 @@ package = "@netlify/plugin-sitemap"
   [plugins.inputs]
   buildDir = "."
   prettyURLs = true
-  homepage = "https://arjun.me"
+  baseUrl = "https://arjun.me"

@@ -1189,9 +1189,38 @@ p {
   font-size: clamp(2.2rem, 4vw, 3.4rem);
   font-weight: 900;
   color: #fff;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   letter-spacing: -0.5px;
   line-height: 1.1;
+}
+
+.home-role-line {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.home-role-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.3px;
+}
+.home-role-sep {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+.home-role-meta {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.home-role-meta .fa {
+  font-size: 11px;
+  color: var(--text-muted);
 }
 
 /* Request bar */

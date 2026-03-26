@@ -1110,6 +1110,8 @@
     if (!hint) return;
     if (window.scrollY > 80) {
       hint.classList.remove('scroll-hint--visible');
+    } else if (hint.dataset.sent === '1') {
+      hint.classList.add('scroll-hint--visible');
     }
   }, { passive: true });
 
@@ -1308,7 +1310,10 @@
 
         // Show scroll hint
         var scrollHint = document.getElementById('scroll-hint');
-        if (scrollHint) scrollHint.classList.add('scroll-hint--visible');
+        if (scrollHint) {
+          scrollHint.dataset.sent = '1';
+          scrollHint.classList.add('scroll-hint--visible');
+        }
 
         // Unlock tabs + sidebar links + sections with staggered reveal
         var lockedTabs     = document.querySelectorAll('.pm-req-tab--locked');

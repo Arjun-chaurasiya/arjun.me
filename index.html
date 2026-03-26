@@ -155,16 +155,16 @@
     <a href="#home"       class="pm-req-tab active" data-section="home">
       <span class="req-tab-dot dot--green"></span>Overview
     </a>
-    <a href="#about"      class="pm-req-tab" data-section="about">
+    <a href="#about"      class="pm-req-tab pm-req-tab--locked" data-section="about">
       <span class="req-tab-method get">GET</span>/about
     </a>
-    <a href="#skills"     class="pm-req-tab" data-section="skills">
+    <a href="#skills"     class="pm-req-tab pm-req-tab--locked" data-section="skills">
       <span class="req-tab-method get">GET</span>/skills
     </a>
-    <a href="#experience" class="pm-req-tab" data-section="experience">
+    <a href="#experience" class="pm-req-tab pm-req-tab--locked" data-section="experience">
       <span class="req-tab-method get">GET</span>/experience
     </a>
-    <a href="#contact"    class="pm-req-tab" data-section="contact">
+    <a href="#contact"    class="pm-req-tab pm-req-tab--locked" data-section="contact">
       <span class="req-tab-method post">POST</span>/contact
     </a>
     <button class="req-tab-plus" title="New request">+</button>
@@ -439,7 +439,7 @@
   <!-- ===================== END HOME ===================== -->
 
   <!-- ===================== ABOUT SECTION ===================== -->
-  <section class="pm-section about-section" id="about">
+  <section class="pm-section about-section pm-section--locked" id="about">
 
     <!-- Section URL bar -->
     <div class="section-urlbar">
@@ -531,7 +531,7 @@
   <!-- ===================== END ABOUT ===================== -->
 
   <!-- ===================== SKILLS SECTION ===================== -->
-  <section class="pm-section skills-section" id="skills">
+  <section class="pm-section skills-section pm-section--locked" id="skills">
 
     <!-- Section URL bar -->
     <div class="section-urlbar">
@@ -642,7 +642,7 @@
   <!-- ===================== END SKILLS ===================== -->
 
   <!-- ===================== EXPERIENCE SECTION ===================== -->
-  <section class="pm-section experience-section" id="experience">
+  <section class="pm-section experience-section pm-section--locked" id="experience">
 
     <!-- Section URL bar -->
     <div class="section-urlbar">
@@ -775,7 +775,7 @@
   <!-- ===================== END EXPERIENCE ===================== -->
 
   <!-- ===================== CONTACT SECTION ===================== -->
-  <section class="pm-section contact-section" id="contact">
+  <section class="pm-section contact-section pm-section--locked" id="contact">
 
     <!-- Section URL bar -->
     <div class="section-urlbar">
@@ -1219,6 +1219,19 @@
         statusCode.style.color = '';
         statusText.textContent = 'OK';
         responseMeta.style.opacity = '1';
+
+        // Unlock tabs + sections with staggered reveal
+        var lockedTabs = document.querySelectorAll('.pm-req-tab--locked');
+        var lockedSections = document.querySelectorAll('.pm-section--locked');
+        lockedTabs.forEach(function (tab, i) {
+          setTimeout(function () {
+            tab.classList.remove('pm-req-tab--locked');
+            tab.classList.add('pm-req-tab--unlocked');
+          }, i * 120);
+        });
+        lockedSections.forEach(function (sec) {
+          sec.classList.remove('pm-section--locked');
+        });
 
         // Button → 200 OK briefly, then back
         btn.classList.remove('loading');

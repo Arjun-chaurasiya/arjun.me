@@ -620,6 +620,28 @@ p {
   background: rgba(255,108,55,0.06);
 }
 
+/* Locked tabs — before SEND */
+.pm-req-tab--locked {
+  opacity: 0.35;
+  pointer-events: none;
+  cursor: not-allowed;
+  filter: grayscale(1);
+}
+
+/* Unlock animation */
+@keyframes tabUnlock {
+  from { opacity: 0.35; transform: translateY(-3px); filter: grayscale(1); }
+  to   { opacity: 1;    transform: translateY(0);    filter: grayscale(0); }
+}
+.pm-req-tab--unlocked {
+  animation: tabUnlock 0.3s ease forwards;
+}
+
+/* Locked sections — hidden until SEND */
+.pm-section--locked {
+  display: none !important;
+}
+
 .req-tab-dot {
   width: 8px;
   height: 8px;

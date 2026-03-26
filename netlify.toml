@@ -1,7 +1,7 @@
 [[plugins]]
   package = "netlify-plugin-no-more-404"
     [plugins.inputs]
-      on404 = 'error' 
+      on404 = 'error'
       cacheKey = 'anystring'
 
 [[plugins]]
@@ -10,5 +10,26 @@ package = "@netlify/plugin-sitemap"
   buildDir = ""
   exclude = [
     # By file Path
-    '**/**/certifications.html'
+    '**/**/certifications.html',
+    '**/**/achievements.html'
   ]
+
+[[redirects]]
+  from = "/achievements"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/achievements.html"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/certifications"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/certifications.html"
+  to = "/"
+  status = 301

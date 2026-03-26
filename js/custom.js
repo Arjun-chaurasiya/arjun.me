@@ -66,16 +66,6 @@ $(window).on('load', function() {
 	});
 
 
-	/*------------------
-		typed
-	--------------------*/
-	var typed = new Typed('#typed', {
-		stringsElement: '#typed-strings',
-		backSpeed: 40,
-		typeSpeed: 40,
-		loop: true
-	});
-
 
 	/*------------------
 		menu active

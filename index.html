@@ -66,25 +66,25 @@
           </a>
         </li>
         <li>
-          <a href="#about" class="sidebar-link" data-section="about">
+          <a href="#about" class="sidebar-link sidebar-link--locked" data-section="about">
             <span class="sidebar-method get">GET</span>
             <span>/about</span>
           </a>
         </li>
         <li>
-          <a href="#skills" class="sidebar-link" data-section="skills">
+          <a href="#skills" class="sidebar-link sidebar-link--locked" data-section="skills">
             <span class="sidebar-method get">GET</span>
             <span>/skills</span>
           </a>
         </li>
         <li>
-          <a href="#experience" class="sidebar-link" data-section="experience">
+          <a href="#experience" class="sidebar-link sidebar-link--locked" data-section="experience">
             <span class="sidebar-method get">GET</span>
             <span>/experience</span>
           </a>
         </li>
         <li>
-          <a href="#contact" class="sidebar-link" data-section="contact">
+          <a href="#contact" class="sidebar-link sidebar-link--locked" data-section="contact">
             <span class="sidebar-method post">POST</span>
             <span>/contact</span>
           </a>
@@ -155,16 +155,16 @@
     <a href="#home"       class="pm-req-tab active" data-section="home">
       <span class="req-tab-dot dot--green"></span>Overview
     </a>
-    <a href="#about"      class="pm-req-tab" data-section="about">
+    <a href="#about"      class="pm-req-tab pm-req-tab--locked" data-section="about">
       <span class="req-tab-method get">GET</span>/about
     </a>
-    <a href="#skills"     class="pm-req-tab" data-section="skills">
+    <a href="#skills"     class="pm-req-tab pm-req-tab--locked" data-section="skills">
       <span class="req-tab-method get">GET</span>/skills
     </a>
-    <a href="#experience" class="pm-req-tab" data-section="experience">
+    <a href="#experience" class="pm-req-tab pm-req-tab--locked" data-section="experience">
       <span class="req-tab-method get">GET</span>/experience
     </a>
-    <a href="#contact"    class="pm-req-tab" data-section="contact">
+    <a href="#contact"    class="pm-req-tab pm-req-tab--locked" data-section="contact">
       <span class="req-tab-method post">POST</span>/contact
     </a>
     <button class="req-tab-plus" title="New request">+</button>
@@ -245,9 +245,9 @@
       <!-- Right: Response panel -->
       <div class="home-response-panel">
         <div class="response-panel-header">
-          <span class="response-status-code">200</span>
-          <span class="response-status-text">OK</span>
-          <span class="response-meta">Time: 6 yrs&nbsp;&nbsp;|&nbsp;&nbsp;Size: Senior Level</span>
+          <span class="response-status-code" id="res-status-code" style="color:var(--text-secondary)">---</span>
+          <span class="response-status-text" id="res-status-text"></span>
+          <span class="response-meta" id="res-meta" style="opacity:0">Time: 6 yrs&nbsp;&nbsp;|&nbsp;&nbsp;Size: Senior Level</span>
         </div>
         <div class="response-panel-tabs" id="res-tabs">
           <button class="res-tab active" data-res="res-body">Body</button>
@@ -265,24 +265,50 @@
             <div class="shimmer-line w-70"></div>
             <div class="shimmer-line w-60"></div>
           </div>
-          <div class="response-panel-body" id="res-body-content">
+          <div class="res-hit-send" id="res-hit-send">
+            <div class="res-hit-send-icon-wrap">
+              <i class="fa fa-paper-plane"></i>
+            </div>
+            <p class="res-hit-send-title">Click <strong>Send</strong> to get a response</p>
+            <p class="res-hit-send-sub">
+              <span class="res-hit-send-method">GET</span>
+              <span class="res-hit-send-url">/api/qa-engineer/arjun-chaurasiya</span>
+            </p>
+            <p class="res-hit-send-hint">Response will appear here</p>
+          </div>
+          <div class="response-panel-body" id="res-body-content" style="display:none">
             <div class="response-json">
-              <span class="json-brace">{</span><br>
-              &nbsp;&nbsp;<span class="json-key">"name"</span>: <span class="json-string">"Arjun Chaurasiya"</span>,<br>
-              &nbsp;&nbsp;<span class="json-key">"role"</span>: <span class="json-string">"QA Engineer II"</span>,<br>
-              &nbsp;&nbsp;<span class="json-key">"experience"</span>: <span class="json-number">6</span>,<br>
-              &nbsp;&nbsp;<span class="json-key">"domain"</span>: [<span class="json-string">"Supply Chain"</span>, <span class="json-string">"Healthcare"</span>, <span class="json-string">"GPS"</span>],<br>
-              &nbsp;&nbsp;<span class="json-key">"automation"</span>: [<span class="json-string">"Selenium"</span>, <span class="json-string">"REST Assured"</span>, <span class="json-string">"Playwright"</span>],<br>
-              &nbsp;&nbsp;<span class="json-key">"available"</span>: <span class="json-bool">true</span>,<br>
-              &nbsp;&nbsp;<span class="json-key">"location"</span>: <span class="json-string">"Bangalore, India"</span><br>
-              <span class="json-brace">}</span>
+<span class="json-brace">{</span><br>
+&nbsp;&nbsp;<span class="json-key">"name"</span>: <span class="json-string">"Arjun Chaurasiya"</span>,<br>
+&nbsp;&nbsp;<span class="json-key">"role"</span>: <span class="json-string">"QA Engineer II"</span>,<br>
+&nbsp;&nbsp;<span class="json-key">"experience"</span>: <span class="json-number">6</span>,<br>
+&nbsp;&nbsp;<span class="json-key">"domain"</span>: [<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="json-string">"Supply Chain"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="json-string">"Healthcare"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="json-string">"GPS"</span><br>
+&nbsp;&nbsp;],<br>
+&nbsp;&nbsp;<span class="json-key">"automation"</span>: [<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="json-string">"Selenium"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="json-string">"REST Assured"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="json-string">"Playwright"</span><br>
+&nbsp;&nbsp;],<br>
+&nbsp;&nbsp;<span class="json-key">"available"</span>: <span class="json-bool">true</span>,<br>
+&nbsp;&nbsp;<span class="json-key">"location"</span>: <span class="json-string">"Bangalore, India"</span><br>
+<span class="json-brace">}</span>
             </div>
           </div>
         </div>
 
         <!-- Headers panel -->
         <div class="res-panel" id="res-headers">
-          <div class="response-panel-body">
+          <div class="res-hit-send res-hit-send--alt" id="res-headers-placeholder">
+            <div class="res-hit-send-icon-wrap">
+              <i class="fa fa-paper-plane"></i>
+            </div>
+            <p class="res-hit-send-title">Click <strong>Send</strong> to get a response</p>
+            <p class="res-hit-send-hint">Response headers will appear here</p>
+          </div>
+          <div class="response-panel-body" id="res-headers-content" style="display:none">
             <div class="response-json" style="font-size:12px;line-height:1.8;">
               <span class="json-key">Content-Type</span>: <span class="json-string">application/json</span><br>
               <span class="json-key">X-Hire-Status</span>: <span class="json-string">available</span><br>
@@ -298,7 +324,14 @@
 
         <!-- Test Results panel -->
         <div class="res-panel" id="res-tests">
-          <div class="response-panel-body" style="padding:12px;">
+          <div class="res-hit-send res-hit-send--alt" id="res-tests-placeholder">
+            <div class="res-hit-send-icon-wrap">
+              <i class="fa fa-paper-plane"></i>
+            </div>
+            <p class="res-hit-send-title">Click <strong>Send</strong> to get a response</p>
+            <p class="res-hit-send-hint">Test results will appear here</p>
+          </div>
+          <div class="response-panel-body" id="res-tests-content" style="display:none;padding:12px;">
             <div style="display:flex;flex-direction:column;gap:5px;">
               <div class="test-item pass"><span class="test-icon">✓</span> Status code is 200</div>
               <div class="test-item pass"><span class="test-icon">✓</span> experience &gt;= 6</div>
@@ -419,7 +452,7 @@
   <!-- ===================== END HOME ===================== -->
 
   <!-- ===================== ABOUT SECTION ===================== -->
-  <section class="pm-section about-section" id="about">
+  <section class="pm-section about-section pm-section--locked" id="about">
 
     <!-- Section URL bar -->
     <div class="section-urlbar">
@@ -511,7 +544,7 @@
   <!-- ===================== END ABOUT ===================== -->
 
   <!-- ===================== SKILLS SECTION ===================== -->
-  <section class="pm-section skills-section" id="skills">
+  <section class="pm-section skills-section pm-section--locked" id="skills">
 
     <!-- Section URL bar -->
     <div class="section-urlbar">
@@ -622,7 +655,7 @@
   <!-- ===================== END SKILLS ===================== -->
 
   <!-- ===================== EXPERIENCE SECTION ===================== -->
-  <section class="pm-section experience-section" id="experience">
+  <section class="pm-section experience-section pm-section--locked" id="experience">
 
     <!-- Section URL bar -->
     <div class="section-urlbar">
@@ -755,7 +788,7 @@
   <!-- ===================== END EXPERIENCE ===================== -->
 
   <!-- ===================== CONTACT SECTION ===================== -->
-  <section class="pm-section contact-section" id="contact">
+  <section class="pm-section contact-section pm-section--locked" id="contact">
 
     <!-- Section URL bar -->
     <div class="section-urlbar">
@@ -1146,11 +1179,12 @@
   if (sendBtn) {
     sendBtn.addEventListener('click', function () {
       var btn = this;
-      var loader = document.getElementById('res-body-loader');
-      var content = document.getElementById('res-body-content');
-      var statusCode = document.querySelector('.response-status-code');
-      var statusText = document.querySelector('.response-status-text');
-      var responseMeta = document.querySelector('.response-meta');
+      var loader       = document.getElementById('res-body-loader');
+      var bodyContent  = document.getElementById('res-body-content');
+      var hitSend      = document.getElementById('res-hit-send');
+      var statusCode   = document.getElementById('res-status-code');
+      var statusText   = document.getElementById('res-status-text');
+      var responseMeta = document.getElementById('res-meta');
 
       // Already loading — do nothing
       if (btn.classList.contains('loading')) return;
@@ -1161,30 +1195,62 @@
       btn.lastChild.textContent = 'Sending...';
 
       // 2. Grey out status header
-      if (statusCode) { statusCode.textContent = '---'; statusCode.style.color = 'var(--text-secondary)'; }
-      if (statusText) { statusText.textContent = ''; }
-      if (responseMeta) { responseMeta.style.opacity = '0'; }
+      statusCode.textContent = '---';
+      statusCode.style.color = 'var(--text-secondary)';
+      statusText.textContent = '';
+      responseMeta.style.opacity = '0';
 
-      // 3. Hide content, show shimmer
-      content.style.display = 'none';
+      // 3. Hide placeholder + content, show shimmer
+      if (hitSend) hitSend.style.display = 'none';
+      bodyContent.style.display = 'none';
       loader.classList.add('active');
 
       // 4. Simulate network delay ~850ms
       setTimeout(function () {
-        // Hide loader, show content with fade-in
+        // Hide loader, show all panel content with fade-in
         loader.classList.remove('active');
-        content.style.display = '';
-        var json = content.querySelector('.response-json');
+        bodyContent.style.display = '';
+        var json = bodyContent.querySelector('.response-json');
         if (json) {
           json.classList.remove('fade-in');
-          void json.offsetWidth; // reflow to restart animation
+          void json.offsetWidth;
           json.classList.add('fade-in');
         }
 
+        // Reveal headers + tests panels
+        var hPlaceholder = document.getElementById('res-headers-placeholder');
+        var hContent     = document.getElementById('res-headers-content');
+        var tPlaceholder = document.getElementById('res-tests-placeholder');
+        var tContent     = document.getElementById('res-tests-content');
+        if (hPlaceholder) hPlaceholder.style.display = 'none';
+        if (hContent)     hContent.style.display = '';
+        if (tPlaceholder) tPlaceholder.style.display = 'none';
+        if (tContent)     tContent.style.display = '';
+
         // Restore status
-        if (statusCode) { statusCode.textContent = '200'; statusCode.style.color = ''; }
-        if (statusText) { statusText.textContent = 'OK'; }
-        if (responseMeta) { responseMeta.style.opacity = '1'; }
+        statusCode.textContent = '200';
+        statusCode.style.color = '';
+        statusText.textContent = 'OK';
+        responseMeta.style.opacity = '1';
+
+        // Unlock tabs + sidebar links + sections with staggered reveal
+        var lockedTabs     = document.querySelectorAll('.pm-req-tab--locked');
+        var lockedSidebar  = document.querySelectorAll('.sidebar-link--locked');
+        var lockedSections = document.querySelectorAll('.pm-section--locked');
+        lockedTabs.forEach(function (tab, i) {
+          setTimeout(function () {
+            tab.classList.remove('pm-req-tab--locked');
+            tab.classList.add('pm-req-tab--unlocked');
+          }, i * 120);
+        });
+        lockedSidebar.forEach(function (link, i) {
+          setTimeout(function () {
+            link.classList.remove('sidebar-link--locked');
+          }, i * 120);
+        });
+        lockedSections.forEach(function (sec) {
+          sec.classList.remove('pm-section--locked');
+        });
 
         // Button → 200 OK briefly, then back
         btn.classList.remove('loading');

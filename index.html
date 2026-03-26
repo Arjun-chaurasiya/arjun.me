@@ -245,9 +245,9 @@
       <!-- Right: Response panel -->
       <div class="home-response-panel">
         <div class="response-panel-header">
-          <span class="response-status-code">200</span>
-          <span class="response-status-text">OK</span>
-          <span class="response-meta">Time: 6 yrs&nbsp;&nbsp;|&nbsp;&nbsp;Size: Senior Level</span>
+          <span class="response-status-code" id="res-status-code" style="color:var(--text-secondary)">---</span>
+          <span class="response-status-text" id="res-status-text"></span>
+          <span class="response-meta" id="res-meta" style="opacity:0">Time: 6 yrs&nbsp;&nbsp;|&nbsp;&nbsp;Size: Senior Level</span>
         </div>
         <div class="response-panel-tabs" id="res-tabs">
           <button class="res-tab active" data-res="res-body">Body</button>
@@ -265,7 +265,11 @@
             <div class="shimmer-line w-70"></div>
             <div class="shimmer-line w-60"></div>
           </div>
-          <div class="response-panel-body" id="res-body-content">
+          <div class="res-hit-send" id="res-hit-send">
+            <span class="res-hit-send-icon">&#9654;</span>
+            <span>Hit <strong>Send</strong> to get a response</span>
+          </div>
+          <div class="response-panel-body" id="res-body-content" style="display:none">
             <div class="response-json">
               <span class="json-brace">{</span><br>
               &nbsp;&nbsp;<span class="json-key">"name"</span>: <span class="json-string">"Arjun Chaurasiya"</span>,<br>
@@ -282,7 +286,11 @@
 
         <!-- Headers panel -->
         <div class="res-panel" id="res-headers">
-          <div class="response-panel-body">
+          <div class="res-hit-send res-hit-send--alt" id="res-headers-placeholder">
+            <span class="res-hit-send-icon">&#9654;</span>
+            <span>Hit <strong>Send</strong> to get a response</span>
+          </div>
+          <div class="response-panel-body" id="res-headers-content" style="display:none">
             <div class="response-json" style="font-size:12px;line-height:1.8;">
               <span class="json-key">Content-Type</span>: <span class="json-string">application/json</span><br>
               <span class="json-key">X-Hire-Status</span>: <span class="json-string">available</span><br>
@@ -298,7 +306,11 @@
 
         <!-- Test Results panel -->
         <div class="res-panel" id="res-tests">
-          <div class="response-panel-body" style="padding:12px;">
+          <div class="res-hit-send res-hit-send--alt" id="res-tests-placeholder">
+            <span class="res-hit-send-icon">&#9654;</span>
+            <span>Hit <strong>Send</strong> to get a response</span>
+          </div>
+          <div class="response-panel-body" id="res-tests-content" style="display:none;padding:12px;">
             <div style="display:flex;flex-direction:column;gap:5px;">
               <div class="test-item pass"><span class="test-icon">✓</span> Status code is 200</div>
               <div class="test-item pass"><span class="test-icon">✓</span> experience &gt;= 6</div>
@@ -1146,11 +1158,12 @@
   if (sendBtn) {
     sendBtn.addEventListener('click', function () {
       var btn = this;
-      var loader = document.getElementById('res-body-loader');
-      var content = document.getElementById('res-body-content');
-      var statusCode = document.querySelector('.response-status-code');
-      var statusText = document.querySelector('.response-status-text');
-      var responseMeta = document.querySelector('.response-meta');
+      var loader       = document.getElementById('res-body-loader');
+      var bodyContent  = document.getElementById('res-body-content');
+      var hitSend      = document.getElementById('res-hit-send');
+      var statusCode   = document.getElementById('res-status-code');
+      var statusText   = document.getElementById('res-status-text');
+      var responseMeta = document.getElementById('res-meta');
 
       // Already loading — do nothing
       if (btn.classList.contains('loading')) return;
@@ -1161,30 +1174,43 @@
       btn.lastChild.textContent = 'Sending...';
 
       // 2. Grey out status header
-      if (statusCode) { statusCode.textContent = '---'; statusCode.style.color = 'var(--text-secondary)'; }
-      if (statusText) { statusText.textContent = ''; }
-      if (responseMeta) { responseMeta.style.opacity = '0'; }
+      statusCode.textContent = '---';
+      statusCode.style.color = 'var(--text-secondary)';
+      statusText.textContent = '';
+      responseMeta.style.opacity = '0';
 
-      // 3. Hide content, show shimmer
-      content.style.display = 'none';
+      // 3. Hide placeholder + content, show shimmer
+      if (hitSend) hitSend.style.display = 'none';
+      bodyContent.style.display = 'none';
       loader.classList.add('active');
 
       // 4. Simulate network delay ~850ms
       setTimeout(function () {
-        // Hide loader, show content with fade-in
+        // Hide loader, show all panel content with fade-in
         loader.classList.remove('active');
-        content.style.display = '';
-        var json = content.querySelector('.response-json');
+        bodyContent.style.display = '';
+        var json = bodyContent.querySelector('.response-json');
         if (json) {
           json.classList.remove('fade-in');
-          void json.offsetWidth; // reflow to restart animation
+          void json.offsetWidth;
           json.classList.add('fade-in');
         }
 
+        // Reveal headers + tests panels
+        var hPlaceholder = document.getElementById('res-headers-placeholder');
+        var hContent     = document.getElementById('res-headers-content');
+        var tPlaceholder = document.getElementById('res-tests-placeholder');
+        var tContent     = document.getElementById('res-tests-content');
+        if (hPlaceholder) hPlaceholder.style.display = 'none';
+        if (hContent)     hContent.style.display = '';
+        if (tPlaceholder) tPlaceholder.style.display = 'none';
+        if (tContent)     tContent.style.display = '';
+
         // Restore status
-        if (statusCode) { statusCode.textContent = '200'; statusCode.style.color = ''; }
-        if (statusText) { statusText.textContent = 'OK'; }
-        if (responseMeta) { responseMeta.style.opacity = '1'; }
+        statusCode.textContent = '200';
+        statusCode.style.color = '';
+        statusText.textContent = 'OK';
+        responseMeta.style.opacity = '1';
 
         // Button → 200 OK briefly, then back
         btn.classList.remove('loading');

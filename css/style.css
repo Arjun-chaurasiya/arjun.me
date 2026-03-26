@@ -1244,6 +1244,22 @@ p {
   gap: 0;
 }
 
+/* Hit Send placeholder */
+.res-hit-send {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 36px 16px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  opacity: 0.6;
+}
+.res-hit-send-icon {
+  font-size: 10px;
+  opacity: 0.5;
+}
+
 /* Response body — shimmer loader */
 .res-body-loader {
   display: none;

@@ -45,38 +45,63 @@
 
   <!-- Sidebar Nav -->
   <nav class="sidebar-nav" id="sidebar-nav">
-    <ul>
-      <li>
-        <a href="#home" class="sidebar-link active" data-section="home">
-          <i class="fa fa-home"></i>
-          <span>Home</span>
-        </a>
-      </li>
-      <li>
-        <a href="#about" class="sidebar-link" data-section="about">
-          <i class="fa fa-user"></i>
-          <span>About</span>
-        </a>
-      </li>
-      <li>
-        <a href="#skills" class="sidebar-link" data-section="skills">
-          <i class="fa fa-bolt"></i>
-          <span>Skills</span>
-        </a>
-      </li>
-      <li>
-        <a href="#experience" class="sidebar-link" data-section="experience">
-          <i class="fa fa-briefcase"></i>
-          <span>Experience</span>
-        </a>
-      </li>
-      <li>
-        <a href="#contact" class="sidebar-link" data-section="contact">
-          <i class="fa fa-envelope"></i>
-          <span>Contact</span>
-        </a>
-      </li>
-    </ul>
+
+    <!-- Collections label -->
+    <div class="sidebar-section-label">
+      <i class="fa fa-folder"></i> Collections
+    </div>
+
+    <!-- Collection: Portfolio -->
+    <div class="sidebar-collection">
+      <div class="sidebar-collection-name">
+        <i class="fa fa-caret-down"></i>
+        <i class="fa fa-folder-open"></i>
+        <span>arjun-portfolio</span>
+      </div>
+      <ul class="sidebar-collection-items">
+        <li>
+          <a href="#home" class="sidebar-link active" data-section="home">
+            <span class="sidebar-method get">GET</span>
+            <span>Overview</span>
+          </a>
+        </li>
+        <li>
+          <a href="#about" class="sidebar-link" data-section="about">
+            <span class="sidebar-method get">GET</span>
+            <span>/about</span>
+          </a>
+        </li>
+        <li>
+          <a href="#skills" class="sidebar-link" data-section="skills">
+            <span class="sidebar-method get">GET</span>
+            <span>/skills</span>
+          </a>
+        </li>
+        <li>
+          <a href="#experience" class="sidebar-link" data-section="experience">
+            <span class="sidebar-method get">GET</span>
+            <span>/experience</span>
+          </a>
+        </li>
+        <li>
+          <a href="#contact" class="sidebar-link" data-section="contact">
+            <span class="sidebar-method post">POST</span>
+            <span>/contact</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Environments label -->
+    <div class="sidebar-section-label" style="margin-top:16px;">
+      <i class="fa fa-globe"></i> Environments
+    </div>
+    <div class="sidebar-env-item">
+      <span class="env-dot"></span>
+      <span class="env-name">Production</span>
+      <span class="env-active">Active</span>
+    </div>
+
   </nav>
 
   <!-- Sidebar Profile Card (bottom) -->
@@ -125,8 +150,41 @@
 <!-- ===================== MAIN CONTENT ===================== -->
 <main class="main-content" id="main-content">
 
+  <!-- ===================== POSTMAN REQUEST TABS ===================== -->
+  <div class="pm-request-tabs">
+    <a href="#home"       class="pm-req-tab active" data-section="home">
+      <span class="req-tab-dot dot--green"></span>Overview
+    </a>
+    <a href="#about"      class="pm-req-tab" data-section="about">
+      <span class="req-tab-method get">GET</span>/about
+    </a>
+    <a href="#skills"     class="pm-req-tab" data-section="skills">
+      <span class="req-tab-method get">GET</span>/skills
+    </a>
+    <a href="#experience" class="pm-req-tab" data-section="experience">
+      <span class="req-tab-method get">GET</span>/experience
+    </a>
+    <a href="#contact"    class="pm-req-tab" data-section="contact">
+      <span class="req-tab-method post">POST</span>/contact
+    </a>
+    <button class="req-tab-plus" title="New request">+</button>
+  </div>
+  <!-- ===================== END REQUEST TABS ===================== -->
+
   <!-- ===================== HOME SECTION ===================== -->
   <section class="pm-section home-section" id="home">
+
+    <!-- Sub-tabs (Postman request editor tabs) -->
+    <div class="pm-subtabs">
+      <span class="pm-subtab active">Params</span>
+      <span class="pm-subtab">Authorization</span>
+      <span class="pm-subtab">Headers <em class="subtab-count">3</em></span>
+      <span class="pm-subtab">Body</span>
+      <span class="pm-subtab">Pre-request Script</span>
+      <span class="pm-subtab">Tests</span>
+      <span class="pm-subtab">Settings</span>
+    </div>
+
     <div class="home-grid">
 
       <!-- Left: text content -->
@@ -185,22 +243,34 @@
         </div>
       </div>
 
-      <!-- Right: profile photo -->
-      <div class="home-photo-wrap">
-        <div class="home-photo-panel">
-          <div class="home-photo-topbar">
-            <span class="photo-panel-dot dot--red"></span>
-            <span class="photo-panel-dot dot--yellow"></span>
-            <span class="photo-panel-dot dot--green"></span>
-            <span class="photo-panel-label">profile.jpg</span>
+      <!-- Right: Response panel -->
+      <div class="home-response-panel">
+        <div class="response-panel-header">
+          <span class="response-status-code">200</span>
+          <span class="response-status-text">OK</span>
+          <span class="response-meta">Time: 6 yrs&nbsp;&nbsp;|&nbsp;&nbsp;Size: Senior Level</span>
+        </div>
+        <div class="response-panel-tabs">
+          <span class="res-tab active">Body</span>
+          <span class="res-tab">Headers</span>
+          <span class="res-tab">Test Results <em class="subtab-count pass">✓ 12</em></span>
+        </div>
+        <div class="response-panel-body">
+          <div class="response-json">
+            <span class="json-brace">{</span><br>
+            &nbsp;&nbsp;<span class="json-key">"name"</span>: <span class="json-string">"Arjun Chaurasiya"</span>,<br>
+            &nbsp;&nbsp;<span class="json-key">"role"</span>: <span class="json-string">"QA Engineer II"</span>,<br>
+            &nbsp;&nbsp;<span class="json-key">"experience"</span>: <span class="json-number">6</span>,<br>
+            &nbsp;&nbsp;<span class="json-key">"domain"</span>: [<span class="json-string">"Supply Chain"</span>, <span class="json-string">"Healthcare"</span>, <span class="json-string">"GPS"</span>],<br>
+            &nbsp;&nbsp;<span class="json-key">"automation"</span>: [<span class="json-string">"Selenium"</span>, <span class="json-string">"REST Assured"</span>, <span class="json-string">"Playwright"</span>],<br>
+            &nbsp;&nbsp;<span class="json-key">"available"</span>: <span class="json-bool">true</span>,<br>
+            &nbsp;&nbsp;<span class="json-key">"location"</span>: <span class="json-string">"Bangalore, India"</span><br>
+            <span class="json-brace">}</span>
           </div>
-          <div class="home-photo-body">
-            <img src="img/arjun.jpg" alt="Arjun Chaurasiya — QA Engineer II" class="home-photo">
-          </div>
-          <div class="home-photo-status">
-            <span class="status-dot status--success"></span>
-            <span class="status-text">200 OK — Available for opportunities</span>
-          </div>
+        </div>
+        <div class="response-panel-footer">
+          <span class="status-dot status--success"></span>
+          <span class="status-text">Available for opportunities</span>
         </div>
       </div>
 
@@ -211,12 +281,11 @@
   <!-- ===================== ABOUT SECTION ===================== -->
   <section class="pm-section about-section" id="about">
 
-    <!-- Section tab header -->
-    <div class="pm-tab-header">
-      <div class="pm-tab active">
-        <span class="pm-tab-method">GET</span>
-        <span class="pm-tab-path">/about</span>
-      </div>
+    <!-- Section URL bar -->
+    <div class="section-urlbar">
+      <span class="method-badge">GET</span>
+      <span class="request-url">/api/qa-engineer/arjun-chaurasiya/about</span>
+      <span class="section-status"><span class="status-dot status--success"></span>200 OK</span>
     </div>
 
     <div class="about-grid">
@@ -304,12 +373,11 @@
   <!-- ===================== SKILLS SECTION ===================== -->
   <section class="pm-section skills-section" id="skills">
 
-    <!-- Section tab header -->
-    <div class="pm-tab-header">
-      <div class="pm-tab active">
-        <span class="pm-tab-method">GET</span>
-        <span class="pm-tab-path">/skills</span>
-      </div>
+    <!-- Section URL bar -->
+    <div class="section-urlbar">
+      <span class="method-badge">GET</span>
+      <span class="request-url">/api/qa-engineer/arjun-chaurasiya/skills</span>
+      <span class="section-status"><span class="status-dot status--success"></span>200 OK</span>
     </div>
 
     <div class="skills-grid">
@@ -416,12 +484,11 @@
   <!-- ===================== EXPERIENCE SECTION ===================== -->
   <section class="pm-section experience-section" id="experience">
 
-    <!-- Section tab header -->
-    <div class="pm-tab-header">
-      <div class="pm-tab active">
-        <span class="pm-tab-method">GET</span>
-        <span class="pm-tab-path">/experience</span>
-      </div>
+    <!-- Section URL bar -->
+    <div class="section-urlbar">
+      <span class="method-badge">GET</span>
+      <span class="request-url">/api/qa-engineer/arjun-chaurasiya/experience</span>
+      <span class="section-status"><span class="status-dot status--success"></span>200 OK</span>
     </div>
 
     <div class="timeline">
@@ -550,12 +617,11 @@
   <!-- ===================== CONTACT SECTION ===================== -->
   <section class="pm-section contact-section" id="contact">
 
-    <!-- Section tab header -->
-    <div class="pm-tab-header">
-      <div class="pm-tab pm-tab--post active">
-        <span class="pm-tab-method pm-tab-method--post">POST</span>
-        <span class="pm-tab-path">/contact</span>
-      </div>
+    <!-- Section URL bar -->
+    <div class="section-urlbar">
+      <span class="method-badge method-badge--post">POST</span>
+      <span class="request-url">/api/qa-engineer/arjun-chaurasiya/contact</span>
+      <span class="section-status"><span class="status-dot status--success"></span>201 Created</span>
     </div>
 
     <div class="contact-grid">
@@ -744,12 +810,16 @@
     contact: 'Contact'
   };
 
+  var reqTabs = document.querySelectorAll('.pm-req-tab');
+
   function setActiveSection(id) {
     sidebarLinks.forEach(function (link) {
       link.classList.remove('active');
-      if (link.dataset.section === id) {
-        link.classList.add('active');
-      }
+      if (link.dataset.section === id) link.classList.add('active');
+    });
+    reqTabs.forEach(function (tab) {
+      tab.classList.remove('active');
+      if (tab.dataset.section === id) tab.classList.add('active');
     });
     if (breadcrumb && sectionNames[id]) {
       breadcrumb.textContent = sectionNames[id];

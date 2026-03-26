@@ -1223,6 +1223,68 @@ p {
   background: var(--accent-hover);
 }
 
+/* SEND button — spinner */
+@keyframes send-spin {
+  to { transform: rotate(360deg); }
+}
+.send-spinner {
+  display: none;
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(255,255,255,0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: send-spin 0.55s linear infinite;
+  margin-right: 6px;
+  flex-shrink: 0;
+}
+.request-send.loading {
+  opacity: 0.82;
+  cursor: not-allowed;
+  gap: 0;
+}
+
+/* Response body — shimmer loader */
+.res-body-loader {
+  display: none;
+  flex-direction: column;
+  gap: 11px;
+  padding: 18px 16px;
+}
+.res-body-loader.active {
+  display: flex;
+}
+@keyframes shimmer {
+  0%   { background-position: -600px 0; }
+  100% { background-position: 600px 0; }
+}
+.shimmer-line {
+  height: 13px;
+  border-radius: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--border, #2a2a3a) 25%,
+    rgba(255,255,255,0.07) 50%,
+    var(--border, #2a2a3a) 75%
+  );
+  background-size: 1200px 100%;
+  animation: shimmer 1.3s infinite linear;
+}
+.shimmer-line.w-80 { width: 80%; }
+.shimmer-line.w-60 { width: 60%; }
+.shimmer-line.w-90 { width: 90%; }
+.shimmer-line.w-50 { width: 50%; }
+.shimmer-line.w-70 { width: 70%; }
+
+/* Response JSON — fade-in on load */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(7px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+.response-json.fade-in {
+  animation: fadeInUp 0.38s ease forwards;
+}
+
 /* Typed */
 .home-typed-wrap {
   min-height: 24px;

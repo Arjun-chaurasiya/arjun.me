@@ -10,27 +10,3 @@ package = "@netlify/plugin-sitemap"
   buildDir = "."
   prettyURLs = true
   homepage = "https://arjun.me"
-  exclude = [
-    '**/**/certifications.html',
-    '**/**/achievements.html'
-  ]
-
-[[redirects]]
-  from = "/achievements"
-  to = "/"
-  status = 301
-
-[[redirects]]
-  from = "/achievements.html"
-  to = "/"
-  status = 301
-
-[[redirects]]
-  from = "/certifications"
-  to = "/"
-  status = 301
-
-[[redirects]]
-  from = "/certifications.html"
-  to = "/"
-  status = 301

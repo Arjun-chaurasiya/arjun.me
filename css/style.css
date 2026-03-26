@@ -430,11 +430,13 @@ p {
   background: rgba(0, 0, 0, 0.55);
   z-index: 999;
   opacity: 0;
+  pointer-events: none;
   transition: opacity 0.3s ease;
 }
 
 .sidebar-overlay.overlay--visible {
   opacity: 1;
+  pointer-events: auto;
 }
 
 

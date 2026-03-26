@@ -347,6 +347,14 @@ p {
   color: var(--accent);
 }
 
+/* Locked sidebar links — before SEND */
+.sidebar-link--locked {
+  opacity: 0.3;
+  pointer-events: none;
+  cursor: not-allowed;
+  filter: grayscale(1);
+}
+
 /* Profile card at bottom */
 .sidebar-profile {
   padding: 12px 14px;

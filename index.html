@@ -66,25 +66,25 @@
           </a>
         </li>
         <li>
-          <a href="#about" class="sidebar-link" data-section="about">
+          <a href="#about" class="sidebar-link sidebar-link--locked" data-section="about">
             <span class="sidebar-method get">GET</span>
             <span>/about</span>
           </a>
         </li>
         <li>
-          <a href="#skills" class="sidebar-link" data-section="skills">
+          <a href="#skills" class="sidebar-link sidebar-link--locked" data-section="skills">
             <span class="sidebar-method get">GET</span>
             <span>/skills</span>
           </a>
         </li>
         <li>
-          <a href="#experience" class="sidebar-link" data-section="experience">
+          <a href="#experience" class="sidebar-link sidebar-link--locked" data-section="experience">
             <span class="sidebar-method get">GET</span>
             <span>/experience</span>
           </a>
         </li>
         <li>
-          <a href="#contact" class="sidebar-link" data-section="contact">
+          <a href="#contact" class="sidebar-link sidebar-link--locked" data-section="contact">
             <span class="sidebar-method post">POST</span>
             <span>/contact</span>
           </a>
@@ -1220,13 +1220,19 @@
         statusText.textContent = 'OK';
         responseMeta.style.opacity = '1';
 
-        // Unlock tabs + sections with staggered reveal
-        var lockedTabs = document.querySelectorAll('.pm-req-tab--locked');
+        // Unlock tabs + sidebar links + sections with staggered reveal
+        var lockedTabs     = document.querySelectorAll('.pm-req-tab--locked');
+        var lockedSidebar  = document.querySelectorAll('.sidebar-link--locked');
         var lockedSections = document.querySelectorAll('.pm-section--locked');
         lockedTabs.forEach(function (tab, i) {
           setTimeout(function () {
             tab.classList.remove('pm-req-tab--locked');
             tab.classList.add('pm-req-tab--unlocked');
+          }, i * 120);
+        });
+        lockedSidebar.forEach(function (link, i) {
+          setTimeout(function () {
+            link.classList.remove('sidebar-link--locked');
           }, i * 120);
         });
         lockedSections.forEach(function (sec) {

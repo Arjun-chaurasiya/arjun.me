@@ -1249,6 +1249,20 @@
     });
   }
 
+  // --- Auto-trigger SEND when #contact links are clicked while locked ---
+  var pendingScrollToContact = false;
+  document.querySelectorAll('a[href="#contact"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var contactSection = document.getElementById('contact');
+      if (contactSection && contactSection.classList.contains('pm-section--locked')) {
+        e.preventDefault();
+        pendingScrollToContact = true;
+        var btn = document.getElementById('hero-send-btn');
+        if (btn && !btn.classList.contains('loading')) btn.click();
+      }
+    });
+  });
+
   // --- SEND button in hero — animated fetch simulation ---
   var sendBtn = document.getElementById('hero-send-btn');
   if (sendBtn) {
@@ -1333,6 +1347,15 @@
         lockedSections.forEach(function (sec) {
           sec.classList.remove('pm-section--locked');
         });
+
+        // Scroll to contact if triggered via Get in Touch / Hire Me
+        if (pendingScrollToContact) {
+          pendingScrollToContact = false;
+          setTimeout(function () {
+            var contact = document.getElementById('contact');
+            if (contact) contact.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+        }
 
         // Button → 200 OK briefly, then back
         btn.classList.remove('loading');

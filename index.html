@@ -806,7 +806,7 @@
           <span class="contact-form-tab active">Body</span>
           <span class="contact-form-tab-sub">raw &nbsp;·&nbsp; JSON</span>
         </div>
-        <form name="homepage-contact" method="POST" class="contact-form" data-netlify="true">
+        <form name="homepage-contact" method="POST" class="contact-form" data-netlify="true" id="contact-form">
           <div class="form-row">
             <div class="form-group">
               <label for="name">name</label>
@@ -826,11 +826,37 @@
             <textarea id="message" name="message" placeholder="Tell me about the role or project..." rows="5" required></textarea>
           </div>
           <div class="form-submit">
-            <button type="submit" class="pm-btn pm-btn--filled pm-btn--send">
+            <button type="submit" class="pm-btn pm-btn--filled pm-btn--send" id="send-request-btn">
               <i class="fa fa-paper-plane"></i> SEND REQUEST
             </button>
           </div>
         </form>
+
+        <!-- Success response panel (hidden until form submitted) -->
+        <div class="form-response-panel" id="form-response-panel" style="display:none;">
+          <div class="form-response-header">
+            <span class="response-status-code">201</span>
+            <span class="response-status-text">Created</span>
+            <span class="response-meta">Time: just now&nbsp;&nbsp;|&nbsp;&nbsp;Size: received</span>
+          </div>
+          <div class="form-response-body">
+            <div class="response-json">
+              <span class="json-brace">{</span><br>
+              &nbsp;&nbsp;<span class="json-key">"status"</span>: <span class="json-string">"success"</span>,<br>
+              &nbsp;&nbsp;<span class="json-key">"message"</span>: <span class="json-string">"Message received! I'll get back to you soon."</span>,<br>
+              &nbsp;&nbsp;<span class="json-key">"from"</span>: <span class="json-string" id="resp-name"></span>,<br>
+              &nbsp;&nbsp;<span class="json-key">"email"</span>: <span class="json-string" id="resp-email"></span>,<br>
+              &nbsp;&nbsp;<span class="json-key">"responded_by"</span>: <span class="json-string">"Arjun Chaurasiya"</span>,<br>
+              &nbsp;&nbsp;<span class="json-key">"expected_reply"</span>: <span class="json-string">"within 24 hours"</span><br>
+              <span class="json-brace">}</span>
+            </div>
+          </div>
+          <div class="form-response-footer">
+            <span class="status-dot status--success"></span>
+            <span class="status-text">Message delivered to arjunkmr1997@gmail.com</span>
+            <button class="res-new-btn" id="res-new-btn"><i class="fa fa-plus"></i> New Request</button>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -1041,6 +1067,68 @@
       this.parentNode.insertBefore(tab, this);
       document.querySelectorAll('.pm-req-tab').forEach(function(t){ t.classList.remove('active'); });
       tab.classList.add('active');
+    });
+  }
+
+  // --- Contact form: SEND REQUEST with success panel ---
+  var contactForm = document.getElementById('contact-form');
+  var responsePanel = document.getElementById('form-response-panel');
+  var resNewBtn = document.getElementById('res-new-btn');
+
+  function showToast(msg) {
+    var toast = document.createElement('div');
+    toast.className = 'pm-toast';
+    toast.innerHTML = '<span class="toast-icon">✓</span>' + msg;
+    document.body.appendChild(toast);
+    setTimeout(function () { toast.classList.add('toast--show'); }, 10);
+    setTimeout(function () {
+      toast.classList.remove('toast--show');
+      setTimeout(function () { toast.remove(); }, 400);
+    }, 4000);
+  }
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = document.getElementById('send-request-btn');
+      var nameVal  = document.getElementById('name').value;
+      var emailVal = document.getElementById('email').value;
+
+      // Animate button
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Sending...';
+
+      // Submit to Netlify via fetch
+      var formData = new FormData(contactForm);
+      fetch('/', { method: 'POST', body: formData })
+        .then(function () {
+          // Populate response panel
+          document.getElementById('resp-name').textContent  = '"' + nameVal + '"';
+          document.getElementById('resp-email').textContent = '"' + emailVal + '"';
+
+          // Swap form → response panel
+          contactForm.style.display = 'none';
+          responsePanel.style.display = 'block';
+
+          // Toast notification
+          showToast('Message received! Arjun will reply within 24 hrs.');
+        })
+        .catch(function () {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fa fa-paper-plane"></i> SEND REQUEST';
+          showToast('Something went wrong. Please email directly.');
+        });
+    });
+  }
+
+  if (resNewBtn) {
+    resNewBtn.addEventListener('click', function () {
+      contactForm.reset();
+      responsePanel.style.display = 'none';
+      contactForm.style.display = 'block';
+      var btn = document.getElementById('send-request-btn');
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fa fa-paper-plane"></i> SEND REQUEST';
     });
   }
 

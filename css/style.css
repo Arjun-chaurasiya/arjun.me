@@ -2248,6 +2248,11 @@ p {
 .footer-name {
   color: var(--accent);
   font-weight: 600;
+  text-decoration: none;
+}
+
+.footer-name:hover {
+  text-decoration: underline;
 }
 
 .footer-socials {

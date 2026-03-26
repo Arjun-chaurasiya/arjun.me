@@ -175,47 +175,45 @@
   <section class="pm-section home-section" id="home">
 
     <!-- Sub-tabs (Postman request editor tabs) -->
-    <div class="pm-subtabs">
-      <span class="pm-subtab active">Params</span>
-      <span class="pm-subtab">Authorization</span>
-      <span class="pm-subtab">Headers <em class="subtab-count">3</em></span>
-      <span class="pm-subtab">Body</span>
-      <span class="pm-subtab">Pre-request Script</span>
-      <span class="pm-subtab">Tests</span>
-      <span class="pm-subtab">Settings</span>
+    <div class="pm-subtabs" id="home-subtabs">
+      <button class="pm-subtab active" data-panel="panel-params">Params</button>
+      <button class="pm-subtab" data-panel="panel-auth">Authorization</button>
+      <button class="pm-subtab" data-panel="panel-headers">Headers <em class="subtab-count">3</em></button>
+      <button class="pm-subtab" data-panel="panel-body">Body</button>
+      <button class="pm-subtab" data-panel="panel-script">Pre-request Script</button>
+      <button class="pm-subtab" data-panel="panel-tests">Tests <em class="subtab-count pass">✓ 12</em></button>
+      <button class="pm-subtab" data-panel="panel-settings">Settings</button>
     </div>
 
-    <div class="home-grid-wrapper">
-    <div class="home-grid">
+    <!-- Sub-tab panels -->
+    <div class="subtab-panels">
 
-      <!-- Left: text content -->
-      <div class="home-text">
-        <h1 class="home-name">Arjun Chaurasiya</h1>
-
-        <!-- Request bar -->
-        <div class="request-bar">
-          <span class="method-badge">GET</span>
-          <span class="request-url">/api/qa-engineer/arjun-chaurasiya</span>
-          <button class="request-send">SEND</button>
-        </div>
-
-        <!-- Typed subtitle -->
-        <div class="home-typed-wrap">
-          <span id="typed"></span>
-          <span id="typed-strings">
-            <span>QA Engineer II — Logward Systems</span>
-            <span>6+ Years in Functional &amp; API Testing</span>
-            <span>Automation: Selenium · REST Assured · Playwright</span>
-            <span>Release Owner · Agile Scrum Expert</span>
-            <span>Supply Chain &amp; Healthcare Domain</span>
-          </span>
-        </div>
-
-        <p class="home-bio">
-          Ensuring quality at every layer — from manual test strategy to automation frameworks,
-          observability dashboards to production sign-off. 6+ years building reliable software across
-          supply chain, healthcare, and fleet tracking domains.
-        </p>
+      <!-- PARAMS panel (default visible — hero content) -->
+      <div class="subtab-panel active" id="panel-params">
+        <div class="home-grid-wrapper">
+        <div class="home-grid">
+          <div class="home-text">
+            <h1 class="home-name">Arjun Chaurasiya</h1>
+            <div class="request-bar">
+              <span class="method-badge">GET</span>
+              <span class="request-url">/api/qa-engineer/arjun-chaurasiya</span>
+              <button class="request-send">SEND</button>
+            </div>
+            <div class="home-typed-wrap">
+              <span id="typed"></span>
+              <span id="typed-strings">
+                <span>QA Engineer II — Logward Systems</span>
+                <span>6+ Years in Functional &amp; API Testing</span>
+                <span>Automation: Selenium · REST Assured · Playwright</span>
+                <span>Release Owner · Agile Scrum Expert</span>
+                <span>Supply Chain &amp; Healthcare Domain</span>
+              </span>
+            </div>
+            <p class="home-bio">
+              Ensuring quality at every layer — from manual test strategy to automation frameworks,
+              observability dashboards to production sign-off. 6+ years building reliable software across
+              supply chain, healthcare, and fleet tracking domains.
+            </p>
 
         <!-- CTAs -->
         <div class="home-actions">
@@ -277,6 +275,102 @@
 
     </div>
     </div><!-- end home-grid-wrapper -->
+    </div><!-- end panel-params -->
+
+      <!-- AUTHORIZATION panel -->
+      <div class="subtab-panel" id="panel-auth">
+        <div class="subtab-panel-inner">
+          <p class="subtab-panel-label">Auth Type</p>
+          <div class="pm-kv-table" style="max-width:560px;">
+            <div class="pm-kv-header"><span class="pm-kv-col-key">KEY</span><span class="pm-kv-col-val">VALUE</span></div>
+            <div class="pm-kv-row"><span class="pm-kv-key">type</span><span class="pm-kv-val"><span style="color:var(--accent)">Bearer Token</span></span></div>
+            <div class="pm-kv-row"><span class="pm-kv-key">token</span><span class="pm-kv-val" style="color:#9cdcfe;font-family:monospace">6yrs_QA_experience_2024</span></div>
+            <div class="pm-kv-row"><span class="pm-kv-key">scope</span><span class="pm-kv-val">hire:read contact:write cv:download</span></div>
+            <div class="pm-kv-row"><span class="pm-kv-key">expires_in</span><span class="pm-kv-val" style="color:#b5cea8">never</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HEADERS panel -->
+      <div class="subtab-panel" id="panel-headers">
+        <div class="subtab-panel-inner">
+          <p class="subtab-panel-label">Request Headers</p>
+          <div class="pm-kv-table" style="max-width:560px;">
+            <div class="pm-kv-header"><span class="pm-kv-col-key">KEY</span><span class="pm-kv-col-val">VALUE</span></div>
+            <div class="pm-kv-row"><span class="pm-kv-key">Content-Type</span><span class="pm-kv-val">application/json</span></div>
+            <div class="pm-kv-row"><span class="pm-kv-key">Accept-Domain</span><span class="pm-kv-val">Supply Chain, Healthcare, GPS Tracking</span></div>
+            <div class="pm-kv-row"><span class="pm-kv-key">X-Experience</span><span class="pm-kv-val" style="color:#b5cea8">6+ years</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BODY panel -->
+      <div class="subtab-panel" id="panel-body">
+        <div class="subtab-panel-inner">
+          <p class="subtab-panel-label">Body &nbsp;·&nbsp; raw &nbsp;·&nbsp; JSON</p>
+          <div class="response-json" style="background:var(--bg-input);padding:20px;border-radius:6px;border:1px solid var(--border);max-width:560px;">
+            <span class="json-brace">{</span><br>
+            &nbsp;&nbsp;<span class="json-key">"open_to"</span>: [<span class="json-string">"Full-time"</span>, <span class="json-string">"Contract"</span>],<br>
+            &nbsp;&nbsp;<span class="json-key">"notice_period"</span>: <span class="json-string">"Negotiable"</span>,<br>
+            &nbsp;&nbsp;<span class="json-key">"preferred_stack"</span>: [<span class="json-string">"Java"</span>, <span class="json-string">"Selenium"</span>, <span class="json-string">"REST Assured"</span>],<br>
+            &nbsp;&nbsp;<span class="json-key">"remote"</span>: <span class="json-bool">true</span>,<br>
+            &nbsp;&nbsp;<span class="json-key">"relocation"</span>: <span class="json-bool">false</span><br>
+            <span class="json-brace">}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRE-REQUEST SCRIPT panel -->
+      <div class="subtab-panel" id="panel-script">
+        <div class="subtab-panel-inner">
+          <p class="subtab-panel-label">Pre-request Script</p>
+          <div class="code-block">
+            <span class="code-comment">// Set environment variables before request</span><br>
+            <span class="code-kw">pm</span>.environment.<span class="code-fn">set</span>(<span class="json-string">"candidate"</span>, <span class="json-string">"Arjun Chaurasiya"</span>);<br>
+            <span class="code-kw">pm</span>.environment.<span class="code-fn">set</span>(<span class="json-string">"role"</span>, <span class="json-string">"QA Engineer II"</span>);<br>
+            <span class="code-kw">pm</span>.environment.<span class="code-fn">set</span>(<span class="json-string">"yoe"</span>, <span class="json-number">6</span>);<br>
+            <span class="code-kw">console</span>.<span class="code-fn">log</span>(<span class="json-string">"Ready to hire? Let's talk!"</span>);
+          </div>
+        </div>
+      </div>
+
+      <!-- TESTS panel -->
+      <div class="subtab-panel" id="panel-tests">
+        <div class="subtab-panel-inner">
+          <p class="subtab-panel-label">Test Results</p>
+          <div class="test-results">
+            <div class="test-item pass"><span class="test-icon">✓</span> Status code is 200 OK</div>
+            <div class="test-item pass"><span class="test-icon">✓</span> Response has name "Arjun Chaurasiya"</div>
+            <div class="test-item pass"><span class="test-icon">✓</span> Experience &gt;= 6 years</div>
+            <div class="test-item pass"><span class="test-icon">✓</span> Automation skills present (Selenium, REST Assured)</div>
+            <div class="test-item pass"><span class="test-icon">✓</span> Domain expertise: Supply Chain validated</div>
+            <div class="test-item pass"><span class="test-icon">✓</span> Release Owner certification confirmed</div>
+            <div class="test-item pass"><span class="test-icon">✓</span> Agile/Scrum methodology proficiency verified</div>
+            <div class="test-item pass"><span class="test-icon">✓</span> API testing skills (Postman, REST Assured) confirmed</div>
+            <div class="test-item pass"><span class="test-icon">✓</span> Observability tools (Grafana, Kibana, Jaeger) present</div>
+            <div class="test-item pass"><span class="test-icon">✓</span> Cloud experience (AWS) validated</div>
+            <div class="test-item pass"><span class="test-icon">✓</span> available === true</div>
+            <div class="test-item pass"><span class="test-icon">✓</span> location confirmed: Bangalore, India</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SETTINGS panel -->
+      <div class="subtab-panel" id="panel-settings">
+        <div class="subtab-panel-inner">
+          <p class="subtab-panel-label">Request Settings</p>
+          <div class="pm-kv-table" style="max-width:480px;">
+            <div class="pm-kv-header"><span class="pm-kv-col-key">SETTING</span><span class="pm-kv-col-val">VALUE</span></div>
+            <div class="pm-kv-row"><span class="pm-kv-key">follow_redirects</span><span class="pm-kv-val" style="color:#569cd6">true</span></div>
+            <div class="pm-kv-row"><span class="pm-kv-key">response_timeout</span><span class="pm-kv-val" style="color:#b5cea8">immediate</span></div>
+            <div class="pm-kv-row"><span class="pm-kv-key">encode_url</span><span class="pm-kv-val" style="color:#569cd6">true</span></div>
+            <div class="pm-kv-row"><span class="pm-kv-key">contact_email</span><span class="pm-kv-val"><a href="mailto:arjunkmr1997@gmail.com">arjunkmr1997@gmail.com</a></span></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end subtab-panels -->
+
   </section>
   <!-- ===================== END HOME ===================== -->
 
@@ -866,6 +960,21 @@
         e.preventDefault();
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
+    });
+  });
+
+  // --- Sub-tab switching ---
+  var subtabs = document.querySelectorAll('#home-subtabs .pm-subtab');
+  subtabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      // deactivate all tabs and panels
+      subtabs.forEach(function (t) { t.classList.remove('active'); });
+      document.querySelectorAll('.subtab-panel').forEach(function (p) { p.classList.remove('active'); });
+      // activate clicked tab and its panel
+      this.classList.add('active');
+      var panelId = this.dataset.panel;
+      var panel = document.getElementById(panelId);
+      if (panel) panel.classList.add('active');
     });
   });
 

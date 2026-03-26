@@ -272,6 +272,7 @@
         <div class="home-grid">
           <div class="home-text">
             <h1 class="home-name">Arjun Chaurasiya</h1>
+            <div class="home-otw-badge"><span class="otw-dot"></span> Open to Work</div>
             <div class="home-role-line">
               <span class="home-role-title">QA Engineer II</span>
               <span class="home-role-sep">·</span>
@@ -381,7 +382,8 @@
 &nbsp;&nbsp;<span class="json-key">"location"</span>: <span class="json-string">"Bangalore, India"</span>,<br>
 &nbsp;&nbsp;<span class="json-key">"job_type"</span>: [<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="json-string">"Remote"</span>,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="json-string">"Hybrid"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="json-string">"Hybrid"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="json-string">"On-site"</span><br>
 &nbsp;&nbsp;]<br>
 <span class="json-brace">}</span>
             </div>
@@ -1545,8 +1547,45 @@
     }, { passive: true });
   }
 
+  // --- Counter animation for 6+ badge ---
+  var expNum = document.querySelector('.exp-num');
+  if (expNum && 'IntersectionObserver' in window) {
+    var counterObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var target = 6, current = 0;
+          var timer = setInterval(function () {
+            current++;
+            entry.target.textContent = current + '+';
+            if (current >= target) clearInterval(timer);
+          }, 120);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    counterObserver.observe(expNum);
+  }
+
+  // --- QA toast ---
+  var toast = document.getElementById('qa-toast');
+  if (toast) {
+    setTimeout(function () {
+      toast.classList.add('qa-toast--visible');
+      setTimeout(function () { toast.classList.remove('qa-toast--visible'); }, 3800);
+    }, 2200);
+  }
+
 })();
 </script>
+
+<!-- QA toast notification -->
+<div class="qa-toast" id="qa-toast">
+  <span class="qa-toast-icon">✓</span>
+  <div class="qa-toast-body">
+    <span class="qa-toast-title">12 / 12 Tests Passed</span>
+    <span class="qa-toast-sub">0 Defects Escaped · Build Stable</span>
+  </div>
+</div>
 
 </body>
 </html>

@@ -567,7 +567,7 @@ p {
 }
 
 /* Alternating section backgrounds */
-.home-section       { background: var(--bg-app); }
+.home-section       { background: var(--bg-app); padding-top: 0; }
 .about-section      { background: var(--bg-panel); }
 .skills-section     { background: var(--bg-app); }
 .experience-section { background: var(--bg-panel); }
@@ -1045,17 +1045,23 @@ p {
   12. HOME / HERO SECTION
 ==============================================================*/
 .home-section {
-  min-height: calc(100vh - var(--topbar-height));
+  min-height: calc(100vh - var(--topbar-height) - 37px);
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  padding: 0 48px 48px;
 }
 
-.home-grid {
-  display: grid;
-  grid-template-columns: 1fr 380px;
-  gap: 60px;
+/* Sub-tabs flush at the very top, no section padding */
+.home-section .pm-subtabs {
+  margin: 0 -48px 28px;
+  padding-left: 48px;
+}
+
+/* Grid wrapper grows to fill remaining height */
+.home-grid-wrapper {
+  flex: 1;
+  display: flex;
   align-items: center;
-  width: 100%;
 }
 
 /* Home grid — two columns: text + response panel */
@@ -1064,6 +1070,7 @@ p {
   grid-template-columns: 1fr 360px;
   gap: 48px;
   align-items: start;
+  width: 100%;
 }
 
 /* Text side */

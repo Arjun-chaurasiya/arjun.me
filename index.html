@@ -1,496 +1,1153 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
-   	<head>
-    <!--Meta Tags-->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge ">
-   	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta name="author" content=""/>
-    <!--Favicons-->
-   	<link rel="shortcut icon" href="img/favicon.png" target="_blank">
-    <!--Page Title-->
-    <title>Arjun - Personal Portfolio</title>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Arjun Chaurasiya — QA Engineer II with 6+ years of experience in functional, automation, and API testing.">
+  <meta name="keywords" content="QA Engineer, Selenium, REST Assured, Playwright, TestNG, Postman, Jira, Jenkins, Kubernetes, Agile">
+  <meta name="author" content="Arjun Chaurasiya">
+  <link rel="shortcut icon" href="img/favicon.png">
+  <title>Arjun Chaurasiya — QA Engineer II</title>
 
-	<!-- Stylesheets -->
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="css/bootstrap.min.css"/>
-	<!-- Awesome Fonts-->
-	<link rel="stylesheet" href="css/font-awesome.min.css"/>
-	<!-- Magnific Popup-->
-	<link rel="stylesheet" href="css/magnific-popup.css"/>
-	<!--Main Styles Css-->
-	<link rel="stylesheet" href="css/style.css"/>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
-	</head>
-	<body>
+<!-- Preloader -->
+<div id="preloder">
+  <div class="loader">
+    <div class="loader-ring"></div>
+    <span class="loader-text">AC</span>
+  </div>
+</div>
 
-	<!-- Preloder -->
-	<div id="preloder">
-		<div class="loader"></div>
-	</div>
-	<!-- Εnd Preloader -->
-	
-	<!-- header section start -->
-	<header class="header-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-4 col-md-3">
-					<!-- logo -->
-					<div class="logo">
-						<a class="site-logo" href="index.html#home"><img src='img/aclogo.png'></a>
-						
-					</div>
-				</div>
-				<div class="col-lg-8 col-md-9">
-					<a href="#contact" class="btn header-btn"><span>Get in touch</span></a>
-					<!-- main-menu -->
-					<nav class="main-menu" id="main-menu">
-						<ul>
-							<li><a class="selected" href="index.html#home">Home</a></li>
-							<li><a href="index.html#about">About</a></li>
-							<li><a href="index.html#works">Work</a></li>
-							<li><a href="index.html#contact">Contact</a></li>
-						</ul>
-					</nav>
-				</div>
-			</div>
-		</div>
-		<div class="nav-switch">
-			<i class="fa fa-bars"></i>
-		</div>
-	</header>
-	<!-- header section end -->
+<!-- ===================== SIDEBAR ===================== -->
+<aside class="sidebar" id="sidebar">
 
-	<!-- intro section start -->
-	<section class="intro-section bg-img text-center" id="home">
-		<div class="bg-overlay"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="hero-content text-left">
-                        <h1 class="header-title mb-3">Arjun Chaurasiya	</h1>
-                        <h4 class="text-dark mb-0">
-                        	<span id="typed"></span>
-                    		<span id="typed-strings">
-                    			<span>QA Engineer II — Functional, Regression & API Testing</span>
-								<span>Tools: Jira, Jenkins, Rancher, Kubernetes, Grafana, Kibana, AWS,Fullstory</span>
-                    			<span>Automation: Selenium | Rest Assured | TestNG | Postman</span>
-								<span>Databases: MongoDB | MySQL </span>
-                    		</span>
-                        </h4>
-                        <p class="text-dark max-width-450 mx-0 my-4 mb-3">As a dedicated QA Engineer, I ensure high-quality software through functional, regression, and API testing, strong debugging, and cross‑team collaboration. I’m quick to learn, communicate clearly, and consistently deliver reliable, customer‑centric releases.
-						</p>
-						
-                        <a href="cv/Arjun_Senior_QA_Engineer_5.5+Y_Exp.pdf" class="btn mr-4 mb-2 " target="_blank"><span>Download CV</span></a>
-						<a href="index.html#contact" class="site-btn btn-line mr-4 mb-2">Hire Me</a>
-                        <div>
-                            <ul class="list-inline social-links my-4 mt-2">
-								<li><a href="https://www.linkedin.com/in/arjunchaurasiya/" target="_blank"><span class="fa fa-linkedin"></span></a></li>
-								<li><a href="https://www.instagram.com/arjun._chaurasiya/" target="_blank"><span class="fa fa-instagram"></span></a></li>
-								<li><a href="https://www.facebook.com/arjun.chaursiya.7" target="_blank"><span class="fa fa-facebook"></span></a></li>
-								<li><a href="https://twitter.com/Arjunkmr1997" target="_blank"><span class="fa fa-twitter"></span></a> </li>
-                            </ul>
-                        </div>
-                    </div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- intro section end -->
-	<!-- about section start -->
-	<section class="page-section" id="about">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-4" >
-					<figure class="border border-dark">
-						<img src="img/arjun.jpg" alt="Arjun Chaurasiya">
-					</figure>
-				</div>
-				<div class="col-lg-7">
-					<h5 class="about-title">Hello Recruiter!</h5>
-					
-					<p>As a dedicated QA Engineer, I ensure high-quality software products through attention to detail, quick learning, and strong communication skills. I excel in collaborative team environments with a natural talent for problem‑solving, prioritizing tasks and meeting deadlines without compromising on quality.</p>
-  					<hr>
-                  	<div class="content-info mt-40 mb-40">
-	                 	<div class="row">
-		                    <div class="col-lg-4 col-md-12 col-sm-12 single-info">
-		                       <span>
-		                          Name:
-		                       </span>
-		                       <p>Arjun Chaurasiya</p>
-		                    </div>
-		                    <div class="col-lg-4 col-md-12 col-sm-12 single-info">
-		                       <span>
-		                          Email:
-		                       </span>
-		                       <p>Arjunkmr1997@gmail.com</p>
-		                    </div>
-		                    <div class="col-lg-4 col-md-12 col-sm-12 single-info">
-		                       <span>
-		                          DOB:
-		                       </span>
-		                       <p>15 Aug 1997</p>
-		                    </div>
-		                 </div>
-		                 <div class="row">
-		                    <div class="col-lg-4 col-md-12 col-sm-12 single-info">
-		                       <span>
-		                          Phone:
-		                       </span>
-		                       <p>+91 790 697 3405</p>
-		                    </div>
-		                    <div class="col-lg-4 col-md-12 col-sm-12 single-info">
-		                       <span>
-		                          Job:
-		                       </span>
-		                       <p>QA Engineer II</p>
-		                    </div>
-		                    <div class="col-lg-4 col-md-12 col-sm-12 single-info">
-		                       <span>
-		                          From:
-		                       </span>
-		                       <p>Bangalore, India</p>
-		                    </div>
-                	</div>
-                	<div class="row">
-		                    <div class="col-lg-4 col-md-12 col-sm-12 single-info">
-		                       <span>
-		                          Languages:
-		                       </span>
-		                       <p>English, Hindi</p>
-		                    </div>
-		                    <div class="col-lg-4 col-md-12 col-sm-12 single-info">
-		                       <span>
-		                          LinkedIn:
-		                       </span>
-		                       <p><a href="https://www.linkedin.com/in/arjunchaurasiya/" target="_blank">arjunchaurasiya</a></p>
-		                    </div>
-		                </div>
-                	<a href="cv/Arjun_Senior_QA_Engineer_5.5+Y_Exp.pdf" class="btn mr-4 mb-2 " target="_blank"><span>Download CV</span></a>
-					<a href="index.html#contact" class="site-btn btn-line mr-4 mb-2">Hire Me</a>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- about section end -->
+  <!-- Sidebar Logo -->
+  <div class="sidebar-logo">
+    <a href="#home" class="sidebar-logo-link">
+      <div class="sidebar-monogram">AC</div>
+      <span class="sidebar-brand">arjun.me</span>
+    </a>
+  </div>
 
-	<!-- skill section start -->
-	<section class="page-section bg-light">
-		<div class="container">
-			<div class="col-lg-6 offset-lg-3 text-center">
-                <h3 class="section-title">My<span>Skills</span></h3>
-                <h3 class="section-title-sub">Skills</h3>
-                <hr class="section-line-border">
-                <p>The things in which I've invested my huge chunk of time.</p>  <!--class="section-sub-line"-->
+  <!-- Sidebar Nav -->
+  <nav class="sidebar-nav" id="sidebar-nav">
+
+    <!-- Collections label -->
+    <div class="sidebar-section-label">
+      <i class="fa fa-folder"></i> Collections
+    </div>
+
+    <!-- Collection: Portfolio -->
+    <div class="sidebar-collection">
+      <div class="sidebar-collection-name">
+        <i class="fa fa-caret-down"></i>
+        <i class="fa fa-folder-open"></i>
+        <span>arjun-portfolio</span>
+      </div>
+      <ul class="sidebar-collection-items">
+        <li>
+          <a href="#home" class="sidebar-link active" data-section="home">
+            <span class="sidebar-method get">GET</span>
+            <span>Overview</span>
+          </a>
+        </li>
+        <li>
+          <a href="#about" class="sidebar-link" data-section="about">
+            <span class="sidebar-method get">GET</span>
+            <span>/about</span>
+          </a>
+        </li>
+        <li>
+          <a href="#skills" class="sidebar-link" data-section="skills">
+            <span class="sidebar-method get">GET</span>
+            <span>/skills</span>
+          </a>
+        </li>
+        <li>
+          <a href="#experience" class="sidebar-link" data-section="experience">
+            <span class="sidebar-method get">GET</span>
+            <span>/experience</span>
+          </a>
+        </li>
+        <li>
+          <a href="#contact" class="sidebar-link" data-section="contact">
+            <span class="sidebar-method post">POST</span>
+            <span>/contact</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Environments label -->
+    <div class="sidebar-section-label" style="margin-top:16px;">
+      <i class="fa fa-globe"></i> Environments
+    </div>
+    <div class="sidebar-env-item">
+      <span class="env-dot"></span>
+      <span class="env-name">Production</span>
+      <span class="env-active">Active</span>
+    </div>
+
+  </nav>
+
+  <!-- Sidebar Profile Card (bottom) -->
+  <div class="sidebar-profile">
+    <img src="img/arjun.jpg" alt="Arjun Chaurasiya" class="sidebar-avatar">
+    <div class="sidebar-profile-info">
+      <p class="sidebar-profile-name">Arjun Chaurasiya</p>
+      <p class="sidebar-profile-role">QA Engineer II</p>
+    </div>
+    <a href="https://www.linkedin.com/in/arjunchaurasiya/" target="_blank" class="sidebar-profile-linkedin" aria-label="LinkedIn">
+      <i class="fa fa-linkedin"></i>
+    </a>
+  </div>
+</aside>
+<!-- ===================== END SIDEBAR ===================== -->
+
+<!-- Mobile overlay -->
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+<!-- ===================== TOP BAR ===================== -->
+<header class="topbar" id="topbar">
+  <!-- Mobile hamburger -->
+  <button class="topbar-hamburger" id="topbar-hamburger" aria-label="Toggle sidebar">
+    <i class="fa fa-bars"></i>
+  </button>
+
+  <!-- Breadcrumb -->
+  <div class="topbar-breadcrumb">
+    <span class="breadcrumb-root">Portfolio</span>
+    <span class="breadcrumb-sep"><i class="fa fa-angle-right"></i></span>
+    <span class="breadcrumb-section" id="breadcrumb-section">Home</span>
+  </div>
+
+  <!-- Top bar actions -->
+  <div class="topbar-actions">
+    <a href="cv/Arjun_Chaurasiya_Senior_SQA_Engineer.pdf" target="_blank" class="topbar-btn topbar-btn--filled">
+      <i class="fa fa-download"></i> Download CV
+    </a>
+    <a href="#contact" class="topbar-btn topbar-btn--outline">
+      Hire Me
+    </a>
+  </div>
+</header>
+<!-- ===================== END TOP BAR ===================== -->
+
+<!-- ===================== MAIN CONTENT ===================== -->
+<main class="main-content" id="main-content">
+
+  <!-- ===================== POSTMAN REQUEST TABS ===================== -->
+  <div class="pm-request-tabs">
+    <a href="#home"       class="pm-req-tab active" data-section="home">
+      <span class="req-tab-dot dot--green"></span>Overview
+    </a>
+    <a href="#about"      class="pm-req-tab" data-section="about">
+      <span class="req-tab-method get">GET</span>/about
+    </a>
+    <a href="#skills"     class="pm-req-tab" data-section="skills">
+      <span class="req-tab-method get">GET</span>/skills
+    </a>
+    <a href="#experience" class="pm-req-tab" data-section="experience">
+      <span class="req-tab-method get">GET</span>/experience
+    </a>
+    <a href="#contact"    class="pm-req-tab" data-section="contact">
+      <span class="req-tab-method post">POST</span>/contact
+    </a>
+    <button class="req-tab-plus" title="New request">+</button>
+  </div>
+  <!-- ===================== END REQUEST TABS ===================== -->
+
+  <!-- ===================== HOME SECTION ===================== -->
+  <section class="pm-section home-section" id="home">
+
+    <!-- Sub-tabs (Postman request editor tabs) -->
+    <div class="pm-subtabs" id="home-subtabs">
+      <button class="pm-subtab active" data-panel="panel-params">Params</button>
+      <button class="pm-subtab" data-panel="panel-auth">Authorization</button>
+      <button class="pm-subtab" data-panel="panel-headers">Headers <em class="subtab-count">3</em></button>
+      <button class="pm-subtab" data-panel="panel-body">Body</button>
+      <button class="pm-subtab" data-panel="panel-script">Pre-request Script</button>
+      <button class="pm-subtab" data-panel="panel-tests">Tests <em class="subtab-count pass">✓ 12</em></button>
+      <button class="pm-subtab" data-panel="panel-settings">Settings</button>
+    </div>
+
+    <!-- Sub-tab panels -->
+    <div class="subtab-panels">
+
+      <!-- PARAMS panel (default visible — hero content) -->
+      <div class="subtab-panel active" id="panel-params">
+        <div class="home-grid-wrapper">
+        <div class="home-grid">
+          <div class="home-text">
+            <h1 class="home-name">Arjun Chaurasiya</h1>
+            <div class="request-bar">
+              <span class="method-badge">GET</span>
+              <span class="request-url">/api/qa-engineer/arjun-chaurasiya</span>
+              <button class="request-send">SEND</button>
             </div>
-			<div class="row"> 
-	           <div class="col-md-6">
-	              	<div class="skill-item">
-	                 	<h6>Manual Testing</h6>
-	                 	<span>90%</span>
-	                 	<div class="progress" data-percent="80%">
-	                    	<div class="progress-bar bar-null" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
-	                 	</div>
-	              	</div>
-	              	<div class="skill-item">
-	                 	<h6>Java</h6>
-	                 	<span>70%</span>
-	                 	<div class="progress" data-percent="70%">
-	                    	<div class="progress-bar bar-null" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
-	                 	</div>
-	              	</div>
-	              	<div class="skill-item">
-	                 	<h6>Analytical skills</h6>
-	                 	<span>85%</span>
-	                 	<div class="progress" data-percent="80%">
-	                    	<div class="progress-bar bar-null" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 85%;"></div>
-	                 	</div>
-	              	</div>
-					<div class="skill-item">
-                		<h6>API Testing</h6>
-                		<span>85%</span>
-                		<div class="progress" data-percent="85%">
-                			<div class="progress-bar bar-null" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;"></div>
-                		</div>
-               		</div>
-					<div class="skill-item">
-                		<h6>Regression Testing</h6>
-                		<span>85%</span>
-                		<div class="progress" data-percent="85%">
-                			<div class="progress-bar bar-null" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;"></div>
-                		</div>
-               		</div>
-					<div class="skill-item">
-                		<h6>Agile (SCRUM)</h6>
-                		<span>75%</span>
-                		<div class="progress" data-percent="75%">
-                			<div class="progress-bar bar-null" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
-                		</div>
-               		</div>
-				</div>	
-	           	<div class="col-md-6">
-					<div class="skill-item">
-                		<h6>Automation Testing (Selenium, Rest Assured, TestNG)</h6>
-                		<span>70%</span>
-                		<div class="progress" data-percent="70%">
-                			<div class="progress-bar bar-null" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
-                		</div>
-               		</div>
-					<div class="skill-item">
-	                 	<h6>Communication</h6>
-	                 	<span>90%</span>
-	                 	<div class="progress" data-percent="80%">
-	                    	<div class="progress-bar bar-null" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 95%;"></div>
-	                 	</div>
-	              	</div>
-					<div class="skill-item">
-                		<h6>Tools: Jira, Jenkins, Rancher, Kubernetes</h6>
-                		<span>70%</span>
-                		<div class="progress" data-percent="70%">
-                			<div class="progress-bar bar-null" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
-                		</div>
-               		</div>
-					<div class="skill-item">
-	                 	<h6>SQL</h6>
-	                 	<span>60%</span>
-	                 	<div class="progress" data-percent="80%">
-	                    	<div class="progress-bar bar-null" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
-	                 	</div>
-	              	</div>
-					<div class="skill-item">
-                		<h6>Defect Tracking & Reporting</h6>
-                		<span>75%</span>
-                		<div class="progress" data-percent="75%">
-                			<div class="progress-bar bar-null" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
-                		</div>
-               		</div>
-					<div class="skill-item">
-                		<h6>Debugging & Issue Resolution</h6>
-                		<span>80%</span>
-                		<div class="progress" data-percent="80%">
-                			<div class="progress-bar bar-null" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
-                		</div>
-               		</div>
-	           	</div>	
-	           	</div>
-	        </div>
-		</div>
-	</section>
-	<!-- skill section end -->
-
-	<!-- expertise section start -->
-	<section class="page-section bg-light">
-		<div class="container">
-			<div class="col-lg-6 offset-lg-3 text-center">
-				<h3 class="section-title">Areas of <span>Expertise</span></h3>
-				<h3 class="section-title-sub">Expertise</h3>
-				<hr class="section-line-border">
-				<p>What I bring as a Senior QA Engineer.</p>
-			</div>
-			<div class="row">
-				<div class="col-md-6">
-					<div class="inner text-left">
-						<ul>
-							<li>SDLC & STLC, Agile (SCRUM)</li>
-							<li>Functional, Integration, Regression Testing</li>
-							<li>API Testing (Postman, Rest Assured)</li>
-							<li>Release Ownership and Sign‑off</li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="inner text-left">
-						<ul>
-							<li>Debugging production exceptions, On‑call support</li>
-							<li>Observability: Grafana, Kibana, Jaeger, Fullstory</li>
-							<li>CI/CD & Infra tools: Jenkins, Rancher, Kubernetes</li>
-							<li>Databases: MongoDB, MySQL</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- expertise section end -->
-
-	<!-- resume section start -->
-	<section class="page-section" id="works">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 offset-lg-3 text-center">
-	                <h3 class="section-title">My<span>Resume</span></h3>
-	                <h3 class="section-title-sub">RESUME</h3>
-	                <hr class="section-line-border">
-	                <p class="section-sub-line">A decade's hard work!</p>
-            	</div>
-			</div>
-			<div class="row">                                    
-                <div class="col-md-6 m-b-40">
-
-					<ul class="timeline">
-				    	<li>
-				        	<h5 class="base-color mb-0">QA Engineer II</h5>
-				        	<small class="text-muted ">May 2023 – Present</small>
-				        	<p class="py-3"><p><b>Company:</b><br> Logward Systems Private Limited</p>
-								<p><b>Key Responsibilities:</b><br>
-								&#8226; Led functional, system, and regression testing; authored and executed test cases; tracked defects to closure.<br>
-								&#8226; Performed API testing with Postman; verified fixes; validated releases as release owner and provided sign‑off.<br>
-								&#8226; Translated BRDs into test scenarios; maintained QA metrics (coverage, quality, performance, effectiveness).<br>
-								&#8226; Owned features: Data Management, AutoTracking, User Management, Trigger, Sidebar; conducted daily sanity checks.<br>
-								&#8226; Proactively handled on‑call issues; debugged production exceptions to ensure stability and reliability.<br>
-								<b>Tools:</b> Jira, Jenkins, Rancher, Jaeger, AWS, Salesforce, Fullstory, Postman, Grafana, Kibana, Kubernetes, GitHub | DB: MongoDB, MySQL
-								</p>
-				    	</li>
-				    	<li>
-				        	<h5 class="base-color mb-0">QA Engineer</h5>
-				        	<small class="text-muted ">Jan 2022 – May 2023</small>
-				        	<p class="py-3"><p><b>Company:</b><br> DocEngage Informatics Pvt Ltd</p>
-								<p><b>Highlights:</b><br>
-								&#8226; Gathered and analyzed requirements; authored FRDs, RTM, and release notes; planned and executed test strategies.<br>
-								&#8226; Performed smoke, GUI, functional, integration, regression, and mobile app testing; API testing with Postman.<br>
-								&#8226; Reported and verified defects in JIRA; supported customers and mentored junior QA members.<br>
-								<b>Projects:</b> EHR (Electronic Health Record) and HCRM (Healthcare CRM)
-								</p>
-				    	</li>
-				 	</ul>
-                </div>          
-                <div class="col-md-6 m-b-20">
-
-					<ul class="timeline">
-				    	<li>
-				        	<h5 class="base-color mb-0">Test Engineer</h5>
-				        	<small class="text-muted ">Feb 2020 – Jan 2022</small>
-				        	<p class="py-3"><p><b>Company:</b><br> TrackNerd GPS Pvt Ltd</p>
-							<p><b>Key Responsibilities:</b><br>
-							&#8226; Designed test plans and cases; performed functional, integration, regression, and smoke testing for CRM web apps.<br>
-							&#8226; Reported and tracked defects; communicated results and recommendations; collaborated with clients to gather requirements.<br>
-							&#8226; Performed end‑to‑end API testing; onboarded and trained new clients; provided technical support to ensure satisfaction.
-							</p>
-				    	</li>
-				    	<li>
-				        	<h5 class="base-color mb-0">B.Tech — Computer Science and Engineering</h5>
-				        	<small class="text-muted ">2016 – 2020</small>
-				        	<p class="py-3"><p><b>Institute:</b><br> Delhi Institute of Engineering and Technology (DIET), Meerut</p>
-							<p><b>Highlights:</b><br>
-							&#8226; Core Java, Cyber Security & Ethical Hacking (2020) — trainings<br>
-							&#8226; First Class with Distinction
-							</p>
-				    	</li>
-				 	</ul>
-                </div>       
+            <div class="home-typed-wrap">
+              <span id="typed"></span>
+              <span id="typed-strings">
+                <span>QA Engineer II — Logward Systems</span>
+                <span>6+ Years in Functional &amp; API Testing</span>
+                <span>Automation: Selenium · REST Assured · Playwright</span>
+                <span>Release Owner · Agile Scrum Expert</span>
+                <span>Supply Chain &amp; Healthcare Domain</span>
+              </span>
             </div>
-		</div>
-	</section>
-	
-<!-- blog section start -->
+            <p class="home-bio">
+              Ensuring quality at every layer — from manual test strategy to automation frameworks,
+              observability dashboards to production sign-off. 6+ years building reliable software across
+              supply chain, healthcare, and fleet tracking domains.
+            </p>
 
+        <!-- CTAs -->
+        <div class="home-actions">
+          <a href="cv/Arjun_Senior_QA_Engineer_5.5+Y_Exp.pdf" target="_blank" class="pm-btn pm-btn--filled">
+            <i class="fa fa-download"></i> Download CV
+          </a>
+          <a href="#contact" class="pm-btn pm-btn--outline">
+            <i class="fa fa-envelope"></i> Get in Touch
+          </a>
+        </div>
 
-	<!-- contact section start -->
-	<section class="page-section bg-light" id="contact">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 offset-lg-3 text-center">
-	                <h3 class="section-title">Get In<span>Touch</span></h3>
-	                <h3 class="section-title-sub">CONTACT</h3>
-	                <hr class="section-line-border">
-	                <p>It's always a great idea to know about each other.</p>
-            	</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4">
-	                <div class="contact-detail text-center">
-	                   <div class="icon">
-	                      <i class="fa fa-phone"></i>
-	                   </div>
-	                   <div class="content">
-	                      <h5>Phone</h5>
-	                      <p>+91 790 697 3405</p>
-	                   </div>
-	                </div>
-	             </div>
-	             <div class="col-md-4">
-	                <div class="contact-detail text-center">
-	                   <div class="icon">
-	                      <i class="fa fa-envelope"></i>
-	                   </div>
-	                   <div class="content">
-	                      <h5>Email</h5>
-	                      <p>arjunkmr1997@gmail.com</p>
-	                   </div>
-	                </div>
-	             </div>
-	             <div class="col-md-4">
-	                <div class="contact-detail text-center">
-	                   <div class="icon">
-	                      <i class="fa fa-map"></i>
-	                   </div>
-	                   <div class="content">
-	                      <h5>Location</h5>
-	                      <p>Bangalore, India</p>
-	                   </div>
-	                </div>
-	             </div>
-	        </div>
-	        <div class="row">
-	        	<div class="col-md-12">
-					<form name="homepage-contact" method="POST" class="contact-form mt-100" data-netlify="true">
-						<div class="row">
-							<div class="col-md-6">
-								<input type="text" name="name" placeholder="Name">
-							</div>
-							<div class="col-md-6">
-								<input type="text" name="email" placeholder="E-mail">
-							</div>
-							<div class="col-md-12">
-								<input type="text" name="subject" placeholder="Subject">
-							</div>
-							<div class="col-md-12">
-								<textarea name="message" placeholder="Message"></textarea>
-							</div>
-						</div>
-						<div class="text-center">
-							<button type="submit"  class="btn"><span>Send message</span></button>
-						</div>
-					</form>
-				</div>
-	        </div>
-    	</div>
-	</section>
-	<!-- contact section end -->
+        <!-- Socials -->
+        <div class="home-socials">
+          <a href="https://www.linkedin.com/in/arjunchaurasiya/" target="_blank" class="pm-social" aria-label="LinkedIn">
+            <i class="fa fa-linkedin"></i>
+          </a>
+          <a href="https://www.instagram.com/arjun._chaurasiya/" target="_blank" class="pm-social" aria-label="Instagram">
+            <i class="fa fa-instagram"></i>
+          </a>
+          <a href="https://www.facebook.com/arjun.chaursiya.7" target="_blank" class="pm-social" aria-label="Facebook">
+            <i class="fa fa-facebook"></i>
+          </a>
+          <a href="https://twitter.com/Arjunkmr1997" target="_blank" class="pm-social" aria-label="Twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </div>
+      </div>
 
-	<!-- footer section start -->
-	<footer class="footer-section text-center">
-		<div class="container">
-			<div class="social-links">
-				<li><a href="https://www.linkedin.com/in/arjunchaurasiya/" target="_blank"><span class="fa fa-linkedin"></span></a></li>
-				<li><a href="https://www.instagram.com/arjun._chaurasiya/" target="_blank"><span class="fa fa-instagram"></span></a></li>
-				<li><a href="https://www.facebook.com/arjun.chaursiya.7" target="_blank"><span class="fa fa-facebook"></span></a></li>
-				<li><a href="https://twitter.com/Arjunkmr1997" target="_blank"><span class="fa fa-twitter"></span></a> </li>
-			</div>
-			<!-- Copyright -->
-			<div class="copyright">Copyright © 2022</div>
-			<div class="copyright">Developed and maintained by Arjun Chaurasiya</div>
-		</div>
-	</footer>
-	<!-- footer section end -->
+      <!-- Right: Response panel -->
+      <div class="home-response-panel">
+        <div class="response-panel-header">
+          <span class="response-status-code">200</span>
+          <span class="response-status-text">OK</span>
+          <span class="response-meta">Time: 6 yrs&nbsp;&nbsp;|&nbsp;&nbsp;Size: Senior Level</span>
+        </div>
+        <div class="response-panel-tabs" id="res-tabs">
+          <button class="res-tab active" data-res="res-body">Body</button>
+          <button class="res-tab" data-res="res-headers">Headers</button>
+          <button class="res-tab" data-res="res-tests">Test Results <em class="subtab-count pass">✓ 12</em></button>
+        </div>
 
-	<!-- Back to top button -->
-    <a id="back-to-top" href="#"><i class="fa fa-chevron-up"></i></a>
+        <!-- Body panel -->
+        <div class="res-panel active" id="res-body">
+          <div class="response-panel-body">
+            <div class="response-json">
+              <span class="json-brace">{</span><br>
+              &nbsp;&nbsp;<span class="json-key">"name"</span>: <span class="json-string">"Arjun Chaurasiya"</span>,<br>
+              &nbsp;&nbsp;<span class="json-key">"role"</span>: <span class="json-string">"QA Engineer II"</span>,<br>
+              &nbsp;&nbsp;<span class="json-key">"experience"</span>: <span class="json-number">6</span>,<br>
+              &nbsp;&nbsp;<span class="json-key">"domain"</span>: [<span class="json-string">"Supply Chain"</span>, <span class="json-string">"Healthcare"</span>, <span class="json-string">"GPS"</span>],<br>
+              &nbsp;&nbsp;<span class="json-key">"automation"</span>: [<span class="json-string">"Selenium"</span>, <span class="json-string">"REST Assured"</span>, <span class="json-string">"Playwright"</span>],<br>
+              &nbsp;&nbsp;<span class="json-key">"available"</span>: <span class="json-bool">true</span>,<br>
+              &nbsp;&nbsp;<span class="json-key">"location"</span>: <span class="json-string">"Bangalore, India"</span><br>
+              <span class="json-brace">}</span>
+            </div>
+          </div>
+        </div>
 
-	<!-- jQuery -->
-	<script src="js/jquery-2.1.4.min.js"></script>
-	<!-- Bootstrap js -->
-	<script src="js/bootstrap.min.js"></script>
-	<!-- Mixitup js -->
-	<script src="js/mixitup.min.js"></script>
-	<!-- Magnific Popup js -->
-	<script src="js/magnific-popup.min.js"></script>
-	<!-- Typed js -->
-	<script src="js/typed.min.js"></script>
-	<!-- Custom js -->
-	<script src="js/custom.js"></script>
+        <!-- Headers panel -->
+        <div class="res-panel" id="res-headers">
+          <div class="response-panel-body">
+            <div class="response-json" style="font-size:12px;line-height:1.8;">
+              <span class="json-key">Content-Type</span>: <span class="json-string">application/json</span><br>
+              <span class="json-key">X-Hire-Status</span>: <span class="json-string">available</span><br>
+              <span class="json-key">X-Experience</span>: <span class="json-number">6</span> years<br>
+              <span class="json-key">X-Location</span>: <span class="json-string">Bangalore, India</span><br>
+              <span class="json-key">X-Domain</span>: <span class="json-string">Supply Chain, Healthcare, GPS</span><br>
+              <span class="json-key">X-Automation</span>: <span class="json-string">Selenium, REST Assured, Playwright</span><br>
+              <span class="json-key">Cache-Control</span>: <span class="json-string">no-cache</span><br>
+              <span class="json-key">Connection</span>: <span class="json-string">keep-alive</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Test Results panel -->
+        <div class="res-panel" id="res-tests">
+          <div class="response-panel-body" style="padding:12px;">
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <div class="test-item pass"><span class="test-icon">✓</span> Status code is 200</div>
+              <div class="test-item pass"><span class="test-icon">✓</span> experience &gt;= 6</div>
+              <div class="test-item pass"><span class="test-icon">✓</span> available === true</div>
+              <div class="test-item pass"><span class="test-icon">✓</span> automation includes Selenium</div>
+              <div class="test-item pass"><span class="test-icon">✓</span> automation includes REST Assured</div>
+              <div class="test-item pass"><span class="test-icon">✓</span> domain includes Supply Chain</div>
+              <div class="test-item pass"><span class="test-icon">✓</span> location === Bangalore, India</div>
+              <div class="test-item pass"><span class="test-icon">✓</span> role === QA Engineer II</div>
+            </div>
+          </div>
+        </div>
+        <div class="response-panel-footer">
+          <span class="status-dot status--success"></span>
+          <span class="status-text">Available for opportunities</span>
+        </div>
+      </div>
+
+    </div>
+    </div><!-- end home-grid-wrapper -->
+    </div><!-- end panel-params -->
+
+      <!-- AUTHORIZATION panel -->
+      <div class="subtab-panel" id="panel-auth">
+        <div class="subtab-panel-inner">
+          <p class="subtab-panel-label">Auth Type</p>
+          <div class="pm-kv-table" style="max-width:560px;">
+            <div class="pm-kv-header"><span class="pm-kv-col-key">KEY</span><span class="pm-kv-col-val">VALUE</span></div>
+            <div class="pm-kv-row"><span class="pm-kv-key">type</span><span class="pm-kv-val"><span style="color:var(--accent)">Bearer Token</span></span></div>
+            <div class="pm-kv-row"><span class="pm-kv-key">token</span><span class="pm-kv-val" style="color:#9cdcfe;font-family:monospace">6yrs_QA_experience_2024</span></div>
+            <div class="pm-kv-row"><span class="pm-kv-key">scope</span><span class="pm-kv-val">hire:read contact:write cv:download</span></div>
+            <div class="pm-kv-row"><span class="pm-kv-key">expires_in</span><span class="pm-kv-val" style="color:#b5cea8">never</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HEADERS panel -->
+      <div class="subtab-panel" id="panel-headers">
+        <div class="subtab-panel-inner">
+          <p class="subtab-panel-label">Request Headers</p>
+          <div class="pm-kv-table" style="max-width:560px;">
+            <div class="pm-kv-header"><span class="pm-kv-col-key">KEY</span><span class="pm-kv-col-val">VALUE</span></div>
+            <div class="pm-kv-row"><span class="pm-kv-key">Content-Type</span><span class="pm-kv-val">application/json</span></div>
+            <div class="pm-kv-row"><span class="pm-kv-key">Accept-Domain</span><span class="pm-kv-val">Supply Chain, Healthcare, GPS Tracking</span></div>
+            <div class="pm-kv-row"><span class="pm-kv-key">X-Experience</span><span class="pm-kv-val" style="color:#b5cea8">6+ years</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BODY panel -->
+      <div class="subtab-panel" id="panel-body">
+        <div class="subtab-panel-inner">
+          <p class="subtab-panel-label">Body &nbsp;·&nbsp; raw &nbsp;·&nbsp; JSON</p>
+          <div class="response-json" style="background:var(--bg-input);padding:20px;border-radius:6px;border:1px solid var(--border);max-width:560px;">
+            <span class="json-brace">{</span><br>
+            &nbsp;&nbsp;<span class="json-key">"open_to"</span>: [<span class="json-string">"Full-time"</span>, <span class="json-string">"Contract"</span>],<br>
+            &nbsp;&nbsp;<span class="json-key">"notice_period"</span>: <span class="json-string">"Negotiable"</span>,<br>
+            &nbsp;&nbsp;<span class="json-key">"preferred_stack"</span>: [<span class="json-string">"Java"</span>, <span class="json-string">"Selenium"</span>, <span class="json-string">"REST Assured"</span>],<br>
+            &nbsp;&nbsp;<span class="json-key">"remote"</span>: <span class="json-bool">true</span>,<br>
+            &nbsp;&nbsp;<span class="json-key">"relocation"</span>: <span class="json-bool">false</span><br>
+            <span class="json-brace">}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRE-REQUEST SCRIPT panel -->
+      <div class="subtab-panel" id="panel-script">
+        <div class="subtab-panel-inner">
+          <p class="subtab-panel-label">Pre-request Script</p>
+          <div class="code-block">
+            <span class="code-comment">// Set environment variables before request</span><br>
+            <span class="code-kw">pm</span>.environment.<span class="code-fn">set</span>(<span class="json-string">"candidate"</span>, <span class="json-string">"Arjun Chaurasiya"</span>);<br>
+            <span class="code-kw">pm</span>.environment.<span class="code-fn">set</span>(<span class="json-string">"role"</span>, <span class="json-string">"QA Engineer II"</span>);<br>
+            <span class="code-kw">pm</span>.environment.<span class="code-fn">set</span>(<span class="json-string">"yoe"</span>, <span class="json-number">6</span>);<br>
+            <span class="code-kw">console</span>.<span class="code-fn">log</span>(<span class="json-string">"Ready to hire? Let's talk!"</span>);
+          </div>
+        </div>
+      </div>
+
+      <!-- TESTS panel -->
+      <div class="subtab-panel" id="panel-tests">
+        <div class="subtab-panel-inner">
+          <p class="subtab-panel-label">Test Results</p>
+          <div class="test-results">
+            <div class="test-item pass"><span class="test-icon">✓</span> Status code is 200 OK</div>
+            <div class="test-item pass"><span class="test-icon">✓</span> Response has name "Arjun Chaurasiya"</div>
+            <div class="test-item pass"><span class="test-icon">✓</span> Experience &gt;= 6 years</div>
+            <div class="test-item pass"><span class="test-icon">✓</span> Automation skills present (Selenium, REST Assured)</div>
+            <div class="test-item pass"><span class="test-icon">✓</span> Domain expertise: Supply Chain validated</div>
+            <div class="test-item pass"><span class="test-icon">✓</span> Release Owner certification confirmed</div>
+            <div class="test-item pass"><span class="test-icon">✓</span> Agile/Scrum methodology proficiency verified</div>
+            <div class="test-item pass"><span class="test-icon">✓</span> API testing skills (Postman, REST Assured) confirmed</div>
+            <div class="test-item pass"><span class="test-icon">✓</span> Observability tools (Grafana, Kibana, Jaeger) present</div>
+            <div class="test-item pass"><span class="test-icon">✓</span> Cloud experience (AWS) validated</div>
+            <div class="test-item pass"><span class="test-icon">✓</span> available === true</div>
+            <div class="test-item pass"><span class="test-icon">✓</span> location confirmed: Bangalore, India</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SETTINGS panel -->
+      <div class="subtab-panel" id="panel-settings">
+        <div class="subtab-panel-inner">
+          <p class="subtab-panel-label">Request Settings</p>
+          <div class="pm-kv-table" style="max-width:480px;">
+            <div class="pm-kv-header"><span class="pm-kv-col-key">SETTING</span><span class="pm-kv-col-val">VALUE</span></div>
+            <div class="pm-kv-row"><span class="pm-kv-key">follow_redirects</span><span class="pm-kv-val" style="color:#569cd6">true</span></div>
+            <div class="pm-kv-row"><span class="pm-kv-key">response_timeout</span><span class="pm-kv-val" style="color:#b5cea8">immediate</span></div>
+            <div class="pm-kv-row"><span class="pm-kv-key">encode_url</span><span class="pm-kv-val" style="color:#569cd6">true</span></div>
+            <div class="pm-kv-row"><span class="pm-kv-key">contact_email</span><span class="pm-kv-val"><a href="mailto:arjunkmr1997@gmail.com">arjunkmr1997@gmail.com</a></span></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end subtab-panels -->
+
+  </section>
+  <!-- ===================== END HOME ===================== -->
+
+  <!-- ===================== ABOUT SECTION ===================== -->
+  <section class="pm-section about-section" id="about">
+
+    <!-- Section URL bar -->
+    <div class="section-urlbar">
+      <span class="method-badge">GET</span>
+      <span class="request-url">/api/qa-engineer/arjun-chaurasiya/about</span>
+      <span class="section-status"><span class="status-dot status--success"></span>200 OK</span>
+    </div>
+
+    <div class="about-grid">
+
+      <!-- Left: image -->
+      <div class="about-img-wrap fade-in-left">
+        <div class="about-img-frame">
+          <img src="img/arjun.jpg" alt="Arjun Chaurasiya — Senior QA Engineer" class="about-img">
+        </div>
+        <div class="about-exp-badge">
+          <span class="exp-num">6+</span>
+          <span class="exp-lbl">Years<br>Experience</span>
+        </div>
+      </div>
+
+      <!-- Right: info -->
+      <div class="about-content fade-in-right">
+        <h3 class="about-title">Hello Recruiter!</h3>
+        <p class="about-bio">
+          As a dedicated QA Engineer II, I ensure high-quality software products through meticulous attention
+          to detail, quick learning, and strong cross-team communication. I excel in collaborative Agile
+          environments with a natural talent for problem-solving, prioritizing tasks, and delivering
+          reliable customer-centric releases without compromising quality.
+        </p>
+        <p class="about-bio">
+          My expertise spans the full testing lifecycle — from writing test strategies and authoring test
+          cases, to REST Assured automation frameworks, observability with Grafana/Kibana, and serving as
+          Release Owner with final sign-off authority.
+        </p>
+
+        <!-- Postman-style key-value table -->
+        <div class="pm-kv-table">
+          <div class="pm-kv-header">
+            <span class="pm-kv-col-key">KEY</span>
+            <span class="pm-kv-col-val">VALUE</span>
+          </div>
+          <div class="pm-kv-row">
+            <span class="pm-kv-key">Name</span>
+            <span class="pm-kv-val">Arjun Chaurasiya</span>
+          </div>
+          <div class="pm-kv-row">
+            <span class="pm-kv-key">Role</span>
+            <span class="pm-kv-val">QA Engineer II</span>
+          </div>
+          <div class="pm-kv-row">
+            <span class="pm-kv-key">Experience</span>
+            <span class="pm-kv-val">6+ Years in QA</span>
+          </div>
+          <div class="pm-kv-row">
+            <span class="pm-kv-key">Location</span>
+            <span class="pm-kv-val">Bangalore, India</span>
+          </div>
+          <div class="pm-kv-row">
+            <span class="pm-kv-key">Email</span>
+            <span class="pm-kv-val">
+              <a href="mailto:arjunkmr1997@gmail.com">arjunkmr1997@gmail.com</a>
+            </span>
+          </div>
+          <div class="pm-kv-row">
+            <span class="pm-kv-key">Phone</span>
+            <span class="pm-kv-val">+91 790 697 3405</span>
+          </div>
+          <div class="pm-kv-row">
+            <span class="pm-kv-key">LinkedIn</span>
+            <span class="pm-kv-val">
+              <a href="https://www.linkedin.com/in/arjunchaurasiya/" target="_blank">arjunchaurasiya</a>
+            </span>
+          </div>
+        </div>
+
+        <div class="about-actions">
+          <a href="cv/Arjun_Senior_QA_Engineer_5.5+Y_Exp.pdf" target="_blank" class="pm-btn pm-btn--filled">
+            <i class="fa fa-download"></i> Download CV
+          </a>
+          <a href="#contact" class="pm-btn pm-btn--outline">
+            <i class="fa fa-handshake-o"></i> Hire Me
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- ===================== END ABOUT ===================== -->
+
+  <!-- ===================== SKILLS SECTION ===================== -->
+  <section class="pm-section skills-section" id="skills">
+
+    <!-- Section URL bar -->
+    <div class="section-urlbar">
+      <span class="method-badge">GET</span>
+      <span class="request-url">/api/qa-engineer/arjun-chaurasiya/skills</span>
+      <span class="section-status"><span class="status-dot status--success"></span>200 OK</span>
+    </div>
+
+    <div class="skills-grid">
+
+      <!-- Testing Types -->
+      <div class="skill-collection fade-in-up">
+        <div class="skill-collection-header">
+          <i class="fa fa-check-circle"></i>
+          <span>Testing Types</span>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">Functional Testing</span>
+          <span class="skill-tag">Regression Testing</span>
+          <span class="skill-tag">Integration Testing</span>
+          <span class="skill-tag">Smoke &amp; Sanity</span>
+          <span class="skill-tag">API Testing</span>
+          <span class="skill-tag">Manual Testing</span>
+          <span class="skill-tag">Performance (JMeter)</span>
+        </div>
+      </div>
+
+      <!-- Automation & Frameworks -->
+      <div class="skill-collection fade-in-up">
+        <div class="skill-collection-header">
+          <i class="fa fa-cogs"></i>
+          <span>Automation &amp; Frameworks</span>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">Selenium (Java)</span>
+          <span class="skill-tag">Playwright (JS)</span>
+          <span class="skill-tag">TestNG</span>
+          <span class="skill-tag">REST Assured</span>
+          <span class="skill-tag">Postman</span>
+        </div>
+      </div>
+
+      <!-- Tools & Platforms -->
+      <div class="skill-collection fade-in-up">
+        <div class="skill-collection-header">
+          <i class="fa fa-wrench"></i>
+          <span>Tools &amp; Platforms</span>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">Jira</span>
+          <span class="skill-tag">Jenkins</span>
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">Kubernetes</span>
+          <span class="skill-tag">Rancher</span>
+          <span class="skill-tag">Grafana</span>
+          <span class="skill-tag">Kibana</span>
+          <span class="skill-tag">Jaeger</span>
+          <span class="skill-tag">FullStory</span>
+        </div>
+      </div>
+
+      <!-- Cloud & Messaging -->
+      <div class="skill-collection fade-in-up">
+        <div class="skill-collection-header">
+          <i class="fa fa-cloud"></i>
+          <span>Cloud &amp; Messaging</span>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">AWS Cognito</span>
+          <span class="skill-tag">AWS S3</span>
+          <span class="skill-tag">AWS SQS</span>
+          <span class="skill-tag">AWS IAM</span>
+          <span class="skill-tag">Kafka</span>
+          <span class="skill-tag">RabbitMQ</span>
+        </div>
+      </div>
+
+      <!-- Databases -->
+      <div class="skill-collection fade-in-up">
+        <div class="skill-collection-header">
+          <i class="fa fa-database"></i>
+          <span>Databases</span>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">MongoDB</span>
+          <span class="skill-tag">MySQL</span>
+        </div>
+      </div>
+
+      <!-- Methodologies -->
+      <div class="skill-collection fade-in-up">
+        <div class="skill-collection-header">
+          <i class="fa fa-sitemap"></i>
+          <span>Methodologies</span>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">Agile (Scrum)</span>
+          <span class="skill-tag">STLC</span>
+          <span class="skill-tag">SDLC</span>
+          <span class="skill-tag">Sprint Planning</span>
+          <span class="skill-tag">Release Validation</span>
+          <span class="skill-tag">Change Impact Analysis</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- ===================== END SKILLS ===================== -->
+
+  <!-- ===================== EXPERIENCE SECTION ===================== -->
+  <section class="pm-section experience-section" id="experience">
+
+    <!-- Section URL bar -->
+    <div class="section-urlbar">
+      <span class="method-badge">GET</span>
+      <span class="request-url">/api/qa-engineer/arjun-chaurasiya/experience</span>
+      <span class="section-status"><span class="status-dot status--success"></span>200 OK</span>
+    </div>
+
+    <div class="timeline">
+
+      <!-- Entry 1 -->
+      <div class="timeline-item fade-in-up">
+        <div class="timeline-connector"></div>
+        <div class="timeline-card">
+          <div class="timeline-card-top">
+            <div class="timeline-title-wrap">
+              <h3 class="timeline-role">QA Engineer II</h3>
+              <span class="domain-badge">Supply Chain</span>
+            </div>
+            <span class="timeline-date-pill">May 2023 — Present</span>
+          </div>
+          <p class="timeline-company">
+            <i class="fa fa-building"></i> Logward Systems Private Limited
+          </p>
+          <p class="timeline-location">Bangalore, India</p>
+          <ul class="timeline-bullets">
+            <li>Owned end-to-end testing for Supply Chain platform: functional, system, and regression testing across sprint cycles.</li>
+            <li>Built and maintained REST Assured automation framework; integrated with Jenkins CI/CD pipelines.</li>
+            <li>Served as Release Owner: validated releases, provided final sign-off, and coordinated with cross-functional teams.</li>
+            <li>Owned features: Data Management, AutoTracking, User Management, Trigger, Sidebar — performed daily sanity checks.</li>
+            <li>Debugged production exceptions proactively using Grafana, Kibana, and Jaeger; handled on-call support.</li>
+            <li>Validated Kubernetes deployments on Rancher; verified AWS services (Cognito, S3, SQS, IAM).</li>
+          </ul>
+          <div class="timeline-tools">
+            <span class="tool-tag">REST Assured</span>
+            <span class="tool-tag">Jira</span>
+            <span class="tool-tag">Jenkins</span>
+            <span class="tool-tag">Kubernetes</span>
+            <span class="tool-tag">AWS</span>
+            <span class="tool-tag">Grafana</span>
+            <span class="tool-tag">Kibana</span>
+            <span class="tool-tag">MongoDB</span>
+            <span class="tool-tag">MySQL</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Entry 2 -->
+      <div class="timeline-item fade-in-up">
+        <div class="timeline-connector"></div>
+        <div class="timeline-card">
+          <div class="timeline-card-top">
+            <div class="timeline-title-wrap">
+              <h3 class="timeline-role">QA Engineer</h3>
+              <span class="domain-badge">Healthcare</span>
+            </div>
+            <span class="timeline-date-pill">Jan 2022 — May 2023</span>
+          </div>
+          <p class="timeline-company">
+            <i class="fa fa-building"></i> DocEngage Informatics Pvt Ltd
+          </p>
+          <p class="timeline-location">India</p>
+          <ul class="timeline-bullets">
+            <li>Gathered and analyzed requirements; authored FRDs, RTM, and release notes; planned and executed test strategies.</li>
+            <li>Performed smoke, GUI, functional, integration, regression, and mobile app testing; API testing with Postman.</li>
+            <li>Reported and verified defects in JIRA; supported customers and mentored junior QA members.</li>
+          </ul>
+          <div class="timeline-tools">
+            <span class="tool-tag">Postman</span>
+            <span class="tool-tag">Jira</span>
+            <span class="tool-tag">EHR</span>
+            <span class="tool-tag">HCRM</span>
+            <span class="tool-tag">Mobile Testing</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Entry 3 -->
+      <div class="timeline-item fade-in-up">
+        <div class="timeline-connector"></div>
+        <div class="timeline-card">
+          <div class="timeline-card-top">
+            <div class="timeline-title-wrap">
+              <h3 class="timeline-role">Test Engineer</h3>
+              <span class="domain-badge">GPS Tracking</span>
+            </div>
+            <span class="timeline-date-pill">Feb 2020 — Jan 2022</span>
+          </div>
+          <p class="timeline-company">
+            <i class="fa fa-building"></i> TrackNerd GPS Pvt Ltd
+          </p>
+          <p class="timeline-location">India</p>
+          <ul class="timeline-bullets">
+            <li>Designed test plans and cases; performed functional, integration, regression, and smoke testing for CRM web apps.</li>
+            <li>Reported and tracked defects; communicated results and recommendations; collaborated with clients to gather requirements.</li>
+            <li>Performed end-to-end API testing; onboarded and trained new clients; provided technical support.</li>
+          </ul>
+          <div class="timeline-tools">
+            <span class="tool-tag">API Testing</span>
+            <span class="tool-tag">CRM</span>
+            <span class="tool-tag">Test Plans</span>
+            <span class="tool-tag">Client Onboarding</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Entry 4 — Education -->
+      <div class="timeline-item fade-in-up">
+        <div class="timeline-connector timeline-connector--edu"></div>
+        <div class="timeline-card timeline-card--edu">
+          <div class="timeline-card-top">
+            <div class="timeline-title-wrap">
+              <h3 class="timeline-role">B.Tech — Computer Science &amp; Engineering</h3>
+              <span class="domain-badge domain-badge--edu">Education</span>
+            </div>
+            <span class="timeline-date-pill timeline-date-pill--edu">2016 — 2020</span>
+          </div>
+          <p class="timeline-company">
+            <i class="fa fa-graduation-cap"></i> Delhi Institute of Engineering &amp; Technology (DIET), Meerut
+          </p>
+          <ul class="timeline-bullets">
+            <li>Core Java &amp; Cyber Security and Ethical Hacking (2020) — specialized trainings.</li>
+            <li>First Class with Distinction.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- ===================== END EXPERIENCE ===================== -->
+
+  <!-- ===================== CONTACT SECTION ===================== -->
+  <section class="pm-section contact-section" id="contact">
+
+    <!-- Section URL bar -->
+    <div class="section-urlbar">
+      <span class="method-badge method-badge--post">POST</span>
+      <span class="request-url">/api/qa-engineer/arjun-chaurasiya/contact</span>
+      <span class="section-status"><span class="status-dot status--success"></span>201 Created</span>
+    </div>
+
+    <div class="contact-grid">
+
+      <!-- Left: contact params -->
+      <div class="contact-params fade-in-left">
+        <h3 class="contact-params-title">Query Params</h3>
+        <div class="pm-kv-table">
+          <div class="pm-kv-header">
+            <span class="pm-kv-col-key">KEY</span>
+            <span class="pm-kv-col-val">VALUE</span>
+          </div>
+          <div class="pm-kv-row">
+            <span class="pm-kv-key">phone_number</span>
+            <span class="pm-kv-val">
+              <a href="tel:+917906973405">+91 790 697 3405</a>
+            </span>
+          </div>
+          <div class="pm-kv-row">
+            <span class="pm-kv-key">email_address</span>
+            <span class="pm-kv-val">
+              <a href="mailto:arjunkmr1997@gmail.com">arjunkmr1997@gmail.com</a>
+            </span>
+          </div>
+          <div class="pm-kv-row">
+            <span class="pm-kv-key">location</span>
+            <span class="pm-kv-val">Bangalore, India</span>
+          </div>
+        </div>
+
+        <div class="contact-socials">
+          <a href="https://www.linkedin.com/in/arjunchaurasiya/" target="_blank" class="pm-social" aria-label="LinkedIn">
+            <i class="fa fa-linkedin"></i>
+          </a>
+          <a href="https://www.instagram.com/arjun._chaurasiya/" target="_blank" class="pm-social" aria-label="Instagram">
+            <i class="fa fa-instagram"></i>
+          </a>
+          <a href="https://www.facebook.com/arjun.chaursiya.7" target="_blank" class="pm-social" aria-label="Facebook">
+            <i class="fa fa-facebook"></i>
+          </a>
+          <a href="https://twitter.com/Arjunkmr1997" target="_blank" class="pm-social" aria-label="Twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: request body form -->
+      <div class="contact-form-wrap fade-in-right">
+        <div class="contact-form-topbar">
+          <span class="contact-form-tab active">Body</span>
+          <span class="contact-form-tab-sub">raw &nbsp;·&nbsp; JSON</span>
+        </div>
+        <form name="homepage-contact" method="POST" class="contact-form" data-netlify="true" id="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">name</label>
+              <input type="text" id="name" name="name" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+              <label for="email">email</label>
+              <input type="email" id="email" name="email" placeholder="john@example.com" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="subject">subject</label>
+            <input type="text" id="subject" name="subject" placeholder="QA Engineer Opportunity" required>
+          </div>
+          <div class="form-group">
+            <label for="message">message</label>
+            <textarea id="message" name="message" placeholder="Tell me about the role or project..." rows="5" required></textarea>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="pm-btn pm-btn--filled pm-btn--send" id="send-request-btn">
+              <i class="fa fa-paper-plane"></i> SEND REQUEST
+            </button>
+          </div>
+        </form>
+
+        <!-- Success response panel (hidden until form submitted) -->
+        <div class="form-response-panel" id="form-response-panel" style="display:none;">
+          <div class="form-response-header">
+            <span class="response-status-code">201</span>
+            <span class="response-status-text">Created</span>
+            <span class="response-meta">Time: just now&nbsp;&nbsp;|&nbsp;&nbsp;Size: received</span>
+          </div>
+          <div class="form-response-body">
+            <div class="response-json">
+              <span class="json-brace">{</span><br>
+              &nbsp;&nbsp;<span class="json-key">"status"</span>: <span class="json-string">"success"</span>,<br>
+              &nbsp;&nbsp;<span class="json-key">"message"</span>: <span class="json-string">"Message received! I'll get back to you soon."</span>,<br>
+              &nbsp;&nbsp;<span class="json-key">"from"</span>: <span class="json-string" id="resp-name"></span>,<br>
+              &nbsp;&nbsp;<span class="json-key">"email"</span>: <span class="json-string" id="resp-email"></span>,<br>
+              &nbsp;&nbsp;<span class="json-key">"responded_by"</span>: <span class="json-string">"Arjun Chaurasiya"</span>,<br>
+              &nbsp;&nbsp;<span class="json-key">"expected_reply"</span>: <span class="json-string">"within 24 hours"</span><br>
+              <span class="json-brace">}</span>
+            </div>
+          </div>
+          <div class="form-response-footer">
+            <span class="status-dot status--success"></span>
+            <span class="status-text">Message delivered to arjunkmr1997@gmail.com</span>
+            <button class="res-new-btn" id="res-new-btn"><i class="fa fa-plus"></i> New Request</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- ===================== END CONTACT ===================== -->
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="pm-footer">
+    <div class="footer-inner">
+      <p class="footer-copy">Copyright &copy; 2025 &mdash; Developed by <span class="footer-name">Arjun Chaurasiya</span></p>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/in/arjunchaurasiya/" target="_blank" class="pm-social pm-social--sm" aria-label="LinkedIn">
+          <i class="fa fa-linkedin"></i>
+        </a>
+        <a href="https://www.instagram.com/arjun._chaurasiya/" target="_blank" class="pm-social pm-social--sm" aria-label="Instagram">
+          <i class="fa fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/arjun.chaursiya.7" target="_blank" class="pm-social pm-social--sm" aria-label="Facebook">
+          <i class="fa fa-facebook"></i>
+        </a>
+        <a href="https://twitter.com/Arjunkmr1997" target="_blank" class="pm-social pm-social--sm" aria-label="Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+  <!-- ===================== END FOOTER ===================== -->
+
+</main>
+<!-- ===================== END MAIN CONTENT ===================== -->
+
+<!-- Back to top -->
+<a id="back-to-top" href="#" aria-label="Back to top">
+  <i class="fa fa-chevron-up"></i>
+</a>
+
+<!-- Scripts -->
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/typed.min.js"></script>
+<script src="js/custom.js"></script>
+
+<!-- Inline: sidebar toggle, active link, smooth scroll, intersection observer -->
+<script>
+(function () {
+  'use strict';
+
+  // --- Typed.js init ---
+  if (typeof Typed !== 'undefined' && document.getElementById('typed')) {
+    new Typed('#typed', {
+      stringsElement: '#typed-strings',
+      typeSpeed: 48,
+      backSpeed: 28,
+      backDelay: 1800,
+      loop: true,
+      showCursor: true,
+      cursorChar: '|'
+    });
+  }
+
+  // --- Sidebar toggle (mobile) ---
+  var hamburger = document.getElementById('topbar-hamburger');
+  var sidebar   = document.getElementById('sidebar');
+  var overlay   = document.getElementById('sidebar-overlay');
+
+  function openSidebar() {
+    sidebar.classList.add('sidebar--open');
+    overlay.classList.add('overlay--visible');
+    document.body.classList.add('sidebar-body-lock');
+  }
+
+  function closeSidebar() {
+    sidebar.classList.remove('sidebar--open');
+    overlay.classList.remove('overlay--visible');
+    document.body.classList.remove('sidebar-body-lock');
+  }
+
+  if (hamburger) {
+    hamburger.addEventListener('click', function () {
+      if (sidebar.classList.contains('sidebar--open')) {
+        closeSidebar();
+      } else {
+        openSidebar();
+      }
+    });
+  }
+
+  if (overlay) {
+    overlay.addEventListener('click', closeSidebar);
+  }
+
+  // Close sidebar on link click (mobile)
+  var sidebarLinks = document.querySelectorAll('.sidebar-link');
+  sidebarLinks.forEach(function (link) {
+    link.addEventListener('click', function () {
+      if (window.innerWidth < 768) closeSidebar();
+    });
+  });
+
+  // --- Active sidebar link + breadcrumb on scroll ---
+  var sections = document.querySelectorAll('section[id]');
+  var breadcrumb = document.getElementById('breadcrumb-section');
+
+  var sectionNames = {
+    home: 'Home',
+    about: 'About',
+    skills: 'Skills',
+    experience: 'Experience',
+    contact: 'Contact'
+  };
+
+  var reqTabs = document.querySelectorAll('.pm-req-tab');
+
+  function setActiveSection(id) {
+    sidebarLinks.forEach(function (link) {
+      link.classList.remove('active');
+      if (link.dataset.section === id) link.classList.add('active');
+    });
+    reqTabs.forEach(function (tab) {
+      tab.classList.remove('active');
+      if (tab.dataset.section === id) tab.classList.add('active');
+    });
+    if (breadcrumb && sectionNames[id]) {
+      breadcrumb.textContent = sectionNames[id];
+    }
+  }
+
+  if ('IntersectionObserver' in window) {
+    var sectionObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+
+    sections.forEach(function (section) {
+      sectionObserver.observe(section);
+    });
+  }
+
+  // --- Fade-in on scroll (IntersectionObserver) ---
+  var fadeEls = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right');
+  if ('IntersectionObserver' in window) {
+    var fadeObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    fadeEls.forEach(function (el) { fadeObserver.observe(el); });
+  } else {
+    fadeEls.forEach(function (el) { el.classList.add('visible'); });
+  }
+
+  // --- Smooth scroll for anchor links ---
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener('click', function (e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // --- Response panel tab switching ---
+  var resTabs = document.querySelectorAll('#res-tabs .res-tab');
+  resTabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      resTabs.forEach(function (t) { t.classList.remove('active'); });
+      document.querySelectorAll('.res-panel').forEach(function (p) { p.classList.remove('active'); });
+      this.classList.add('active');
+      var panel = document.getElementById(this.dataset.res);
+      if (panel) panel.classList.add('active');
+    });
+  });
+
+  // --- Sub-tab switching ---
+  var subtabs = document.querySelectorAll('#home-subtabs .pm-subtab');
+  subtabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      // deactivate all tabs and panels
+      subtabs.forEach(function (t) { t.classList.remove('active'); });
+      document.querySelectorAll('.subtab-panel').forEach(function (p) { p.classList.remove('active'); });
+      // activate clicked tab and its panel
+      this.classList.add('active');
+      var panelId = this.dataset.panel;
+      var panel = document.getElementById(panelId);
+      if (panel) panel.classList.add('active');
+    });
+  });
+
+  // --- + New tab button ---
+  var plusBtn = document.querySelector('.req-tab-plus');
+  if (plusBtn) {
+    plusBtn.addEventListener('click', function () {
+      var tab = document.createElement('a');
+      tab.className = 'pm-req-tab';
+      tab.href = '#contact';
+      tab.innerHTML = '<span class="req-tab-method get">GET</span>New Request';
+      tab.addEventListener('click', function () {
+        document.querySelectorAll('.pm-req-tab').forEach(function(t){ t.classList.remove('active'); });
+        tab.classList.add('active');
+      });
+      this.parentNode.insertBefore(tab, this);
+      document.querySelectorAll('.pm-req-tab').forEach(function(t){ t.classList.remove('active'); });
+      tab.classList.add('active');
+    });
+  }
+
+  // --- Contact form: SEND REQUEST with success panel ---
+  var contactForm = document.getElementById('contact-form');
+  var responsePanel = document.getElementById('form-response-panel');
+  var resNewBtn = document.getElementById('res-new-btn');
+
+  function showToast(msg) {
+    var toast = document.createElement('div');
+    toast.className = 'pm-toast';
+    toast.innerHTML = '<span class="toast-icon">✓</span>' + msg;
+    document.body.appendChild(toast);
+    setTimeout(function () { toast.classList.add('toast--show'); }, 10);
+    setTimeout(function () {
+      toast.classList.remove('toast--show');
+      setTimeout(function () { toast.remove(); }, 400);
+    }, 4000);
+  }
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = document.getElementById('send-request-btn');
+      var nameVal  = document.getElementById('name').value;
+      var emailVal = document.getElementById('email').value;
+
+      // Animate button
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Sending...';
+
+      // Submit to Netlify via fetch
+      var formData = new FormData(contactForm);
+      fetch('/', { method: 'POST', body: formData })
+        .then(function () {
+          // Populate response panel
+          document.getElementById('resp-name').textContent  = '"' + nameVal + '"';
+          document.getElementById('resp-email').textContent = '"' + emailVal + '"';
+
+          // Swap form → response panel
+          contactForm.style.display = 'none';
+          responsePanel.style.display = 'block';
+
+          // Toast notification
+          showToast('Message received! Arjun will reply within 24 hrs.');
+        })
+        .catch(function () {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fa fa-paper-plane"></i> SEND REQUEST';
+          showToast('Something went wrong. Please email directly.');
+        });
+    });
+  }
+
+  if (resNewBtn) {
+    resNewBtn.addEventListener('click', function () {
+      contactForm.reset();
+      responsePanel.style.display = 'none';
+      contactForm.style.display = 'block';
+      var btn = document.getElementById('send-request-btn');
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fa fa-paper-plane"></i> SEND REQUEST';
+    });
+  }
+
+  // --- SEND button in hero (decorative) ---
+  var sendBtn = document.querySelector('.request-send');
+  if (sendBtn) {
+    sendBtn.addEventListener('click', function () {
+      this.textContent = '200 OK';
+      this.style.background = 'var(--success)';
+      var self = this;
+      setTimeout(function () {
+        self.textContent = 'SEND';
+        self.style.background = '';
+      }, 1800);
+    });
+  }
+
+})();
+</script>
+
 </body>
 </html>

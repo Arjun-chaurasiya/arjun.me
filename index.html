@@ -1672,6 +1672,27 @@
     termOutput.scrollTop = termOutput.scrollHeight;
   }
 
+  function streamCmd(html) {
+    var lines = html.split('\n');
+    var spinEl = document.createElement('div');
+    spinEl.className = 'term-line term-dim';
+    spinEl.innerHTML = '<span class="ts-spin">⠋</span> fetching...';
+    termOutput.appendChild(spinEl);
+    termOutput.scrollTop = termOutput.scrollHeight;
+    var frames = ['⠋','⠙','⠹','⠸','⠼','⠴','⠦','⠧','⠇','⠏'], fi = 0;
+    var iv = setInterval(function() {
+      var s = spinEl.querySelector('.ts-spin');
+      if (s) s.textContent = frames[fi = (fi + 1) % 10];
+    }, 70);
+    setTimeout(function() {
+      clearInterval(iv);
+      spinEl.remove();
+      lines.forEach(function(l, i) {
+        setTimeout(function() { appendLine(l, 'term-fadein'); }, i * 36);
+      });
+    }, 260);
+  }
+
   var CMDS = {
     help: function () {
       function cb(cmd, pad) { return '<button class="term-clickable" data-cmd="' + cmd + '">' + cmd + '</button>' + Array(pad - cmd.length + 1).join(' '); }
@@ -1803,9 +1824,8 @@
     if (key === 'exit' || key === 'quit') { closeTerminal(); return; }
 
     var fn = CMDS[key] || CMDS[cmd];
-    if (fn) { appendLine(fn()); }
-    else { appendLine('<span class="term-error">command not found:</span> ' + cmd + '  — type <span class="term-hl">help</span>'); }
-    appendLine('');
+    if (fn) { streamCmd(fn() + '\n'); }
+    else { appendLine('<span class="term-error">command not found:</span> ' + cmd + '  — type <span class="term-hl">help</span>'); appendLine(''); }
   }
 
   if (termToggle) termToggle.addEventListener('click', toggleTerminal);
@@ -1941,6 +1961,27 @@
     ftOutput.scrollTop = ftOutput.scrollHeight;
   }
 
+  function ftStreamCmd(html) {
+    var lines = html.split('\n');
+    var spinEl = document.createElement('div');
+    spinEl.className = 'ft-line ft-dim';
+    spinEl.innerHTML = '<span class="fts-spin">⠋</span> fetching...';
+    ftOutput.appendChild(spinEl);
+    ftOutput.scrollTop = ftOutput.scrollHeight;
+    var frames = ['⠋','⠙','⠹','⠸','⠼','⠴','⠦','⠧','⠇','⠏'], fi = 0;
+    var iv = setInterval(function() {
+      var s = spinEl.querySelector('.fts-spin');
+      if (s) s.textContent = frames[fi = (fi + 1) % 10];
+    }, 70);
+    setTimeout(function() {
+      clearInterval(iv);
+      spinEl.remove();
+      lines.forEach(function(l, i) {
+        setTimeout(function() { ftAppend(l, 'ft-fadein'); }, i * 36);
+      });
+    }, 260);
+  }
+
   function ftBoot() {
     ftOutput.innerHTML = '';
     var lines = [
@@ -1962,7 +2003,7 @@
       '  <span class="ft-dim">Type <span class="ft-orange">help</span> to see all commands.</span>',
       '',
     ];
-    lines.forEach(function(l) { ftAppend(l); });
+    lines.forEach(function(l, i) { setTimeout(function() { ftAppend(l, 'ft-fadein'); }, i * 55); });
   }
 
   var FT = {
@@ -2177,12 +2218,12 @@
     if (key === 'switch' || key === 'exit' || key === 'basic') { exitTerminalMode(); return; }
     if (key === 'run tests' || key === 'npm test' || key === 'test') { ftRunTests(); return; }
     if (key === 'cv' || key === 'resume') {
-      ftAppend(FT.cv());
+      ftStreamCmd(FT.cv());
       window.open('cv/Arjun_Chaurasiya_Senior_SQA_Engineer.pdf', '_blank');
       return;
     }
     var fn = FT[key] || FT[cmd];
-    if (fn) { ftAppend(fn()); }
+    if (fn) { ftStreamCmd(fn()); }
     else { ftAppend('  <span class="ft-red">command not found:</span> ' + cmd + '  — type <span class="ft-orange">help</span>'); ftAppend(''); }
   }
 

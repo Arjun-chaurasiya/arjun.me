@@ -1277,17 +1277,66 @@ p {
 /* Hit Send placeholder */
 .res-hit-send {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 36px 16px;
-  color: var(--text-secondary);
-  font-size: 13px;
-  opacity: 0.6;
+  gap: 10px;
+  padding: 48px 24px;
+  text-align: center;
+  min-height: 180px;
 }
-.res-hit-send-icon {
-  font-size: 10px;
-  opacity: 0.5;
+.res-hit-send-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255, 108, 55, 0.1);
+  border: 1px solid rgba(255, 108, 55, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+.res-hit-send-icon-wrap .fa {
+  font-size: 20px;
+  color: var(--accent);
+  opacity: 0.85;
+}
+.res-hit-send-title {
+  font-size: 14px;
+  color: var(--text-primary);
+  font-weight: 500;
+  margin: 0;
+}
+.res-hit-send-title strong {
+  color: var(--accent);
+}
+.res-hit-send-sub {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  font-size: 12px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 4px 10px;
+}
+.res-hit-send-method {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+.res-hit-send-url {
+  color: var(--text-secondary);
+  font-family: monospace;
+  font-size: 12px;
+}
+.res-hit-send-hint {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin: 0;
+  opacity: 0.7;
 }
 
 /* Response body — shimmer loader */

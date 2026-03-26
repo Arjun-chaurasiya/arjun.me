@@ -2313,6 +2313,57 @@ p {
   color: var(--text-muted);
 }
 
+.body-type-sep {
+  color: var(--text-muted);
+  font-size: 11px;
+  opacity: 0.5;
+}
+
+.body-type-btn {
+  cursor: pointer;
+  font-size: 11.5px;
+  color: var(--text-muted);
+  padding: 1px 6px;
+  border-radius: 3px;
+  transition: color 0.2s, background 0.15s;
+  user-select: none;
+}
+
+.body-type-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.body-type-btn.active {
+  color: var(--accent);
+  background: var(--accent-light);
+}
+
+.json-editor-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.json-editor-area {
+  width: 100%;
+  padding: 16px 20px;
+  background: var(--bg-sidebar);
+  border: none;
+  border-bottom: 1px solid var(--border);
+  color: #ce9178;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  font-size: 12.5px;
+  line-height: 1.7;
+  resize: none;
+  outline: none;
+  box-sizing: border-box;
+  caret-color: var(--accent);
+}
+
+.json-editor-area:focus {
+  background: #1e1e1e;
+}
+
 .contact-form {
   padding: 24px;
   width: 100%;

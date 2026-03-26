@@ -1076,7 +1076,7 @@
       <div class="contact-form-wrap fade-in-right">
         <div class="contact-form-topbar">
           <span class="contact-form-tab active">Body</span>
-          <span class="contact-form-tab-sub">raw &nbsp;·&nbsp; JSON</span>
+          <span class="contact-form-tab-sub">raw &nbsp;·&nbsp; <span class="body-type-btn active" id="btn-form-mode">form-data</span>&nbsp;<span class="body-type-sep">/</span>&nbsp;<span class="body-type-btn" id="btn-json-mode">JSON</span></span>
         </div>
         <form name="homepage-contact" method="POST" class="contact-form" data-netlify="true" id="contact-form">
           <input type="hidden" name="form-name" value="homepage-contact">
@@ -1104,6 +1104,16 @@
             </button>
           </div>
         </form>
+
+        <!-- JSON body editor (shown in JSON mode) -->
+        <div class="json-editor-panel" id="json-editor-panel" style="display:none;">
+          <textarea class="json-editor-area" id="json-editor-area" rows="10" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off"></textarea>
+          <div class="form-submit" style="padding:0 24px 20px;">
+            <button type="button" class="pm-btn pm-btn--filled pm-btn--send" id="send-json-btn">
+              <i class="fa fa-paper-plane"></i> SEND REQUEST
+            </button>
+          </div>
+        </div>
 
         <!-- Success response panel (hidden until form submitted) -->
         <div class="form-response-panel" id="form-response-panel" style="display:none;">
@@ -1484,12 +1494,111 @@
     resNewBtn.addEventListener('click', function () {
       contactForm.reset();
       responsePanel.style.display = 'none';
+      // Reset to form-data mode
+      var jsonPanel = document.getElementById('json-editor-panel');
+      var jsonArea  = document.getElementById('json-editor-area');
+      var bfm = document.getElementById('btn-form-mode');
+      var bjm = document.getElementById('btn-json-mode');
+      if (jsonPanel) { jsonPanel.style.display = 'none'; jsonArea.value = ''; }
+      if (bfm) bfm.classList.add('active');
+      if (bjm) bjm.classList.remove('active');
       contactForm.style.display = 'block';
       var btn = document.getElementById('send-request-btn');
       btn.disabled = false;
       btn.innerHTML = '<i class="fa fa-paper-plane"></i> SEND REQUEST';
+      var sendJsonBtn = document.getElementById('send-json-btn');
+      if (sendJsonBtn) { sendJsonBtn.disabled = false; sendJsonBtn.innerHTML = '<i class="fa fa-paper-plane"></i> SEND REQUEST'; }
     });
   }
+
+  // --- Body type toggle: form-data <-> JSON ---
+  (function () {
+    var btnFormMode   = document.getElementById('btn-form-mode');
+    var btnJsonMode   = document.getElementById('btn-json-mode');
+    var jsonEditorPanel = document.getElementById('json-editor-panel');
+    var jsonEditorArea  = document.getElementById('json-editor-area');
+    var sendJsonBtn   = document.getElementById('send-json-btn');
+
+    function buildJsonFromForm() {
+      return JSON.stringify({
+        name:    document.getElementById('name').value    || '',
+        email:   document.getElementById('email').value   || '',
+        subject: document.getElementById('subject').value || '',
+        message: document.getElementById('message').value || ''
+      }, null, 2);
+    }
+
+    if (btnJsonMode) {
+      btnJsonMode.addEventListener('click', function () {
+        if (!contactForm || contactForm.style.display === 'none') return;
+        btnFormMode.classList.remove('active');
+        btnJsonMode.classList.add('active');
+        jsonEditorArea.value = buildJsonFromForm();
+        contactForm.style.display = 'none';
+        jsonEditorPanel.style.display = 'flex';
+      });
+    }
+
+    if (btnFormMode) {
+      btnFormMode.addEventListener('click', function () {
+        if (!jsonEditorPanel || jsonEditorPanel.style.display === 'none') return;
+        btnJsonMode.classList.remove('active');
+        btnFormMode.classList.add('active');
+        // Sync JSON values back to form fields
+        try {
+          var parsed = JSON.parse(jsonEditorArea.value);
+          if (parsed.name    !== undefined) document.getElementById('name').value    = parsed.name;
+          if (parsed.email   !== undefined) document.getElementById('email').value   = parsed.email;
+          if (parsed.subject !== undefined) document.getElementById('subject').value = parsed.subject;
+          if (parsed.message !== undefined) document.getElementById('message').value = parsed.message;
+        } catch (e) { /* invalid JSON — leave form as-is */ }
+        jsonEditorPanel.style.display = 'none';
+        contactForm.style.display = 'block';
+      });
+    }
+
+    if (sendJsonBtn) {
+      sendJsonBtn.addEventListener('click', function () {
+        var jsonStr = jsonEditorArea.value.trim();
+        var parsed;
+        try {
+          parsed = JSON.parse(jsonStr);
+        } catch (e) {
+          showToast('Invalid JSON — please fix your request body.');
+          return;
+        }
+        if (!parsed.name || !parsed.email || !parsed.message) {
+          showToast('Required fields: name, email, message');
+          return;
+        }
+
+        sendJsonBtn.disabled = true;
+        sendJsonBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Sending...';
+
+        // Build FormData for Netlify (requires multipart/form-data)
+        var fd = new FormData();
+        fd.append('form-name', 'homepage-contact');
+        fd.append('name',    parsed.name    || '');
+        fd.append('email',   parsed.email   || '');
+        fd.append('subject', parsed.subject || '');
+        fd.append('message', parsed.message || '');
+
+        fetch('/', { method: 'POST', body: fd })
+          .then(function () {
+            document.getElementById('resp-name').textContent  = '"' + parsed.name  + '"';
+            document.getElementById('resp-email').textContent = '"' + parsed.email + '"';
+            jsonEditorPanel.style.display = 'none';
+            responsePanel.style.display = 'block';
+            showToast('Message received! Arjun will reply within 24 hrs.');
+          })
+          .catch(function () {
+            sendJsonBtn.disabled = false;
+            sendJsonBtn.innerHTML = '<i class="fa fa-paper-plane"></i> SEND REQUEST';
+            showToast('Something went wrong. Please email directly.');
+          });
+      });
+    }
+  })();
 
   // --- Auto-trigger SEND when #contact links are clicked while locked ---
   var pendingScrollToContact = false;

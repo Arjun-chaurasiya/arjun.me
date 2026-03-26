@@ -197,7 +197,7 @@
             <div class="request-bar">
               <span class="method-badge">GET</span>
               <span class="request-url">/api/qa-engineer/arjun-chaurasiya</span>
-              <button class="request-send">SEND</button>
+              <button class="request-send" id="hero-send-btn"><span class="send-spinner"></span>SEND</button>
             </div>
             <div class="home-typed-wrap">
               <span id="typed"></span>
@@ -257,7 +257,15 @@
 
         <!-- Body panel -->
         <div class="res-panel active" id="res-body">
-          <div class="response-panel-body">
+          <div class="res-body-loader" id="res-body-loader">
+            <div class="shimmer-line w-80"></div>
+            <div class="shimmer-line w-60"></div>
+            <div class="shimmer-line w-90"></div>
+            <div class="shimmer-line w-50"></div>
+            <div class="shimmer-line w-70"></div>
+            <div class="shimmer-line w-60"></div>
+          </div>
+          <div class="response-panel-body" id="res-body-content">
             <div class="response-json">
               <span class="json-brace">{</span><br>
               &nbsp;&nbsp;<span class="json-key">"name"</span>: <span class="json-string">"Arjun Chaurasiya"</span>,<br>
@@ -1133,17 +1141,61 @@
     });
   }
 
-  // --- SEND button in hero (decorative) ---
-  var sendBtn = document.querySelector('.request-send');
+  // --- SEND button in hero — animated fetch simulation ---
+  var sendBtn = document.getElementById('hero-send-btn');
   if (sendBtn) {
     sendBtn.addEventListener('click', function () {
-      this.textContent = '200 OK';
-      this.style.background = 'var(--success)';
-      var self = this;
+      var btn = this;
+      var loader = document.getElementById('res-body-loader');
+      var content = document.getElementById('res-body-content');
+      var statusCode = document.querySelector('.response-status-code');
+      var statusText = document.querySelector('.response-status-text');
+      var responseMeta = document.querySelector('.response-meta');
+
+      // Already loading — do nothing
+      if (btn.classList.contains('loading')) return;
+
+      // 1. Button → loading state
+      btn.classList.add('loading');
+      btn.querySelector('.send-spinner').style.display = 'inline-block';
+      btn.lastChild.textContent = 'Sending...';
+
+      // 2. Grey out status header
+      if (statusCode) { statusCode.textContent = '---'; statusCode.style.color = 'var(--text-secondary)'; }
+      if (statusText) { statusText.textContent = ''; }
+      if (responseMeta) { responseMeta.style.opacity = '0'; }
+
+      // 3. Hide content, show shimmer
+      content.style.display = 'none';
+      loader.classList.add('active');
+
+      // 4. Simulate network delay ~850ms
       setTimeout(function () {
-        self.textContent = 'SEND';
-        self.style.background = '';
-      }, 1800);
+        // Hide loader, show content with fade-in
+        loader.classList.remove('active');
+        content.style.display = '';
+        var json = content.querySelector('.response-json');
+        if (json) {
+          json.classList.remove('fade-in');
+          void json.offsetWidth; // reflow to restart animation
+          json.classList.add('fade-in');
+        }
+
+        // Restore status
+        if (statusCode) { statusCode.textContent = '200'; statusCode.style.color = ''; }
+        if (statusText) { statusText.textContent = 'OK'; }
+        if (responseMeta) { responseMeta.style.opacity = '1'; }
+
+        // Button → 200 OK briefly, then back
+        btn.classList.remove('loading');
+        btn.querySelector('.send-spinner').style.display = 'none';
+        btn.lastChild.textContent = '200 OK';
+        btn.style.background = 'var(--success, #27ae60)';
+        setTimeout(function () {
+          btn.lastChild.textContent = 'SEND';
+          btn.style.background = '';
+        }, 1600);
+      }, 850);
     });
   }
 

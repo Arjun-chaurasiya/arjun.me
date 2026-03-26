@@ -1026,6 +1026,24 @@
     });
   });
 
+  // --- + New tab button ---
+  var plusBtn = document.querySelector('.req-tab-plus');
+  if (plusBtn) {
+    plusBtn.addEventListener('click', function () {
+      var tab = document.createElement('a');
+      tab.className = 'pm-req-tab';
+      tab.href = '#contact';
+      tab.innerHTML = '<span class="req-tab-method get">GET</span>New Request';
+      tab.addEventListener('click', function () {
+        document.querySelectorAll('.pm-req-tab').forEach(function(t){ t.classList.remove('active'); });
+        tab.classList.add('active');
+      });
+      this.parentNode.insertBefore(tab, this);
+      document.querySelectorAll('.pm-req-tab').forEach(function(t){ t.classList.remove('active'); });
+      tab.classList.add('active');
+    });
+  }
+
   // --- SEND button in hero (decorative) ---
   var sendBtn = document.querySelector('.request-send');
   if (sendBtn) {

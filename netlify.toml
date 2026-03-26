@@ -7,9 +7,10 @@
 [[plugins]]
 package = "@netlify/plugin-sitemap"
   [plugins.inputs]
-  buildDir = ""
+  buildDir = "."
+  prettyURLs = true
+  homepage = "https://arjun.me"
   exclude = [
-    # By file Path
     '**/**/certifications.html',
     '**/**/achievements.html'
   ]

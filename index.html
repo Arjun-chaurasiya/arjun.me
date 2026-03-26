@@ -1055,17 +1055,14 @@
     });
   }
 
-  // --- Hide scroll hint when user scrolls past home section ---
-  var homeSection = document.getElementById('home');
-  if (homeSection && 'IntersectionObserver' in window) {
-    var scrollHintObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        var hint = document.getElementById('scroll-hint');
-        if (hint) hint.style.opacity = entry.isIntersecting ? '1' : '0';
-      });
-    }, { threshold: 0.05 });
-    scrollHintObserver.observe(homeSection);
-  }
+  // --- Hide scroll hint when user scrolls down ---
+  window.addEventListener('scroll', function () {
+    var hint = document.getElementById('scroll-hint');
+    if (!hint) return;
+    if (window.scrollY > 80) {
+      hint.classList.remove('scroll-hint--visible');
+    }
+  }, { passive: true });
 
   // --- Fade-in on scroll (IntersectionObserver) ---
   var fadeEls = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right');

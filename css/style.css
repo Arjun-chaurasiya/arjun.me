@@ -570,7 +570,7 @@ p {
   10. SHARED SECTION STYLES
 ==============================================================*/
 .pm-section {
-  padding: 48px 48px 64px;
+  padding: 36px 48px 48px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -648,6 +648,36 @@ p {
 /* Locked sections — hidden until SEND */
 .pm-section--locked {
   display: none !important;
+}
+
+/* Scroll hint — appears after SEND */
+.scroll-hint {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 0 8px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.scroll-hint--visible {
+  display: flex;
+  opacity: 1;
+}
+.scroll-hint-text {
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+@keyframes bounce-down {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(5px); }
+}
+.scroll-hint-arrow {
+  color: var(--accent);
+  font-size: 13px;
+  animation: bounce-down 1.2s ease-in-out infinite;
 }
 
 .req-tab-dot {

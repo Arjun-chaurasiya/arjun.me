@@ -1317,15 +1317,25 @@ p {
   font-weight: 500;
   color: var(--text-muted);
   border-bottom: 2px solid transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
   cursor: pointer;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
+  background: transparent;
   transition: var(--transition);
   user-select: none;
+  outline: none;
 }
+.res-tab:hover { color: var(--text-primary); }
 .res-tab.active {
   color: var(--text-primary);
   border-bottom-color: var(--accent);
 }
+
+/* Response sub-panels */
+.res-panel { display: none; }
+.res-panel.active { display: block; }
 
 .response-panel-body {
   padding: 16px;

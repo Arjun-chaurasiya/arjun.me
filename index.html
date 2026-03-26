@@ -249,22 +249,58 @@
           <span class="response-status-text">OK</span>
           <span class="response-meta">Time: 6 yrs&nbsp;&nbsp;|&nbsp;&nbsp;Size: Senior Level</span>
         </div>
-        <div class="response-panel-tabs">
-          <span class="res-tab active">Body</span>
-          <span class="res-tab">Headers</span>
-          <span class="res-tab">Test Results <em class="subtab-count pass">✓ 12</em></span>
+        <div class="response-panel-tabs" id="res-tabs">
+          <button class="res-tab active" data-res="res-body">Body</button>
+          <button class="res-tab" data-res="res-headers">Headers</button>
+          <button class="res-tab" data-res="res-tests">Test Results <em class="subtab-count pass">✓ 12</em></button>
         </div>
-        <div class="response-panel-body">
-          <div class="response-json">
-            <span class="json-brace">{</span><br>
-            &nbsp;&nbsp;<span class="json-key">"name"</span>: <span class="json-string">"Arjun Chaurasiya"</span>,<br>
-            &nbsp;&nbsp;<span class="json-key">"role"</span>: <span class="json-string">"QA Engineer II"</span>,<br>
-            &nbsp;&nbsp;<span class="json-key">"experience"</span>: <span class="json-number">6</span>,<br>
-            &nbsp;&nbsp;<span class="json-key">"domain"</span>: [<span class="json-string">"Supply Chain"</span>, <span class="json-string">"Healthcare"</span>, <span class="json-string">"GPS"</span>],<br>
-            &nbsp;&nbsp;<span class="json-key">"automation"</span>: [<span class="json-string">"Selenium"</span>, <span class="json-string">"REST Assured"</span>, <span class="json-string">"Playwright"</span>],<br>
-            &nbsp;&nbsp;<span class="json-key">"available"</span>: <span class="json-bool">true</span>,<br>
-            &nbsp;&nbsp;<span class="json-key">"location"</span>: <span class="json-string">"Bangalore, India"</span><br>
-            <span class="json-brace">}</span>
+
+        <!-- Body panel -->
+        <div class="res-panel active" id="res-body">
+          <div class="response-panel-body">
+            <div class="response-json">
+              <span class="json-brace">{</span><br>
+              &nbsp;&nbsp;<span class="json-key">"name"</span>: <span class="json-string">"Arjun Chaurasiya"</span>,<br>
+              &nbsp;&nbsp;<span class="json-key">"role"</span>: <span class="json-string">"QA Engineer II"</span>,<br>
+              &nbsp;&nbsp;<span class="json-key">"experience"</span>: <span class="json-number">6</span>,<br>
+              &nbsp;&nbsp;<span class="json-key">"domain"</span>: [<span class="json-string">"Supply Chain"</span>, <span class="json-string">"Healthcare"</span>, <span class="json-string">"GPS"</span>],<br>
+              &nbsp;&nbsp;<span class="json-key">"automation"</span>: [<span class="json-string">"Selenium"</span>, <span class="json-string">"REST Assured"</span>, <span class="json-string">"Playwright"</span>],<br>
+              &nbsp;&nbsp;<span class="json-key">"available"</span>: <span class="json-bool">true</span>,<br>
+              &nbsp;&nbsp;<span class="json-key">"location"</span>: <span class="json-string">"Bangalore, India"</span><br>
+              <span class="json-brace">}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Headers panel -->
+        <div class="res-panel" id="res-headers">
+          <div class="response-panel-body">
+            <div class="response-json" style="font-size:12px;line-height:1.8;">
+              <span class="json-key">Content-Type</span>: <span class="json-string">application/json</span><br>
+              <span class="json-key">X-Hire-Status</span>: <span class="json-string">available</span><br>
+              <span class="json-key">X-Experience</span>: <span class="json-number">6</span> years<br>
+              <span class="json-key">X-Location</span>: <span class="json-string">Bangalore, India</span><br>
+              <span class="json-key">X-Domain</span>: <span class="json-string">Supply Chain, Healthcare, GPS</span><br>
+              <span class="json-key">X-Automation</span>: <span class="json-string">Selenium, REST Assured, Playwright</span><br>
+              <span class="json-key">Cache-Control</span>: <span class="json-string">no-cache</span><br>
+              <span class="json-key">Connection</span>: <span class="json-string">keep-alive</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Test Results panel -->
+        <div class="res-panel" id="res-tests">
+          <div class="response-panel-body" style="padding:12px;">
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <div class="test-item pass"><span class="test-icon">✓</span> Status code is 200</div>
+              <div class="test-item pass"><span class="test-icon">✓</span> experience &gt;= 6</div>
+              <div class="test-item pass"><span class="test-icon">✓</span> available === true</div>
+              <div class="test-item pass"><span class="test-icon">✓</span> automation includes Selenium</div>
+              <div class="test-item pass"><span class="test-icon">✓</span> automation includes REST Assured</div>
+              <div class="test-item pass"><span class="test-icon">✓</span> domain includes Supply Chain</div>
+              <div class="test-item pass"><span class="test-icon">✓</span> location === Bangalore, India</div>
+              <div class="test-item pass"><span class="test-icon">✓</span> role === QA Engineer II</div>
+            </div>
           </div>
         </div>
         <div class="response-panel-footer">
@@ -960,6 +996,18 @@
         e.preventDefault();
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
+    });
+  });
+
+  // --- Response panel tab switching ---
+  var resTabs = document.querySelectorAll('#res-tabs .res-tab');
+  resTabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      resTabs.forEach(function (t) { t.classList.remove('active'); });
+      document.querySelectorAll('.res-panel').forEach(function (p) { p.classList.remove('active'); });
+      this.classList.add('active');
+      var panel = document.getElementById(this.dataset.res);
+      if (panel) panel.classList.add('active');
     });
   });
 

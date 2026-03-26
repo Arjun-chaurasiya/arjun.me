@@ -1758,7 +1758,9 @@ p {
 }
 
 .skill-tag {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   padding: 4px 10px;
   background: var(--tag-bg);
   border: 1px solid var(--border);
@@ -1768,6 +1770,12 @@ p {
   color: var(--text-secondary);
   cursor: default;
   transition: var(--transition);
+}
+.skill-tag i,
+.skill-tag [class^="devicon-"],
+.skill-tag [class*=" devicon-"] {
+  font-size: 13px;
+  flex-shrink: 0;
 }
 
 .skill-tag:hover {
@@ -1976,7 +1984,9 @@ p {
 }
 
 .tool-tag {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   padding: 3px 9px;
   background: var(--tag-bg);
   border: 1px solid var(--border);
@@ -1986,6 +1996,12 @@ p {
   color: var(--text-muted);
   cursor: default;
   transition: var(--transition);
+}
+.tool-tag i,
+.tool-tag [class^="devicon-"],
+.tool-tag [class*=" devicon-"] {
+  font-size: 12px;
+  flex-shrink: 0;
 }
 
 .tool-tag:hover {

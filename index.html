@@ -576,7 +576,7 @@
 
       <!-- Right: info -->
       <div class="about-content fade-in-right">
-        <h3 class="about-title">Hello Recruiter!</h3>
+        <h3 class="about-title">Hello Recruiter! <span class="hidden-bug" data-bug="1" role="button" aria-label="You found a hidden bug — click to squash it" title="A wild bug appeared! Squash it!">🐛</span></h3>
         <p class="about-bio">
           As a dedicated QA Engineer II, I ensure high-quality software products through meticulous attention
           to detail, quick learning, and strong cross-team communication. I excel in collaborative Agile
@@ -735,6 +735,7 @@
         <div class="skill-tags">
           <span class="skill-tag"><i class="devicon-mongodb-plain colored"></i>MongoDB</span>
           <span class="skill-tag"><i class="devicon-mysql-plain colored"></i>MySQL</span>
+          <span class="hidden-bug" data-bug="2" role="button" aria-label="You found a hidden bug — click to squash it" title="A wild bug appeared! Squash it!">🐛</span>
         </div>
       </div>
 
@@ -882,7 +883,7 @@
           </p>
           <ul class="timeline-bullets">
             <li>Core Java &amp; Cyber Security and Ethical Hacking (2020) — specialized trainings.</li>
-            <li>First Class with Distinction.</li>
+            <li>First Class with Distinction. <span class="hidden-bug" data-bug="3" role="button" aria-label="You found a hidden bug — click to squash it" title="A wild bug appeared! Squash it!">🐛</span></li>
           </ul>
         </div>
       </div>
@@ -903,7 +904,7 @@
 
     <div class="rec-intro fade-in-up">
       <span class="rec-count-badge"><i class="fa fa-linkedin-square"></i> 7 LinkedIn Recommendations</span>
-      <p class="rec-intro-text">Colleagues and collaborators share their experience working with Arjun.</p>
+      <p class="rec-intro-text">Colleagues and collaborators share their experience working with Arjun. <span class="hidden-bug" data-bug="4" role="button" aria-label="You found a hidden bug — click to squash it" title="A wild bug appeared! Squash it!">🐛</span></p>
     </div>
 
     <div class="rec-grid">
@@ -1032,7 +1033,7 @@
 
       <!-- Left: contact params -->
       <div class="contact-params fade-in-left">
-        <h3 class="contact-params-title">Query Params</h3>
+        <h3 class="contact-params-title">Query Params <span class="hidden-bug" data-bug="5" role="button" aria-label="You found a hidden bug — click to squash it" title="A wild bug appeared! Squash it!">🐛</span></h3>
         <div class="pm-kv-table">
           <div class="pm-kv-header">
             <span class="pm-kv-col-key">KEY</span>
@@ -1219,11 +1220,20 @@
     <div class="kbd-hint-row"><kbd>?</kbd> This help</div>
     <div class="kbd-hint-row"><kbd>Esc</kbd> Close</div>
   </div>
-  <div class="kbd-hint-easter">💡 Try typing <span class="term-hl">TESTPASS</span> anywhere...</div>
+  <div class="kbd-hint-easter">💡 Try typing <span class="term-hl">TESTPASS</span> · squash the 5 hidden 🐛 · Konami code <span class="term-hl">↑↑↓↓←→←→BA</span></div>
 </div>
 
 <!-- Confetti container for easter egg -->
 <div class="confetti-container" id="confetti-container" aria-hidden="true"></div>
+
+<!-- Bug Hunt counter chip -->
+<div class="bug-hunt-chip" id="bug-hunt-chip" aria-live="polite">
+  <span class="bug-hunt-icon">🐛</span>
+  <span class="bug-hunt-text" id="bug-hunt-text">0 / 5 bugs squashed</span>
+</div>
+
+<!-- Matrix rain canvas — Konami code easter egg -->
+<canvas id="matrix-canvas" aria-hidden="true"></canvas>
 
 <!-- ===================== FULL TERMINAL MODE ===================== -->
 <div id="full-terminal-mode">
@@ -1802,20 +1812,33 @@
     }, 260);
   }
 
+  var QA_JOKES = [
+    'A QA engineer walks into a bar. Orders a beer. Orders 0 beers. Orders 99999999 beers. Orders -1 beers. Orders a lizard. Orders ☃. First real customer asks where the bathroom is — the bar bursts into flames.',
+    '99 little bugs in the code, 99 little bugs… take one down, patch it around — 127 little bugs in the code. 🐛',
+    'QA engineer\'s wedding vow: "I promise to always reproduce the issue before blaming you."',
+    'Dev: "It works on my machine." QA: "Great — we\'ll ship your machine."',
+    'Why did the QA engineer cross the road? To test the other side. Then crossed back. Then crossed with no road. Then crossed 10,000 times concurrently.',
+    'Schrödinger\'s bug: it only exists when the demo starts.',
+  ];
+
   var CMDS = {
     help: function () {
       function cb(cmd, pad) { return '<button class="term-clickable" data-cmd="' + cmd + '">' + cmd + '</button>' + Array(pad - cmd.length + 1).join(' '); }
       return [
         '<span class="term-comment"># Available commands — click any to run</span>',
-        '  ' + cb('whoami',        15) + ' Profile summary',
-        '  ' + cb('GET /about',    15) + ' About Arjun',
-        '  ' + cb('GET /skills',   15) + ' Tech stack',
-        '  ' + cb('GET /experience',15) + ' Work history',
-        '  ' + cb('GET /contact',  15) + ' Contact details',
-        '  ' + cb('run tests',     15) + ' Execute test suite 🧪',
-        '  ' + cb('status',        15) + ' Build &amp; deploy status',
-        '  ' + cb('clear',         15) + ' Clear terminal',
-        '  ' + cb('exit',          15) + ' Close terminal',
+        '  ' + cb('whoami',        17) + ' Profile summary',
+        '  ' + cb('GET /about',    17) + ' About Arjun',
+        '  ' + cb('GET /skills',   17) + ' Tech stack',
+        '  ' + cb('GET /experience',17) + ' Work history',
+        '  ' + cb('GET /contact',  17) + ' Contact details',
+        '  ' + cb('GET /coffee',   17) + ' ☕ Try it',
+        '  ' + cb('run tests',     17) + ' Execute test suite 🧪',
+        '  ' + cb('coverage',      17) + ' Code coverage report',
+        '  ' + cb('joke',          17) + ' Random QA joke',
+        '  ' + cb('sudo hire arjun',17) + ' Do it 😉',
+        '  ' + cb('status',        17) + ' Build &amp; deploy status',
+        '  ' + cb('clear',         17) + ' Clear terminal',
+        '  ' + cb('exit',          17) + ' Close terminal',
       ].join('\n');
     },
     whoami: function () {
@@ -1914,7 +1937,33 @@
         '<span class="term-success">✓</span> Environment   : Production',
       ].join('\n');
     },
+    'get /coffee': function () {
+      return [
+        '<span class="term-error">HTTP/1.1 418 I\'m a teapot</span>  <span class="term-muted">RFC 2324, section 2.3.2</span>',
+        '',
+        '{',
+        '  "error"   : "Cannot brew coffee — this server is a teapot",',
+        '  "details" : "Arjun runs on chai ☕ and green pipelines",',
+        '  "retry"   : "never"',
+        '}',
+      ].join('\n');
+    },
+    coverage: function () {
+      return [
+        '<span class="term-comment"># coverage report — portfolio v2.0</span>',
+        'Statements  <span class="term-success">███████████████████░</span>  96%',
+        'Branches    <span class="term-success">██████████████████░░</span>  89%',
+        'Functions   <span class="term-success">███████████████████░</span>  97%',
+        'Lines       <span class="term-success">███████████████████░</span>  95%',
+        '',
+        'Hidden bugs on this site: <span class="term-accent">5</span> · squashed so far: <span class="term-accent">' + bugsSquashed + '</span> 🐛',
+      ].join('\n');
+    },
+    joke: function () {
+      return '<span class="term-accent">' + QA_JOKES[Math.floor(Math.random() * QA_JOKES.length)] + '</span>';
+    },
   };
+  CMDS.coffee = CMDS['get /coffee'];
 
   function runTestSuite() {
     var tests = [
@@ -1961,6 +2010,21 @@
     if (key === 'run tests' || key === 'npm test' || key === 'test') { runTestSuite(); return; }
     if (key === 'clear' || key === 'cls') { termOutput.innerHTML = ''; return; }
     if (key === 'exit' || key === 'quit') { closeTerminal(); return; }
+    if (key.indexOf('sudo') === 0) {
+      if (key.indexOf('hire') !== -1) {
+        streamCmd([
+          '<span class="term-error">403 Forbidden</span> — sudo requires recruiter privileges. Verifying...',
+          '<span class="term-success">✓ Recruiter credentials accepted</span>',
+          '<span class="term-success">HTTP/1.1 200 OK — hiring request approved!</span>',
+          'Opening mail client... 📧',
+        ].join('\n'));
+        setTimeout(function () { window.location.href = 'mailto:arjunkmr1997@gmail.com?subject=Job%20Opportunity%20for%20Arjun'; }, 1800);
+      } else {
+        appendLine('<span class="term-error">sudo: permission denied</span> — nice try 😄 root is reserved for bug-free code.');
+        appendLine('');
+      }
+      return;
+    }
 
     var fn = CMDS[key] || CMDS[cmd];
     if (fn) { streamCmd(fn() + '\n'); }
@@ -2043,45 +2107,51 @@
     });
   }
 
+  // ===== SHARED: confetti + QA toast =====
+  function launchConfetti() {
+    var container = document.getElementById('confetti-container');
+    if (!container) return;
+    var colors = ['#ff6c37','#4db6e5','#2ab930','#9b59b6','#ffbd2e','#e91e8c','#ffffff','#f5a623'];
+    for (var i = 0; i < 90; i++) {
+      (function () {
+        var p = document.createElement('div');
+        var size = 6 + Math.random() * 9;
+        p.className = 'confetti-piece';
+        p.style.cssText = [
+          'left:'             + (Math.random() * 100) + 'vw',
+          'top:-16px',
+          'width:'            + size + 'px',
+          'height:'           + size + 'px',
+          'background:'       + colors[Math.floor(Math.random() * colors.length)],
+          'border-radius:'    + (Math.random() > 0.5 ? '50%' : '2px'),
+          'animation-duration:' + (1.6 + Math.random() * 2.2) + 's',
+          'animation-delay:'  + (Math.random() * 0.6) + 's',
+        ].join(';');
+        container.appendChild(p);
+        setTimeout(function () { p.remove(); }, 4000);
+      }());
+    }
+  }
+
+  function showQaToast(title, sub, duration) {
+    var toast = document.getElementById('qa-toast');
+    if (!toast) return;
+    var titleEl = toast.querySelector('.qa-toast-title');
+    var subEl   = toast.querySelector('.qa-toast-sub');
+    var origTitle = titleEl.textContent, origSub = subEl.textContent;
+    titleEl.textContent = title;
+    subEl.textContent   = sub;
+    toast.classList.add('qa-toast--visible');
+    setTimeout(function () {
+      toast.classList.remove('qa-toast--visible');
+      setTimeout(function () { titleEl.textContent = origTitle; subEl.textContent = origSub; }, 500);
+    }, duration || 4200);
+  }
+
   // ===== EASTER EGG — TESTPASS =====
   function triggerEasterEgg() {
-    var container = document.getElementById('confetti-container');
-    if (container) {
-      var colors = ['#ff6c37','#4db6e5','#2ab930','#9b59b6','#ffbd2e','#e91e8c','#ffffff','#f5a623'];
-      for (var i = 0; i < 90; i++) {
-        (function () {
-          var p = document.createElement('div');
-          var size = 6 + Math.random() * 9;
-          p.className = 'confetti-piece';
-          p.style.cssText = [
-            'left:'             + (Math.random() * 100) + 'vw',
-            'top:-16px',
-            'width:'            + size + 'px',
-            'height:'           + size + 'px',
-            'background:'       + colors[Math.floor(Math.random() * colors.length)],
-            'border-radius:'    + (Math.random() > 0.5 ? '50%' : '2px'),
-            'animation-duration:' + (1.6 + Math.random() * 2.2) + 's',
-            'animation-delay:'  + (Math.random() * 0.6) + 's',
-          ].join(';');
-          container.appendChild(p);
-          setTimeout(function () { p.remove(); }, 4000);
-        }());
-      }
-    }
-    // Hijack the toast briefly
-    var toast = document.getElementById('qa-toast');
-    if (toast) {
-      var titleEl = toast.querySelector('.qa-toast-title');
-      var subEl   = toast.querySelector('.qa-toast-sub');
-      var origTitle = titleEl.textContent, origSub = subEl.textContent;
-      titleEl.textContent = '🎉 Easter Egg Found — TESTPASS!';
-      subEl.textContent   = 'You think like a QA Engineer 😄';
-      toast.classList.add('qa-toast--visible');
-      setTimeout(function () {
-        toast.classList.remove('qa-toast--visible');
-        setTimeout(function () { titleEl.textContent = origTitle; subEl.textContent = origSub; }, 500);
-      }, 4200);
-    }
+    launchConfetti();
+    showQaToast('🎉 Easter Egg Found — TESTPASS!', 'You think like a QA Engineer 😄');
   }
 
   // ===== FULL TERMINAL MODE =====
@@ -2162,6 +2232,10 @@
         cb('whoami',          18, 'Profile summary'),
         cb('cv',              18, 'Download CV link'),
         cb('run tests',       18, 'Execute test suite'),
+        cb('coverage',        18, 'Code coverage report'),
+        cb('coffee',          18, '☕ Try it'),
+        cb('joke',            18, 'Random QA joke'),
+        cb('sudo hire arjun', 18, 'Do it 😉'),
         cb('status',          18, 'Build & deploy status'),
         cb('clear',           18, 'Clear terminal'),
         cb('switch',          18, 'Back to Basic mode'),
@@ -2356,7 +2430,42 @@
         '',
       ].join('\n');
     },
+    coffee: function() {
+      return [
+        '',
+        '<span class="ft-red">HTTP/1.1 418 I\'m a teapot</span>  <span class="ft-dim">RFC 2324, section 2.3.2</span>',
+        '',
+        '  {',
+        '    "error"   : "Cannot brew coffee — this server is a teapot",',
+        '    "details" : "Arjun runs on chai ☕ and green pipelines",',
+        '    "retry"   : "never"',
+        '  }',
+        '',
+      ].join('\n');
+    },
+    coverage: function() {
+      return [
+        '',
+        '<span class="ft-dim"># coverage report — portfolio v2.0</span>',
+        '',
+        '  <span class="ft-key">Statements </span> <span class="ft-green">███████████████████░</span>  96%',
+        '  <span class="ft-key">Branches   </span> <span class="ft-green">██████████████████░░</span>  89%',
+        '  <span class="ft-key">Functions  </span> <span class="ft-green">███████████████████░</span>  97%',
+        '  <span class="ft-key">Lines      </span> <span class="ft-green">███████████████████░</span>  95%',
+        '',
+        '  <span class="ft-dim">Hidden bugs on this site: <span class="ft-orange">5</span> · squashed so far: <span class="ft-orange">' + bugsSquashed + '</span> 🐛 (find them in Basic mode)</span>',
+        '',
+      ].join('\n');
+    },
+    joke: function() {
+      return [
+        '',
+        '  <span class="ft-orange">' + QA_JOKES[Math.floor(Math.random() * QA_JOKES.length)] + '</span>',
+        '',
+      ].join('\n');
+    },
   };
+  FT['get /coffee'] = FT.coffee;
 
   function ftRunTests() {
     var tests = [
@@ -2408,6 +2517,23 @@
       window.open('cv/Arjun_Chaurasiya_Senior_SQA_Engineer.pdf', '_blank');
       return;
     }
+    if (key.indexOf('sudo') === 0) {
+      if (key.indexOf('hire') !== -1) {
+        ftStreamCmd([
+          '',
+          '  <span class="ft-red">403 Forbidden</span> — sudo requires recruiter privileges. Verifying...',
+          '  <span class="ft-green">✓ Recruiter credentials accepted</span>',
+          '  <span class="ft-green ft-bold">HTTP/1.1 200 OK — hiring request approved!</span>',
+          '  <span class="ft-dim">Opening mail client... 📧</span>',
+          '',
+        ].join('\n'));
+        setTimeout(function () { window.location.href = 'mailto:arjunkmr1997@gmail.com?subject=Job%20Opportunity%20for%20Arjun'; }, 1800);
+      } else {
+        ftAppend('  <span class="ft-red">sudo: permission denied</span> — nice try 😄 root is reserved for bug-free code.');
+        ftAppend('');
+      }
+      return;
+    }
     var fn = FT[key] || FT[cmd];
     if (fn) { ftStreamCmd(fn()); }
     else { ftAppend('  <span class="ft-red">command not found:</span> ' + cmd + '  — type <span class="ft-orange">help</span>'); ftAppend(''); }
@@ -2444,6 +2570,91 @@
 
   // Restore mode on page load
   if (localStorage.getItem('portfolio-mode') === 'terminal') { enterTerminalMode(); }
+
+  // ===== BUG HUNT MINI-GAME =====
+  var BUG_TOTAL = 5;
+  var bugsSquashed = 0;
+  var bugChip     = document.getElementById('bug-hunt-chip');
+  var bugChipText = document.getElementById('bug-hunt-text');
+  var bugQuips = [
+    'Reported, triaged & fixed — that was fast!',
+    'Severity: Critical. Status: Squashed. 💪',
+    'Another one bites the dust. Regression suite updated.',
+    'Nice catch! Root cause analysis: it was a 🐛. Fix verified.',
+    'Logged in Jira as DONE before the dev even noticed.',
+  ];
+
+  document.querySelectorAll('.hidden-bug').forEach(function (bug) {
+    bug.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (bug.classList.contains('bug-squashed')) return;
+      bug.classList.add('bug-squashed');
+      bugsSquashed++;
+      if (bugChip) {
+        bugChip.classList.add('bug-hunt-chip--visible');
+        bugChipText.textContent = bugsSquashed + ' / ' + BUG_TOTAL + ' bugs squashed';
+      }
+      if (bugsSquashed >= BUG_TOTAL) {
+        bugChipText.textContent = 'Zero known defects — ship it! 🚀';
+        launchConfetti();
+        showQaToast('🏆 All 5 Bugs Squashed!', 'Zero defects escaped — you\'d make a great QA engineer.', 5200);
+        setTimeout(function () { bugChip && bugChip.classList.remove('bug-hunt-chip--visible'); }, 9000);
+      } else {
+        showQaToast('🐛 Bug #' + (1042 + bugsSquashed) + ' Squashed! (' + bugsSquashed + '/' + BUG_TOTAL + ')',
+          bugQuips[Math.floor(Math.random() * bugQuips.length)]);
+      }
+    });
+  });
+
+  // ===== KONAMI CODE → QA GOD MODE (matrix rain) =====
+  var konamiSeq = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+  var konamiIdx = 0;
+
+  document.addEventListener('keydown', function (e) {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) return;
+    var k = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+    konamiIdx = (k === konamiSeq[konamiIdx]) ? konamiIdx + 1 : (k === konamiSeq[0] ? 1 : 0);
+    if (konamiIdx === konamiSeq.length) {
+      konamiIdx = 0;
+      startMatrixRain();
+    }
+  });
+
+  function startMatrixRain() {
+    var canvas = document.getElementById('matrix-canvas');
+    if (!canvas || canvas.classList.contains('matrix-active')) return;
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+    canvas.classList.add('matrix-active');
+    var ctx = canvas.getContext('2d');
+    var colWidth = 16;
+    var cols  = Math.floor(canvas.width / colWidth);
+    var drops = [];
+    for (var c = 0; c < cols; c++) drops[c] = Math.floor(Math.random() * -40);
+    var glyphs = '01<>/{}();=✓✗λπGETPOST200404418QA🐛';
+    var chars  = Array.from ? Array.from(glyphs) : glyphs.split('');
+
+    var iv = setInterval(function () {
+      ctx.fillStyle = 'rgba(10, 10, 10, 0.10)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.font = '14px monospace';
+      for (var i = 0; i < drops.length; i++) {
+        var ch = chars[Math.floor(Math.random() * chars.length)];
+        ctx.fillStyle = Math.random() > 0.96 ? '#9fffac' : '#2ab930';
+        ctx.fillText(ch, i * colWidth, drops[i] * colWidth);
+        drops[i] = (drops[i] * colWidth > canvas.height && Math.random() > 0.975) ? 0 : drops[i] + 1;
+      }
+    }, 50);
+
+    showQaToast('🕶 QA GOD MODE Unlocked', 'Konami code accepted — all tests pass forever.', 4800);
+
+    setTimeout(function () {
+      clearInterval(iv);
+      canvas.classList.remove('matrix-active');
+      setTimeout(function () { ctx.clearRect(0, 0, canvas.width, canvas.height); }, 450);
+    }, 5200);
+  }
 
 })();
 </script>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Traveler — Arjun Chaurasiya</title>
+  <meta name="description" content="The traveler universe of arjun.me — places that made Arjun Chaurasiya, told as pins on a map.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://arjun.me/traveler.html">
+  <link rel="shortcut icon" href="img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+  <style>
+    :root {
+      --paper:      #faf6ef;
+      --paper-deep: #f0e8da;
+      --ink:        #3a2f25;
+      --ink-soft:   #8a7a66;
+      --terracotta: #c05621;
+      --sand:       #d4a373;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+    }
+
+    .tv-wrap { max-width: 880px; margin: 0 auto; padding: 0 24px 120px; }
+
+    /* ---------- header ---------- */
+    .tv-header {
+      padding: 64px 0 40px;
+      text-align: center;
+    }
+
+    .tv-kicker {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 14px;
+    }
+
+    .tv-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(34px, 6vw, 52px);
+      font-weight: 600;
+      line-height: 1.15;
+    }
+
+    .tv-sub {
+      margin-top: 14px;
+      font-size: 16px;
+      color: var(--ink-soft);
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ---------- map ---------- */
+    .tv-map-frame {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #e2d6c2;
+      box-shadow: 0 16px 40px rgba(58, 47, 37, 0.10);
+    }
+
+    #map { height: 420px; }
+
+    .tv-map-note {
+      text-align: center;
+      font-size: 12.5px;
+      color: var(--ink-soft);
+      margin-top: 12px;
+    }
+
+    /* ---------- stories ---------- */
+    .tv-stories { margin-top: 72px; display: flex; flex-direction: column; gap: 56px; }
+
+    .tv-story {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .tv-story:nth-child(even) .tv-story-img { order: 2; }
+
+    .tv-story-img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid #e2d6c2;
+      background: var(--paper-deep);
+    }
+
+    .tv-story-place {
+      font-family: 'Fraunces', serif;
+      font-size: 28px;
+      font-weight: 600;
+    }
+
+    .tv-story-years {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--terracotta);
+      border: 1px solid var(--sand);
+      border-radius: 16px;
+      padding: 3px 12px;
+      margin: 10px 0 14px;
+    }
+
+    .tv-story-text { font-size: 15.5px; color: #5d5043; }
+
+    .tv-story--next {
+      text-align: center;
+      display: block;
+      background: var(--paper-deep);
+      border: 1px dashed var(--sand);
+      border-radius: 16px;
+      padding: 44px 24px;
+    }
+
+    .tv-story--next .tv-story-place { color: var(--ink-soft); }
+
+    /* ---------- footer ---------- */
+    .tv-footer {
+      margin-top: 80px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--ink-soft);
+    }
+
+    .tv-footer a { color: var(--terracotta); }
+
+    .leaflet-popup-content { font-family: 'Inter', sans-serif; font-size: 13px; }
+    .leaflet-popup-content b { font-family: 'Fraunces', serif; font-size: 15px; }
+
+    @media (max-width: 640px) {
+      .tv-story { grid-template-columns: 1fr; gap: 18px; }
+      .tv-story:nth-child(even) .tv-story-img { order: 0; }
+      #map { height: 320px; }
+    }
+  </style>
+</head>
+<body data-universe="traveler">
+
+  <div class="tv-wrap">
+
+    <header class="tv-header">
+      <p class="tv-kicker">arjun.me · the traveler universe</p>
+      <h1 class="tv-title">Places that made me</h1>
+      <p class="tv-sub">Not a list of destinations — a map of the roads between who I was and who I'm becoming.</p>
+    </header>
+
+    <div class="tv-map-frame">
+      <div id="map" aria-label="Map of places in Arjun's life"></div>
+    </div>
+    <p class="tv-map-note">Tap a pin — every place has a story below.</p>
+
+    <div class="tv-stories">
+
+      <section class="tv-story" id="place-meerut">
+        <img class="tv-story-img" src="img/bg-1.jpg" alt="Meerut — placeholder photo">
+        <div>
+          <h2 class="tv-story-place">Meerut</h2>
+          <span class="tv-story-years">1997 — 2020 · where it started</span>
+          <p class="tv-story-text">
+            Born and raised, schooled and graduated — B.Tech at DIET while the city taught its own
+            curriculum: cricket on bad pitches, chai at the corner stall, and the stubbornness you
+            only learn in a small city with big plans.
+            <!-- PLACEHOLDER: replace with your own story & photo -->
+          </p>
+        </div>
+      </section>
+
+      <section class="tv-story" id="place-bangalore">
+        <img class="tv-story-img" src="img/about.jpg" alt="Bangalore — placeholder photo">
+        <div>
+          <h2 class="tv-story-place">Bangalore</h2>
+          <span class="tv-story-years">2020 — now · home for now</span>
+          <p class="tv-story-text">
+            Came for a job, stayed for the weather and the feeling that everyone here is building
+            something. Three companies, a hundred releases, and the best filter coffee I've had
+            outside a courtroom argument about whether it beats chai. (It doesn't.)
+            <!-- PLACEHOLDER: replace with your own story & photo -->
+          </p>
+        </div>
+      </section>
+
+      <section class="tv-story--next" id="place-next">
+        <h2 class="tv-story-place">The next pin</h2>
+        <span class="tv-story-years">someday soon</span>
+        <p class="tv-story-text" style="max-width:440px;margin:0 auto;">
+          This spot is reserved. Suggestions welcome —
+          <a href="mailto:arjunkmr1997@gmail.com" style="color:var(--terracotta);">tell me where to go</a>.
+        </p>
+      </section>
+
+    </div>
+
+    <footer class="tv-footer">
+      <p>© 2026 Arjun Chaurasiya — same person, different universe.</p>
+    </footer>
+
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script>
+    (function () {
+      'use strict';
+      if (typeof L === 'undefined') return;
+
+      var map = L.map('map', { scrollWheelZoom: false }).setView([24.5, 78.5], 5);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(map);
+
+      var places = [
+        { name: 'Meerut',    sub: 'where it started · 1997–2020', coords: [28.9845, 77.7064], anchor: 'place-meerut' },
+        { name: 'Bangalore', sub: 'home for now · 2020–present',  coords: [12.9716, 77.5946], anchor: 'place-bangalore' },
+      ];
+
+      places.forEach(function (p) {
+        var marker = L.marker(p.coords).addTo(map);
+        marker.bindPopup('<b>' + p.name + '</b><br>' + p.sub);
+        marker.on('click', function () {
+          var el = document.getElementById(p.anchor);
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+      });
+
+      var line = L.polyline(places.map(function (p) { return p.coords; }), {
+        color: '#c05621', weight: 2, dashArray: '6 8', opacity: 0.7
+      }).addTo(map);
+    })();
+  </script>
+  <script src="js/universe.js"></script>
+</body>
+</html>

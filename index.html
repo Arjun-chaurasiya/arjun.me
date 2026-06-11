@@ -88,7 +88,64 @@
   <!-- Main Styles -->
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-universe="engineer">
+
+<!-- ===================== MULTIVERSE PORTAL (first visit) ===================== -->
+<div class="mv-portal" id="mv-portal" role="dialog" aria-label="Choose a universe">
+  <div class="mv-portal-inner">
+    <p class="mv-portal-domain">arjun.me</p>
+    <h2 class="mv-portal-title">There are several of me.</h2>
+    <p class="mv-portal-sub">Pick a universe. You can always cross over later.</p>
+    <div class="mv-cards">
+      <button type="button" class="mv-card mv-card--engineer" data-universe="engineer">
+        <span class="mv-card-glyph">⌁</span>
+        <span class="mv-card-name">The Engineer</span>
+        <span class="mv-card-desc">APIs, automation, the hunt for bugs. Status: 200 OK.</span>
+      </button>
+      <a class="mv-card mv-card--traveler" href="traveler.html" data-universe="traveler">
+        <span class="mv-card-glyph">✈</span>
+        <span class="mv-card-name">The Traveler</span>
+        <span class="mv-card-desc">Pins on a map, photos, and the roads between Meerut and Bangalore.</span>
+      </a>
+      <a class="mv-card mv-card--3am" href="3am.html" data-universe="3am">
+        <span class="mv-card-glyph">☾</span>
+        <span class="mv-card-name">3 am arjun</span>
+        <span class="mv-card-desc">unpolished thoughts. lowercase only. enter quietly.</span>
+      </a>
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+  'use strict';
+  var portal = document.getElementById('mv-portal');
+  var seen = false;
+  try { seen = !!localStorage.getItem('arjun-portal-seen'); } catch (e) {}
+  if (seen) { portal.remove(); return; }
+  portal.classList.add('mv-portal--open');
+  document.documentElement.style.overflow = 'hidden';
+
+  portal.querySelector('[data-universe="engineer"]').addEventListener('click', function () {
+    try {
+      localStorage.setItem('arjun-portal-seen', '1');
+      localStorage.setItem('arjun-universe', 'engineer');
+    } catch (e) {}
+    portal.classList.add('mv-portal--closing');
+    document.documentElement.style.overflow = '';
+    setTimeout(function () { portal.remove(); }, 450);
+  });
+
+  ['traveler', '3am'].forEach(function (id) {
+    portal.querySelector('[data-universe="' + id + '"]').addEventListener('click', function () {
+      try {
+        localStorage.setItem('arjun-portal-seen', '1');
+        localStorage.setItem('arjun-universe', id);
+      } catch (e) {}
+    });
+  });
+})();
+</script>
+<!-- ===================== END MULTIVERSE PORTAL ===================== -->
 
 <!-- Scroll progress bar -->
 <div id="scroll-progress"></div>
@@ -2667,6 +2724,9 @@
     <span class="qa-toast-sub">0 Defects Escaped · Build Stable</span>
   </div>
 </div>
+
+<!-- Universe switcher (multiverse) -->
+<script src="js/universe.js"></script>
 
 </body>
 </html>

@@ -7,7 +7,7 @@
   'use strict';
 
   var UNIVERSES = [
-    { id: 'engineer', label: 'engineer', glyph: '⌁', url: 'index.html',    accent: '#ff6c37' },
+    { id: 'engineer', label: 'engineer', glyph: '✓', url: 'index.html',    accent: '#1d9e75' },
     { id: 'traveler', label: 'traveler', glyph: '✈', url: 'traveler.html', accent: '#d4a373' },
     { id: '3am',      label: '3 am',     glyph: '☾', url: '3am.html',      accent: '#8888a0' },
   ];

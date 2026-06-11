@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ask Arjun — Interview My Website | Arjun Chaurasiya</title>
+  <meta name="description" content="Interview Arjun Chaurasiya's website. Ask anything about his QA experience, automation skills, availability — and get instant answers backed by his real CV.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://arjun.me/ask.html">
+  <link rel="shortcut icon" href="img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:            #141414;
+      --bg-panel:      #1e1e1e;
+      --bg-input:      #262626;
+      --bg-bubble-me:  #2d2d2d;
+      --bg-bubble-bot: #1a1a1a;
+      --border:        #333;
+      --accent:        #ff6c37;
+      --accent-soft:   rgba(255, 108, 55, 0.12);
+      --success:       #2ab930;
+      --info:          #4db6e5;
+      --text:          #ececec;
+      --text-dim:      #9a9a9a;
+      --mono:          'JetBrains Mono', monospace;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      height: 100vh;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ---------- header ---------- */
+    .ask-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 22px;
+      background: var(--bg-panel);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .ask-avatar-wrap { position: relative; }
+
+    .ask-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent);
+    }
+
+    .ask-online-dot {
+      position: absolute;
+      right: 0; bottom: 1px;
+      width: 11px; height: 11px;
+      border-radius: 50%;
+      background: var(--success);
+      border: 2px solid var(--bg-panel);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(42, 185, 48, 0.5); }
+      50%      { box-shadow: 0 0 0 5px rgba(42, 185, 48, 0); }
+    }
+
+    .ask-header-info h1 { font-size: 16px; font-weight: 700; }
+    .ask-header-info p  { font-size: 12px; color: var(--text-dim); margin-top: 1px; }
+    .ask-header-info .hl { color: var(--accent); }
+
+    .ask-header-actions { margin-left: auto; display: flex; gap: 10px; align-items: center; }
+
+    .ask-back {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-dim);
+      text-decoration: none;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: 0.2s;
+      white-space: nowrap;
+    }
+    .ask-back:hover { color: var(--accent); border-color: var(--accent); }
+
+    .ask-beta {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--info);
+      border: 1px solid var(--info);
+      border-radius: 4px;
+      padding: 3px 7px;
+      text-transform: uppercase;
+    }
+
+    /* ---------- chat area ---------- */
+    .chat-scroll {
+      flex: 1;
+      overflow-y: auto;
+      padding: 26px 0 12px;
+    }
+
+    .chat-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .msg {
+      display: flex;
+      gap: 10px;
+      max-width: 86%;
+      animation: msg-in 0.3s ease;
+    }
+
+    @keyframes msg-in {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .msg--bot { align-self: flex-start; }
+    .msg--me  { align-self: flex-end; flex-direction: row-reverse; }
+
+    .msg-avatar {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      object-fit: cover;
+      margin-top: 2px;
+    }
+
+    .msg--me .msg-avatar {
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .msg-bubble {
+      padding: 11px 15px;
+      border-radius: 12px;
+      font-size: 14px;
+      line-height: 1.65;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .msg--bot .msg-bubble {
+      background: var(--bg-bubble-bot);
+      border: 1px solid var(--border);
+      border-top-left-radius: 4px;
+    }
+
+    .msg--me .msg-bubble {
+      background: var(--bg-bubble-me);
+      border-top-right-radius: 4px;
+    }
+
+    .msg-bubble a { color: var(--accent); }
+    .msg-bubble .k { color: var(--info); font-family: var(--mono); font-size: 13px; }
+    .msg-bubble .ok { color: var(--success); }
+    .msg-bubble b { color: #fff; }
+
+    /* evidence chip inside bot answers */
+    .evidence {
+      display: inline-block;
+      margin-top: 8px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 3px 9px;
+    }
+    .evidence::before { content: '⛁ source: '; color: var(--accent); }
+
+    /* typing indicator */
+    .typing-bubble {
+      display: inline-flex;
+      gap: 5px;
+      padding: 14px 16px;
+    }
+    .typing-bubble span {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--text-dim);
+      animation: typing-blink 1.2s infinite;
+    }
+    .typing-bubble span:nth-child(2) { animation-delay: 0.18s; }
+    .typing-bubble span:nth-child(3) { animation-delay: 0.36s; }
+
+    @keyframes typing-blink {
+      0%, 60%, 100% { opacity: 0.25; transform: translateY(0); }
+      30%           { opacity: 1;    transform: translateY(-3px); }
+    }
+
+    /* ---------- quick chips ---------- */
+    .chips-row {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 6px 20px 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .chip {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-dim);
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 7px 14px;
+      cursor: pointer;
+      transition: 0.18s;
+      font-family: inherit;
+    }
+
+    .chip:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      transform: translateY(-1px);
+    }
+
+    /* ---------- input bar ---------- */
+    .input-bar {
+      flex-shrink: 0;
+      border-top: 1px solid var(--border);
+      background: var(--bg-panel);
+      padding: 14px 20px 16px;
+    }
+
+    .input-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      gap: 10px;
+    }
+
+    .ask-input {
+      flex: 1;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 14px;
+      padding: 13px 16px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .ask-input:focus { border-color: var(--accent); }
+    .ask-input::placeholder { color: #6f6f6f; }
+
+    .ask-send {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 0 22px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .ask-send:hover { filter: brightness(1.12); }
+    .ask-send:disabled { opacity: 0.5; cursor: default; }
+
+    .input-note {
+      max-width: 760px;
+      margin: 8px auto 0;
+      font-size: 11px;
+      color: #6f6f6f;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .msg { max-width: 95%; }
+      .ask-header { padding: 12px 14px; }
+      .ask-header-info h1 { font-size: 14px; }
+      .ask-header-info p { font-size: 11px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="ask-header">
+    <div class="ask-avatar-wrap">
+      <img src="img/arjun.jpg" alt="Arjun Chaurasiya" class="ask-avatar">
+      <span class="ask-online-dot" title="Open to work"></span>
+    </div>
+    <div class="ask-header-info">
+      <h1>Ask Arjun</h1>
+      <p>Interview my website — <span class="hl">it answers from my real CV</span></p>
+    </div>
+    <div class="ask-header-actions">
+      <span class="ask-beta">Beta</span>
+      <a href="index.html" class="ask-back">← Portfolio</a>
+    </div>
+  </header>
+
+  <div class="chat-scroll" id="chat-scroll">
+    <div class="chat-inner" id="chat-inner"></div>
+  </div>
+
+  <div class="chips-row" id="chips-row"></div>
+
+  <div class="input-bar">
+    <form class="input-inner" id="ask-form">
+      <input class="ask-input" id="ask-input" type="text" placeholder="Ask anything — experience, skills, availability…" autocomplete="off" maxlength="200">
+      <button class="ask-send" id="ask-send" type="submit">Ask</button>
+    </form>
+    <p class="input-note">Prototype: rule-based answers generated from Arjun's CV. No data leaves your browser.</p>
+  </div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* =============================================================
+     KNOWLEDGE BASE — every answer is sourced from the real CV
+     ============================================================= */
+  var KB = [
+    {
+      id: 'greeting',
+      keys: ['hello', 'hi', 'hey', 'good morning', 'good evening', 'namaste', 'yo'],
+      answers: [
+        "Hi there! 👋 I'm Arjun's website — ask me anything you'd ask him in a first interview.\n\nTry the chips below, or type your own question.",
+      ],
+    },
+    {
+      id: 'experience',
+      keys: ['experience', 'how long', 'years', 'career', 'work history', 'background', 'journey', 'worked'],
+      answers: [
+        "Arjun has <b>6+ years in QA</b> across three domains:\n\n• <b>May 2023 – Present</b> — QA Engineer II at Logward Systems (Supply Chain, Bangalore)\n• <b>Jan 2022 – May 2023</b> — QA Engineer at DocEngage Informatics (Healthcare)\n• <b>Feb 2020 – Jan 2022</b> — Test Engineer at TrackNerd GPS (Fleet Tracking)\n\nHe's currently a <span class='ok'>Release Owner</span> with final production sign-off authority.",
+      ],
+      evidence: 'cv → experience',
+    },
+    {
+      id: 'current',
+      keys: ['current', 'logward', 'right now', 'present job', 'today', 'role now', 'what do you do'],
+      answers: [
+        "Right now Arjun is a <b>QA Engineer II at Logward Systems</b> (supply chain logistics, Bangalore) since May 2023. Highlights:\n\n• Built & maintains a REST Assured automation framework wired into Jenkins CI/CD\n• <span class='ok'>Release Owner</span> — validates releases and gives final production sign-off\n• Owns features: Data Management, AutoTracking, User Management, Triggers\n• Debugs production issues with Grafana, Kibana & Jaeger; handles on-call",
+      ],
+      evidence: 'cv → experience → Logward Systems',
+    },
+    {
+      id: 'skills',
+      keys: ['skills', 'stack', 'tech', 'tools', 'technologies', 'automation', 'framework', 'selenium', 'playwright', 'rest assured', 'know'],
+      answers: [
+        "Arjun's core stack:\n\n<span class='k'>Automation</span>  Selenium (Java) · Playwright (JS) · REST Assured · TestNG\n<span class='k'>API testing</span>  Postman · REST Assured · Swagger\n<span class='k'>CI/CD</span>       Jenkins · Git · Docker · Kubernetes (Rancher)\n<span class='k'>Monitoring</span>  Grafana · Kibana · Jaeger · FullStory\n<span class='k'>Cloud</span>       AWS — Cognito, S3, SQS, IAM\n<span class='k'>Databases</span>   MongoDB · MySQL\n<span class='k'>Messaging</span>   Kafka · RabbitMQ\n\nPerformance testing with JMeter, and full STLC ownership from test strategy to sign-off.",
+      ],
+      evidence: 'cv → skills',
+    },
+    {
+      id: 'why-hire',
+      keys: ['why hire', 'why should', 'strength', 'best at', 'good at', 'stand out', 'unique', 'different'],
+      answers: [
+        "Three reasons teams keep recommending him:\n\n1. <b>He owns quality end-to-end</b> — not just test cases, but release sign-off, production monitoring and on-call. He's the Release Owner at his current company.\n\n2. <b>Automation that lives in CI</b> — he built the REST Assured framework at Logward and wired it into Jenkins, so quality gates run on every build.\n\n3. <b>7 colleagues wrote LinkedIn recommendations</b> — devs from Amazon, Kotak and Aquera describe his bug reports as the clearest they've worked with.\n\nAsk me <i>\"what do colleagues say?\"</i> for the receipts. 😄",
+      ],
+      evidence: 'recommendations × 7 · cv → experience',
+    },
+    {
+      id: 'recommendations',
+      keys: ['recommend', 'colleagues', 'testimonial', 'reference', 'what do people', 'say about', 'reviews'],
+      answers: [
+        "7 LinkedIn recommendations. A few excerpts:\n\n• <b>Khemraj Gurjar</b> (SDE @ Amazon): <i>\"His bug reports were clear and easy to understand, so fixing problems was faster for us. I'd gladly work with him again.\"</i>\n\n• <b>Chinmay Rawal</b> (MTS-2 @ Aquera): <i>\"Excellent QA engineer… guides the team well, solves problems quickly, and takes ownership.\"</i>\n\n• <b>Monalisa Mallik</b>: <i>\"I've never seen anyone embrace 'constant improvement' like Arjun.\"</i>\n\nFull list on the <a href='index.html#recommendations'>portfolio page</a>.",
+      ],
+      evidence: 'linkedin → recommendations',
+    },
+    {
+      id: 'remote',
+      keys: ['remote', 'hybrid', 'onsite', 'on-site', 'work from home', 'wfh', 'relocate', 'relocation', 'location preference'],
+      answers: [
+        "Arjun is open to <b>Remote, Hybrid and On-site</b> roles — remote/hybrid preferred. He's based in <b>Bangalore, India</b> and not looking to relocate, but fully open to distributed teams.",
+      ],
+      evidence: 'cv → preferences',
+    },
+    {
+      id: 'location',
+      keys: ['where', 'location', 'based', 'city', 'bangalore', 'india', 'live'],
+      answers: [
+        "Arjun is based in <b>Bangalore, India</b> 🇮🇳 — and open to Remote, Hybrid or On-site roles.",
+      ],
+      evidence: 'cv → contact',
+    },
+    {
+      id: 'availability',
+      keys: ['available', 'open to work', 'notice', 'when can', 'join', 'start', 'hiring', 'looking'],
+      answers: [
+        "<span class='ok'>● Yes — actively open to opportunities.</span>\n\nRoles he's targeting: <b>Senior QA Engineer, SDET, Test Automation Engineer</b>.\nNotice period: negotiable. Job types: full-time or contract.\n\nFastest way to reach him: <a href='mailto:arjunkmr1997@gmail.com'>arjunkmr1997@gmail.com</a>",
+      ],
+      evidence: 'status → open_to_work === true',
+    },
+    {
+      id: 'contact',
+      keys: ['contact', 'email', 'phone', 'reach', 'linkedin', 'github', 'connect', 'call', 'number'],
+      answers: [
+        "<span class='k'>email</span>     <a href='mailto:arjunkmr1997@gmail.com'>arjunkmr1997@gmail.com</a>\n<span class='k'>phone</span>     <a href='tel:+917906973405'>+91 790 697 3405</a>\n<span class='k'>linkedin</span>  <a href='https://www.linkedin.com/in/arjunchaurasiya/' target='_blank'>linkedin.com/in/arjunchaurasiya</a>\n<span class='k'>github</span>    <a href='https://github.com/Arjun-chaurasiya' target='_blank'>github.com/Arjun-chaurasiya</a>\n\nHe usually replies within 24 hours.",
+      ],
+      evidence: 'cv → contact',
+    },
+    {
+      id: 'cv',
+      keys: ['cv', 'resume', 'download', 'pdf'],
+      answers: [
+        "Here you go — <a href='cv/Arjun_Chaurasiya_Senior_SQA_Engineer.pdf' target='_blank'>📄 Download Arjun's CV (PDF)</a>\n\nIt covers all 6+ years, the automation frameworks and the release-ownership work.",
+      ],
+      evidence: 'cv/Arjun_Chaurasiya_Senior_SQA_Engineer.pdf',
+    },
+    {
+      id: 'education',
+      keys: ['education', 'degree', 'college', 'university', 'study', 'b.tech', 'btech', 'qualification'],
+      answers: [
+        "<b>B.Tech in Computer Science & Engineering</b> (2016–2020)\nDelhi Institute of Engineering & Technology (DIET), Meerut — First Class with Distinction.\n\nPlus specialised training in Core Java and Cyber Security / Ethical Hacking (2020).",
+      ],
+      evidence: 'cv → education',
+    },
+    {
+      id: 'salary',
+      keys: ['salary', 'ctc', 'compensation', 'pay', 'expect', 'package', 'rate'],
+      answers: [
+        "That's one for the human. 😄 Compensation is best discussed directly — drop him a line at <a href='mailto:arjunkmr1997@gmail.com'>arjunkmr1997@gmail.com</a> with the role details and he'll respond within 24 hours.",
+      ],
+    },
+    {
+      id: 'domains',
+      keys: ['domain', 'industry', 'supply chain', 'healthcare', 'logistics', 'gps', 'sector'],
+      answers: [
+        "Three domains, end to end:\n\n• <b>Supply Chain / Logistics</b> — current, at Logward Systems\n• <b>Healthcare</b> — EHR & HCRM systems at DocEngage\n• <b>GPS / Fleet Tracking</b> — CRM and tracking platforms at TrackNerd\n\nThe common thread: complex workflows where a missed edge case costs real money.",
+      ],
+      evidence: 'cv → experience',
+    },
+    {
+      id: 'process',
+      keys: ['process', 'approach', 'methodology', 'how do you test', 'strategy', 'agile', 'scrum', 'plan'],
+      answers: [
+        "Arjun's approach, in his colleagues' words: <i>\"Prior to testing, Arjun carefully looks at requirements, grasps the product, and creates a solid test plan.\"</i>\n\nConcretely: requirement analysis → test strategy & RTM → manual + automated execution (REST Assured / Playwright in CI) → observability checks in Grafana/Kibana → release sign-off as Release Owner. Full Agile/Scrum, sprint by sprint.",
+      ],
+      evidence: 'recommendations → Ayush Mishra · cv → process',
+    },
+    {
+      id: 'joke',
+      keys: ['joke', 'funny', 'laugh', 'humor'],
+      answers: [
+        "A QA engineer walks into a bar. Orders a beer. Orders 0 beers. Orders 99999999 beers. Orders -1 beers. Orders a lizard. Orders ☃.\n\nFirst real customer asks where the bathroom is — the bar bursts into flames. 🔥",
+        "Dev: \"It works on my machine.\"\nQA: \"Great — we'll ship your machine.\" 📦",
+        "99 little bugs in the code,\n99 little bugs…\ntake one down, patch it around —\n<b>127 little bugs in the code.</b> 🐛",
+      ],
+    },
+    {
+      id: 'thanks',
+      keys: ['thank', 'thanks', 'great', 'awesome', 'cool', 'nice', 'bye', 'goodbye'],
+      answers: [
+        "Anytime! If you'd like to take this conversation to a human, Arjun is at <a href='mailto:arjunkmr1997@gmail.com'>arjunkmr1997@gmail.com</a> — or just hit <a href='index.html#contact'>the contact form</a>. 🙌",
+      ],
+    },
+  ];
+
+  var FALLBACKS = [
+    "Hmm, that one's not in my training data (yet — I'm a prototype 🤖).\n\nI'm great at questions about <b>experience, skills, availability, recommendations or contact info</b>. Or email the human directly: <a href='mailto:arjunkmr1997@gmail.com'>arjunkmr1997@gmail.com</a>",
+    "I don't have a confident answer for that, and a good QA never guesses in front of a stakeholder. 😄\n\nTry one of the chips below — or ask Arjun himself at <a href='mailto:arjunkmr1997@gmail.com'>arjunkmr1997@gmail.com</a>",
+  ];
+
+  var CHIPS = [
+    { label: '💼 Experience?',        q: 'How much experience do you have?' },
+    { label: '🛠 Tech stack?',        q: 'What is your tech stack?' },
+    { label: '⭐ Why hire you?',      q: 'Why should we hire you?' },
+    { label: '🗣 What colleagues say?', q: 'What do colleagues say about you?' },
+    { label: '🌍 Remote OK?',         q: 'Are you open to remote work?' },
+    { label: '📄 CV',                 q: 'Can I download your CV?' },
+    { label: '📧 Contact',            q: 'How can I contact you?' },
+    { label: '😄 Tell me a joke',     q: 'Tell me a QA joke' },
+  ];
+
+  /* =============================================================
+     CHAT ENGINE
+     ============================================================= */
+  var chatInner  = document.getElementById('chat-inner');
+  var chatScroll = document.getElementById('chat-scroll');
+  var form       = document.getElementById('ask-form');
+  var input      = document.getElementById('ask-input');
+  var sendBtn    = document.getElementById('ask-send');
+  var chipsRow   = document.getElementById('chips-row');
+  var fallbackIdx = 0;
+
+  function scrollDown() { chatScroll.scrollTop = chatScroll.scrollHeight; }
+
+  function addMsg(html, who, evidence) {
+    var msg = document.createElement('div');
+    msg.className = 'msg msg--' + who;
+    var avatar = who === 'bot'
+      ? '<img class="msg-avatar" src="img/arjun.jpg" alt="">'
+      : '<span class="msg-avatar">You</span>';
+    var ev = evidence ? '<br><span class="evidence">' + evidence + '</span>' : '';
+    msg.innerHTML = avatar + '<div class="msg-bubble">' + html + ev + '</div>';
+    chatInner.appendChild(msg);
+    scrollDown();
+    return msg;
+  }
+
+  function addTyping() {
+    var msg = document.createElement('div');
+    msg.className = 'msg msg--bot';
+    msg.id = 'typing-msg';
+    msg.innerHTML = '<img class="msg-avatar" src="img/arjun.jpg" alt="">' +
+      '<div class="msg-bubble typing-bubble"><span></span><span></span><span></span></div>';
+    chatInner.appendChild(msg);
+    scrollDown();
+  }
+
+  function removeTyping() {
+    var t = document.getElementById('typing-msg');
+    if (t) t.remove();
+  }
+
+  function matchIntent(q) {
+    var text = q.toLowerCase();
+    var best = null, bestScore = 0;
+    KB.forEach(function (intent) {
+      var score = 0;
+      intent.keys.forEach(function (k) {
+        // whole-word match so 'yo' doesn't fire inside 'you'
+        var re = new RegExp('\\b' + k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b');
+        if (re.test(text)) score += k.length;
+      });
+      if (score > bestScore) { bestScore = score; best = intent; }
+    });
+    return bestScore > 0 ? best : null;
+  }
+
+  function answer(q) {
+    var intent = matchIntent(q);
+    var html, evidence = null;
+    if (intent) {
+      html = intent.answers[Math.floor(Math.random() * intent.answers.length)];
+      evidence = intent.evidence || null;
+    } else {
+      html = FALLBACKS[fallbackIdx++ % FALLBACKS.length];
+    }
+    addTyping();
+    sendBtn.disabled = true;
+    setTimeout(function () {
+      removeTyping();
+      addMsg(html, 'bot', evidence);
+      sendBtn.disabled = false;
+      input.focus();
+    }, 650 + Math.random() * 550);
+  }
+
+  function ask(q) {
+    q = q.trim();
+    if (!q || sendBtn.disabled) return;
+    addMsg(q.replace(/</g, '&lt;'), 'me');
+    answer(q);
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    ask(input.value);
+    input.value = '';
+  });
+
+  CHIPS.forEach(function (c) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'chip';
+    b.textContent = c.label;
+    b.addEventListener('click', function () { ask(c.q); });
+    chipsRow.appendChild(b);
+  });
+
+  /* welcome message */
+  setTimeout(function () {
+    addMsg(
+      "👋 Hi! I'm <b>Arjun's website</b> — and you can interview me.\n\n" +
+      "Ask anything a recruiter would: experience, automation skills, availability, what colleagues say… " +
+      "Every answer comes straight from his real CV and LinkedIn recommendations.\n\n" +
+      "Try a chip below, or type your own question.",
+      'bot'
+    );
+  }, 350);
+
+  input.focus();
+})();
+</script>
+</body>
+</html>

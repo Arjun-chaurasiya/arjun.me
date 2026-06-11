@@ -3671,3 +3671,23 @@ kbd {
     padding: 7px 13px;
   }
 }
+
+
+/*============================================================
+  23. ASK AI (beta) topbar button
+==============================================================*/
+.topbar-ask-btn {
+  position: relative;
+}
+
+.ask-btn-beta {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--info, #4db6e5);
+  border: 1px solid var(--info, #4db6e5);
+  border-radius: 4px;
+  padding: 1px 5px;
+  margin-left: 4px;
+}

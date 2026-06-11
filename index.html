@@ -18,7 +18,7 @@
   <meta property="og:type" content="profile">
   <meta property="og:url" content="https://arjun.me/">
   <meta property="og:title" content="Arjun Chaurasiya — QA Engineer">
-  <meta property="og:description" content="I break things carefully. QA Engineer with 6+ years in functional, automation and API testing. Every claim on this site ships with an assertion.">
+  <meta property="og:description" content="QA Engineer with 6+ years in functional, automation and API testing. Bangalore, India.">
   <meta property="og:image" content="https://arjun.me/img/arjun.jpg">
   <meta property="og:site_name" content="arjun.me">
 
@@ -26,7 +26,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@Arjunkmr1997">
   <meta name="twitter:title" content="Arjun Chaurasiya — QA Engineer">
-  <meta name="twitter:description" content="I break things carefully. Every claim on this site ships with an assertion.">
+  <meta name="twitter:description" content="QA Engineer with 6+ years in functional, automation and API testing. Bangalore, India.">
   <meta name="twitter:image" content="https://arjun.me/img/arjun.jpg">
 
   <!-- Structured Data -->
@@ -53,7 +53,7 @@
   <link rel="shortcut icon" href="img/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/engineer.css">
 </head>
 <body data-universe="engineer">
@@ -66,9 +66,9 @@
     <p class="mv-portal-sub">Pick a universe. You can always cross over later.</p>
     <div class="mv-cards">
       <button type="button" class="mv-card mv-card--engineer" data-universe="engineer">
-        <span class="mv-card-glyph">✓</span>
+        <span class="mv-card-glyph">✦</span>
         <span class="mv-card-name">The Engineer</span>
-        <span class="mv-card-desc">Claims with evidence. Every line on the page is tested.</span>
+        <span class="mv-card-desc">Code, systems, and six years of making software behave.</span>
       </button>
       <a class="mv-card mv-card--traveler" href="traveler.html" data-universe="traveler">
         <span class="mv-card-glyph">✈</span>
@@ -115,214 +115,342 @@
 </script>
 <!-- ===================== END PORTAL ===================== -->
 
-<!-- ===================== STATUS STRIP ===================== -->
-<div class="status-strip" id="status-strip">
-  <span class="status-strip-left">arjun.me · engineer universe</span>
-  <span class="status-strip-right">
-    <span id="assert-count">…</span> assertions ·
-    <span class="status-pass" id="assert-status">all passing</span>
-    <button class="status-rerun" id="status-rerun" title="Re-run page assertions">re-run ↻</button>
-  </span>
-</div>
+<!-- 3D background canvas -->
+<canvas id="bg3d" aria-hidden="true"></canvas>
+<div class="bg-vignette" aria-hidden="true"></div>
 
-<main class="page">
+<!-- ===================== NAV ===================== -->
+<nav class="nav">
+  <a href="#top" class="nav-logo">AC<span class="nav-logo-dot">✦</span></a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<main id="top">
 
   <!-- ===================== HERO ===================== -->
   <header class="hero">
-    <p class="hero-kicker">Arjun Chaurasiya · QA Engineer · Bangalore</p>
-    <h1 class="hero-title">I break things <em>carefully</em>.</h1>
-    <p class="hero-sub">
-      Six years of finding what others miss — before users do. This page works like I do:
-      every claim below carries an assertion you can open.
+    <p class="hero-hello reveal">Hi, I'm</p>
+    <h1 class="hero-name reveal">Arjun<br>Chaurasiya<span class="hero-period">.</span></h1>
+    <p class="hero-tag reveal">
+      QA Engineer crafting reliable software — <span class="grad-text">six years</span> across
+      supply chain, healthcare and GPS tracking. Based in Bangalore, India.
     </p>
-    <div class="hero-actions">
-      <a class="btn btn--ink" href="mailto:arjunkmr1997@gmail.com">Write to me</a>
-      <a class="btn" href="cv/Arjun_Chaurasiya_Senior_SQA_Engineer.pdf" target="_blank">CV ↓</a>
+    <div class="hero-actions reveal">
+      <a class="btn btn--grad" href="#contact">Get in touch</a>
+      <a class="btn btn--ghost" href="cv/Arjun_Chaurasiya_Senior_SQA_Engineer.pdf" target="_blank">Download CV</a>
     </div>
+    <div class="hero-socials reveal">
+      <a href="https://www.linkedin.com/in/arjunchaurasiya/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+      <a href="https://github.com/Arjun-chaurasiya" target="_blank" rel="noopener" aria-label="GitHub">gh</a>
+      <a href="https://twitter.com/Arjunkmr1997" target="_blank" rel="noopener" aria-label="Twitter">tw</a>
+      <a href="https://www.instagram.com/arjun._chaurasiya/" target="_blank" rel="noopener" aria-label="Instagram">ig</a>
+    </div>
+    <div class="hero-scroll reveal"><span></span></div>
   </header>
 
-  <!-- ===================== CLAIMS ===================== -->
-  <section class="claims">
-    <p class="section-label">Claims, with evidence</p>
-    <p class="section-intro">A portfolio is just claims. Mine come with assertions — click any check to see the proof.</p>
-
-    <article class="claim">
-      <h2 class="claim-text">Six years across supply chain, healthcare and GPS tracking.</h2>
-      <button class="assert" data-detail="ev-career" aria-expanded="false">
-        <span class="assert-check">✓</span>expect(career.domains).toHaveLength(3)
-      </button>
-      <div class="assert-detail" id="ev-career">
-        <p><strong>Logward Systems</strong> — QA Engineer II, supply chain logistics · May 2023 → present</p>
-        <p><strong>DocEngage Informatics</strong> — QA Engineer, healthcare (EHR/HCRM) · Jan 2022 → May 2023</p>
-        <p><strong>TrackNerd GPS</strong> — Test Engineer, fleet tracking · Feb 2020 → Jan 2022</p>
+  <!-- ===================== ABOUT ===================== -->
+  <section class="section" id="about">
+    <h2 class="section-title reveal"><span class="grad-text">01.</span> About</h2>
+    <div class="about-grid">
+      <div class="glass about-card reveal">
+        <p>
+          I'm a QA engineer who believes great software is a promise kept. For six years I've helped
+          teams ship with confidence — designing test strategies, building automation frameworks,
+          and owning releases end to end.
+        </p>
+        <p>
+          Currently at <strong>Logward</strong>, working on supply-chain logistics: the invisible
+          software that moves real things across real oceans. Before that — healthcare systems
+          and GPS fleet tracking. Different worlds, same standard.
+        </p>
       </div>
-    </article>
-
-    <article class="claim">
-      <h2 class="claim-text">I automate what I never want to find broken twice.</h2>
-      <button class="assert" data-detail="ev-automation" aria-expanded="false">
-        <span class="assert-check">✓</span>expect(regressions).toBeCaughtBy(ci)
-      </button>
-      <div class="assert-detail" id="ev-automation">
-        <p>Built and maintain the REST Assured automation framework at Logward, wired into Jenkins —
-        quality gates run on every build, not every memory.</p>
-        <p>Playwright for the UI layer, TestNG for structure, and a habit of automating the bug
-        that just got fixed before closing the ticket.</p>
-      </div>
-    </article>
-
-    <article class="claim">
-      <h2 class="claim-text">I own releases, not just bugs.</h2>
-      <button class="assert" data-detail="ev-release" aria-expanded="false">
-        <span class="assert-check">✓</span>expect(release.signedOffBy).toBe('arjun')
-      </button>
-      <div class="assert-detail" id="ev-release">
-        <p>Release Owner at Logward — the final sign-off before production is mine. Validation across
-        environments, Kubernetes deployments checked on Rancher, AWS services (Cognito, S3, SQS, IAM) verified.</p>
-        <p>When you own the consequences, you test differently.</p>
-      </div>
-    </article>
-
-    <article class="claim">
-      <h2 class="claim-text">When production breaks at 2 am, I'm the one reading the traces.</h2>
-      <button class="assert" data-detail="ev-oncall" aria-expanded="false">
-        <span class="assert-check">✓</span>expect(incident.rootCause).toBeFound()
-      </button>
-      <div class="assert-detail" id="ev-oncall">
-        <p>Grafana for the symptoms, Kibana for the evidence, Jaeger for the path between them.
-        On-call support and proactive production debugging — most exceptions I find before anyone reports them.</p>
-      </div>
-    </article>
-  </section>
-
-  <!-- ===================== ONE BUG, BRIEFLY ===================== -->
-  <section class="bugstory">
-    <p class="section-label">One bug, briefly</p>
-    <div class="bugstory-row">
-      <div class="bugstory-beat">
-        <p class="beat-time">02:47</p>
-        <p class="beat-text">An order vanishes between a warehouse and a container ship. The alert finds me awake.</p>
-      </div>
-      <span class="beat-arrow">→</span>
-      <div class="bugstory-beat">
-        <p class="beat-time">09:12</p>
-        <p class="beat-text">Reproduced, ten out of ten. A legacy API shouting <span class="mono">"BOOKED"</span> at a service that only listens for whispers.</p>
-      </div>
-      <span class="beat-arrow">→</span>
-      <div class="bugstory-beat">
-        <p class="beat-time">11:40</p>
-        <p class="beat-text">Fixed — and a regression test now guards that door forever. The bug is gone; the lesson stays in CI.</p>
+      <div class="about-stats">
+        <div class="glass stat reveal"><span class="stat-num grad-text" data-count="6">0</span><span class="stat-lbl">years of experience</span></div>
+        <div class="glass stat reveal"><span class="stat-num grad-text" data-count="3">0</span><span class="stat-lbl">industries</span></div>
+        <div class="glass stat reveal"><span class="stat-num grad-text" data-count="7">0</span><span class="stat-lbl">LinkedIn recommendations</span></div>
       </div>
     </div>
   </section>
 
-  <!-- ===================== SWORN STATEMENTS ===================== -->
-  <section class="quotes">
-    <p class="section-label">Sworn statements</p>
+  <!-- ===================== EXPERIENCE ===================== -->
+  <section class="section" id="experience">
+    <h2 class="section-title reveal"><span class="grad-text">02.</span> Experience</h2>
+    <div class="xp-list">
 
-    <blockquote class="quote">
-      <p>“His bug reports were clear and easy to understand, so fixing problems was faster for us.
-      I'd gladly work with him again.”</p>
-      <cite>— Khemraj Gurjar, SDE at Amazon</cite>
-    </blockquote>
+      <article class="glass xp reveal">
+        <div class="xp-head">
+          <h3>QA Engineer II · <span class="grad-text">Logward</span></h3>
+          <span class="xp-date">May 2023 — present</span>
+        </div>
+        <p class="xp-desc">
+          Supply-chain logistics platform. Automation frameworks in REST Assured and Playwright wired
+          into Jenkins, releases validated and signed off, production watched through Grafana, Kibana
+          and Jaeger. Kubernetes on Rancher, AWS underneath everything.
+        </p>
+        <div class="xp-tags"><span>REST Assured</span><span>Playwright</span><span>Jenkins</span><span>Kubernetes</span><span>AWS</span></div>
+      </article>
 
-    <blockquote class="quote">
-      <p>“Prior to testing, Arjun carefully looks at requirements, grasps the product, and creates a
-      solid test plan. This foresight ensures nothing gets missed.”</p>
-      <cite>— Ayush Mishra, SDE at Kotak</cite>
-    </blockquote>
+      <article class="glass xp reveal">
+        <div class="xp-head">
+          <h3>QA Engineer · <span class="grad-text">DocEngage</span></h3>
+          <span class="xp-date">Jan 2022 — May 2023</span>
+        </div>
+        <p class="xp-desc">
+          Healthcare — EHR and HCRM products. Test strategies, FRDs and RTMs authored; functional,
+          integration, regression and mobile testing executed; junior QA engineers mentored.
+        </p>
+        <div class="xp-tags"><span>API testing</span><span>Postman</span><span>Mobile</span><span>Jira</span></div>
+      </article>
 
-    <blockquote class="quote">
-      <p>“I've never seen anyone embrace ‘constant improvement’ like Arjun. He's always the first to
-      jump in if newer members run into issues.”</p>
-      <cite>— Monalisa P. Mallik, frontend &amp; AWS cloud</cite>
-    </blockquote>
+      <article class="glass xp reveal">
+        <div class="xp-head">
+          <h3>Test Engineer · <span class="grad-text">TrackNerd GPS</span></h3>
+          <span class="xp-date">Feb 2020 — Jan 2022</span>
+        </div>
+        <p class="xp-desc">
+          GPS fleet tracking. Test plans and cases designed from scratch, end-to-end API testing,
+          client onboarding and technical support — the full-stack QA experience of a small team.
+        </p>
+        <div class="xp-tags"><span>Test design</span><span>API testing</span><span>CRM</span></div>
+      </article>
 
-    <p class="quotes-more">
-      Seven recommendations in full, on
-      <a href="https://www.linkedin.com/in/arjunchaurasiya/details/recommendations/" target="_blank" rel="noopener">LinkedIn →</a>
-    </p>
+      <article class="glass xp xp--edu reveal">
+        <div class="xp-head">
+          <h3>B.Tech, Computer Science · <span class="grad-text">DIET Meerut</span></h3>
+          <span class="xp-date">2016 — 2020</span>
+        </div>
+        <p class="xp-desc">First class with distinction. Specialised training in Core Java and ethical hacking.</p>
+      </article>
+
+    </div>
   </section>
 
-  <!-- ===================== THE STACK ===================== -->
-  <section class="stack">
-    <p class="section-label">The stack</p>
-    <p class="stack-line mono">
-      selenium · playwright · rest assured · testng · postman · jenkins · kubernetes · aws ·
-      grafana · kibana · jaeger · kafka · mongodb · mysql · jmeter
+  <!-- ===================== SKILLS ===================== -->
+  <section class="section" id="skills">
+    <h2 class="section-title reveal"><span class="grad-text">03.</span> Skills</h2>
+    <div class="skills-grid">
+      <div class="glass skill-group reveal">
+        <h3>Automation</h3>
+        <div class="xp-tags"><span>Selenium</span><span>Playwright</span><span>REST Assured</span><span>TestNG</span><span>JMeter</span></div>
+      </div>
+      <div class="glass skill-group reveal">
+        <h3>CI/CD &amp; Cloud</h3>
+        <div class="xp-tags"><span>Jenkins</span><span>Git</span><span>Docker</span><span>Kubernetes</span><span>AWS</span></div>
+      </div>
+      <div class="glass skill-group reveal">
+        <h3>Observability</h3>
+        <div class="xp-tags"><span>Grafana</span><span>Kibana</span><span>Jaeger</span><span>FullStory</span></div>
+      </div>
+      <div class="glass skill-group reveal">
+        <h3>Data &amp; Messaging</h3>
+        <div class="xp-tags"><span>MongoDB</span><span>MySQL</span><span>Kafka</span><span>RabbitMQ</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WORDS ===================== -->
+  <section class="section" id="words">
+    <h2 class="section-title reveal"><span class="grad-text">04.</span> Kind words</h2>
+    <div class="quotes-grid">
+      <blockquote class="glass quote reveal">
+        <p>"His bug reports were clear and easy to understand, so fixing problems was faster for us. I'd gladly work with him again."</p>
+        <cite>Khemraj Gurjar — SDE, Amazon</cite>
+      </blockquote>
+      <blockquote class="glass quote reveal">
+        <p>"Arjun carefully looks at requirements, grasps the product, and creates a solid test plan. This foresight ensures nothing gets missed."</p>
+        <cite>Ayush Mishra — SDE, Kotak</cite>
+      </blockquote>
+      <blockquote class="glass quote reveal">
+        <p>"I've never seen anyone embrace 'constant improvement' like Arjun. He's always the first to jump in when newer members run into issues."</p>
+        <cite>Monalisa P. Mallik — Frontend &amp; AWS</cite>
+      </blockquote>
+    </div>
+    <p class="quotes-more reveal">
+      <a href="https://www.linkedin.com/in/arjunchaurasiya/details/recommendations/" target="_blank" rel="noopener">All seven recommendations on LinkedIn →</a>
     </p>
-    <p class="stack-note">Tools change. The habit of doubt doesn't.</p>
   </section>
 
   <!-- ===================== CONTACT ===================== -->
-  <footer class="contact">
-    <h2 class="contact-title">Currently: QA Engineer II at Logward.<br>Always: curious.</h2>
-    <div class="contact-links">
-      <a href="mailto:arjunkmr1997@gmail.com">arjunkmr1997@gmail.com</a>
+  <section class="section section--contact" id="contact">
+    <h2 class="contact-big reveal">Let's build something<br><span class="grad-text">reliable</span> together.</h2>
+    <p class="contact-sub reveal">My inbox is always open — for a role, a project, or a good conversation.</p>
+    <a class="btn btn--grad btn--big reveal" href="mailto:arjunkmr1997@gmail.com">arjunkmr1997@gmail.com</a>
+    <div class="contact-links reveal">
       <a href="https://www.linkedin.com/in/arjunchaurasiya/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://github.com/Arjun-chaurasiya" target="_blank" rel="noopener">GitHub</a>
       <a href="cv/Arjun_Chaurasiya_Senior_SQA_Engineer.pdf" target="_blank">CV</a>
     </div>
-    <p class="contact-foot">© 2026 Arjun Chaurasiya — same person, several universes.</p>
+  </section>
+
+  <footer class="footer">
+    <p>© 2026 Arjun Chaurasiya — same person, several universes.</p>
   </footer>
 
 </main>
 
+<!-- Three.js (UMD) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
 (function () {
   'use strict';
 
-  /* ---------- assertion chips: expand evidence ---------- */
-  var asserts = document.querySelectorAll('.assert');
+  /* ================= 3D BACKGROUND ================= */
+  var canvas = document.getElementById('bg3d');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  asserts.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var detail = document.getElementById(btn.dataset.detail);
-      if (!detail) return;
-      var open = detail.classList.toggle('assert-detail--open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      btn.classList.toggle('assert--open', open);
+  try {
+    if (typeof THREE === 'undefined') throw new Error('three missing');
+
+    var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    var scene  = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 200);
+    camera.position.z = 26;
+
+    var isMobile = window.innerWidth < 700;
+
+    /* starfield */
+    var starCount = isMobile ? 500 : 1100;
+    var starGeo = new THREE.BufferGeometry();
+    var starPos = new Float32Array(starCount * 3);
+    for (var i = 0; i < starCount * 3; i++) starPos[i] = (Math.random() - 0.5) * 120;
+    starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+    var stars = new THREE.Points(starGeo, new THREE.PointsMaterial({
+      color: 0x8b8bb0, size: 0.12, transparent: true, opacity: 0.7
+    }));
+    scene.add(stars);
+
+    /* particle globe */
+    var globeCount = isMobile ? 700 : 1600;
+    var globeGeo = new THREE.BufferGeometry();
+    var globePos = new Float32Array(globeCount * 3);
+    for (var g = 0; g < globeCount; g++) {
+      var phi = Math.acos(2 * Math.random() - 1);
+      var theta = Math.random() * Math.PI * 2;
+      var r = 9 + (Math.random() - 0.5) * 0.4;
+      globePos[g * 3]     = r * Math.sin(phi) * Math.cos(theta);
+      globePos[g * 3 + 1] = r * Math.cos(phi);
+      globePos[g * 3 + 2] = r * Math.sin(phi) * Math.sin(theta);
+    }
+    globeGeo.setAttribute('position', new THREE.BufferAttribute(globePos, 3));
+    var globe = new THREE.Points(globeGeo, new THREE.PointsMaterial({
+      color: 0x8b5cf6, size: 0.085, transparent: true, opacity: 0.85
+    }));
+    scene.add(globe);
+
+    /* wireframe shells */
+    var ico = new THREE.Mesh(
+      new THREE.IcosahedronGeometry(11.5, 1),
+      new THREE.MeshBasicMaterial({ color: 0x06b6d4, wireframe: true, transparent: true, opacity: 0.10 })
+    );
+    scene.add(ico);
+
+    var torus = new THREE.Mesh(
+      new THREE.TorusKnotGeometry(2.4, 0.55, 90, 12),
+      new THREE.MeshBasicMaterial({ color: 0x8b5cf6, wireframe: true, transparent: true, opacity: 0.22 })
+    );
+    torus.position.set(isMobile ? 0 : 17, 6, -8);
+    scene.add(torus);
+
+    var octa = new THREE.Mesh(
+      new THREE.OctahedronGeometry(1.6, 0),
+      new THREE.MeshBasicMaterial({ color: 0x06b6d4, wireframe: true, transparent: true, opacity: 0.3 })
+    );
+    octa.position.set(isMobile ? 0 : -16, -7, -6);
+    scene.add(octa);
+
+    /* mouse + scroll reactivity */
+    var mouseX = 0, mouseY = 0, targX = 0, targY = 0;
+    document.addEventListener('mousemove', function (e) {
+      mouseX = (e.clientX / window.innerWidth)  - 0.5;
+      mouseY = (e.clientY / window.innerHeight) - 0.5;
+    }, { passive: true });
+
+    window.addEventListener('resize', function () {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
     });
-  });
 
-  /* ---------- status strip: count + re-run animation ---------- */
-  var countEl  = document.getElementById('assert-count');
-  var statusEl = document.getElementById('assert-status');
-  var rerunBtn = document.getElementById('status-rerun');
-  var checks   = document.querySelectorAll('.assert-check');
+    var clock = new THREE.Clock();
 
-  countEl.textContent = asserts.length;
+    function frame() {
+      var t = clock.getElapsedTime();
+      targX += (mouseX - targX) * 0.05;
+      targY += (mouseY - targY) * 0.05;
 
-  function runAssertions() {
-    statusEl.textContent = 'running…';
-    statusEl.classList.add('status-running');
-    var i = 0;
-    checks.forEach(function (c) { c.classList.remove('assert-check--pulse'); });
-    var iv = setInterval(function () {
-      if (i >= checks.length) {
-        clearInterval(iv);
-        statusEl.textContent = 'all passing';
-        statusEl.classList.remove('status-running');
-        return;
-      }
-      checks[i++].classList.add('assert-check--pulse');
-    }, 220);
+      globe.rotation.y = t * 0.08 + targX * 0.6;
+      globe.rotation.x = targY * 0.4;
+      ico.rotation.y   = -t * 0.04 + targX * 0.3;
+      ico.rotation.x   = t * 0.02 + targY * 0.2;
+      stars.rotation.y = t * 0.012;
+      torus.rotation.x = t * 0.3;
+      torus.rotation.y = t * 0.18;
+      octa.rotation.x  = -t * 0.25;
+      octa.rotation.z  = t * 0.2;
+
+      var sy = window.scrollY || 0;
+      camera.position.y = -sy * 0.004;
+      camera.position.x = targX * 2;
+      camera.lookAt(0, -sy * 0.004, 0);
+
+      renderer.render(scene, camera);
+      if (!reduced) requestAnimationFrame(frame);
+    }
+
+    frame();
+    window.__bg3dReady = true;
+  } catch (err) {
+    canvas.style.display = 'none';
+    window.__bg3dReady = false;
   }
 
-  if (rerunBtn) rerunBtn.addEventListener('click', runAssertions);
-
-  /* ---------- checks fade in on scroll ---------- */
-  if ('IntersectionObserver' in window) {
+  /* ================= REVEAL ON SCROLL ================= */
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !reduced) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) {
-          e.target.classList.add('claim--seen');
+          e.target.classList.add('reveal--in');
           io.unobserve(e.target);
         }
       });
-    }, { threshold: 0.25 });
-    document.querySelectorAll('.claim, .bugstory-beat, .quote').forEach(function (el) { io.observe(el); });
+    }, { threshold: 0.12 });
+    reveals.forEach(function (el) { io.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add('reveal--in'); });
   }
+
+  /* ================= STAT COUNTERS ================= */
+  var stats = document.querySelectorAll('.stat-num');
+  if ('IntersectionObserver' in window) {
+    var sio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        sio.unobserve(e.target);
+        var el = e.target, target = parseInt(el.dataset.count, 10) || 0, cur = 0;
+        var iv = setInterval(function () {
+          cur++;
+          el.textContent = cur + '+';
+          if (cur >= target) clearInterval(iv);
+        }, 160);
+      });
+    }, { threshold: 0.6 });
+    stats.forEach(function (el) { sio.observe(el); });
+  }
+
+  /* ================= NAV BG ON SCROLL ================= */
+  var nav = document.querySelector('.nav');
+  window.addEventListener('scroll', function () {
+    nav.classList.toggle('nav--solid', window.scrollY > 40);
+  }, { passive: true });
 })();
 </script>
 <script src="js/universe.js"></script>

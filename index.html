@@ -53,7 +53,7 @@
   <link rel="shortcut icon" href="img/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/engineer.css">
 </head>
 <body data-universe="engineer">
@@ -89,7 +89,7 @@
   var portal = document.getElementById('mv-portal');
   var seen = false;
   try { seen = !!localStorage.getItem('arjun-portal-seen'); } catch (e) {}
-  if (seen) { portal.remove(); return; }
+  if (seen) { portal.remove(); document.documentElement.classList.add('no-portal'); return; }
   portal.classList.add('mv-portal--open');
   document.documentElement.style.overflow = 'hidden';
 
@@ -115,18 +115,37 @@
 </script>
 <!-- ===================== END PORTAL ===================== -->
 
-<!-- 3D background canvas -->
+<!-- Preloader -->
+<div id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <span class="loader-num" id="loader-num">0</span>
+    <div class="loader-bar"><i id="loader-bar-fill"></i></div>
+    <span class="loader-word">arjun.me</span>
+  </div>
+</div>
+
+<!-- Scroll progress -->
+<div id="progress" aria-hidden="true"></div>
+
+<!-- Custom cursor -->
+<div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+<!-- 3D background + aurora -->
 <canvas id="bg3d" aria-hidden="true"></canvas>
+<div class="aurora aurora--1" aria-hidden="true"></div>
+<div class="aurora aurora--2" aria-hidden="true"></div>
+<div class="aurora aurora--3" aria-hidden="true"></div>
 <div class="bg-vignette" aria-hidden="true"></div>
 
 <!-- ===================== NAV ===================== -->
 <nav class="nav">
-  <a href="#top" class="nav-logo">AC<span class="nav-logo-dot">✦</span></a>
+  <a href="#top" class="nav-logo" data-hover>AC<span class="nav-logo-dot">✦</span></a>
   <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
+    <a href="#about" data-hover><span class="nav-num">01.</span>About</a>
+    <a href="#experience" data-hover><span class="nav-num">02.</span>Experience</a>
+    <a href="#skills" data-hover><span class="nav-num">03.</span>Skills</a>
+    <a href="#contact" data-hover><span class="nav-num">04.</span>Contact</a>
   </div>
 </nav>
 
@@ -134,30 +153,49 @@
 
   <!-- ===================== HERO ===================== -->
   <header class="hero">
-    <p class="hero-hello reveal">Hi, I'm</p>
-    <h1 class="hero-name reveal">Arjun<br>Chaurasiya<span class="hero-period">.</span></h1>
-    <p class="hero-tag reveal">
-      QA Engineer crafting reliable software — <span class="grad-text">six years</span> across
-      supply chain, healthcare and GPS tracking. Based in Bangalore, India.
+    <p class="hero-hello">&lt;hello_world /&gt; I am</p>
+    <h1 class="hero-name" id="hero-name">
+      <span class="hn-line" data-text="Arjun"></span>
+      <span class="hn-line hn-line--grad" data-text="Chaurasiya."></span>
+    </h1>
+    <div class="hero-roles">
+      <span class="hero-roles-pre">&gt;</span>
+      <span id="role-text"></span><span class="role-caret"></span>
+    </div>
+    <p class="hero-tag">
+      Six years making software behave — across supply chains, hospitals and highways.
+      Based in Bangalore, India.
     </p>
-    <div class="hero-actions reveal">
-      <a class="btn btn--grad" href="#contact">Get in touch</a>
-      <a class="btn btn--ghost" href="cv/Arjun_Chaurasiya_Senior_SQA_Engineer.pdf" target="_blank">Download CV</a>
+    <div class="hero-actions">
+      <a class="btn btn--grad magnetic" href="#contact" data-hover>Get in touch</a>
+      <a class="btn btn--ghost magnetic" href="cv/Arjun_Chaurasiya_Senior_SQA_Engineer.pdf" target="_blank" data-hover>Download CV</a>
     </div>
-    <div class="hero-socials reveal">
-      <a href="https://www.linkedin.com/in/arjunchaurasiya/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
-      <a href="https://github.com/Arjun-chaurasiya" target="_blank" rel="noopener" aria-label="GitHub">gh</a>
-      <a href="https://twitter.com/Arjunkmr1997" target="_blank" rel="noopener" aria-label="Twitter">tw</a>
-      <a href="https://www.instagram.com/arjun._chaurasiya/" target="_blank" rel="noopener" aria-label="Instagram">ig</a>
+    <div class="hero-socials">
+      <a class="magnetic" href="https://www.linkedin.com/in/arjunchaurasiya/" target="_blank" rel="noopener" aria-label="LinkedIn" data-hover>in</a>
+      <a class="magnetic" href="https://github.com/Arjun-chaurasiya" target="_blank" rel="noopener" aria-label="GitHub" data-hover>gh</a>
+      <a class="magnetic" href="https://twitter.com/Arjunkmr1997" target="_blank" rel="noopener" aria-label="Twitter" data-hover>tw</a>
+      <a class="magnetic" href="https://www.instagram.com/arjun._chaurasiya/" target="_blank" rel="noopener" aria-label="Instagram" data-hover>ig</a>
     </div>
-    <div class="hero-scroll reveal"><span></span></div>
+    <div class="hero-scroll"><span></span></div>
   </header>
+
+  <!-- ===================== MARQUEE ===================== -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>quality&nbsp;✦&nbsp;automation&nbsp;✦&nbsp;reliability&nbsp;✦&nbsp;precision&nbsp;✦&nbsp;curiosity&nbsp;✦&nbsp;</span>
+      <span>quality&nbsp;✦&nbsp;automation&nbsp;✦&nbsp;reliability&nbsp;✦&nbsp;precision&nbsp;✦&nbsp;curiosity&nbsp;✦&nbsp;</span>
+    </div>
+  </div>
 
   <!-- ===================== ABOUT ===================== -->
   <section class="section" id="about">
-    <h2 class="section-title reveal"><span class="grad-text">01.</span> About</h2>
+    <h2 class="section-title reveal"><span class="grad-text">01.</span> About me</h2>
     <div class="about-grid">
-      <div class="glass about-card reveal">
+      <div class="about-photo-wrap reveal">
+        <div class="about-photo-ring"></div>
+        <img src="img/arjun.jpg" alt="Arjun Chaurasiya" class="about-photo">
+      </div>
+      <div class="glass about-card reveal tilt">
         <p>
           I'm a QA engineer who believes great software is a promise kept. For six years I've helped
           teams ship with confidence — designing test strategies, building automation frameworks,
@@ -168,63 +206,75 @@
           software that moves real things across real oceans. Before that — healthcare systems
           and GPS fleet tracking. Different worlds, same standard.
         </p>
-      </div>
-      <div class="about-stats">
-        <div class="glass stat reveal"><span class="stat-num grad-text" data-count="6">0</span><span class="stat-lbl">years of experience</span></div>
-        <div class="glass stat reveal"><span class="stat-num grad-text" data-count="3">0</span><span class="stat-lbl">industries</span></div>
-        <div class="glass stat reveal"><span class="stat-num grad-text" data-count="7">0</span><span class="stat-lbl">LinkedIn recommendations</span></div>
+        <div class="about-stats">
+          <div class="stat"><span class="stat-num grad-text" data-count="6">0</span><span class="stat-lbl">years</span></div>
+          <div class="stat"><span class="stat-num grad-text" data-count="3">0</span><span class="stat-lbl">industries</span></div>
+          <div class="stat"><span class="stat-num grad-text" data-count="7">0</span><span class="stat-lbl">recommendations</span></div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ===================== EXPERIENCE ===================== -->
   <section class="section" id="experience">
-    <h2 class="section-title reveal"><span class="grad-text">02.</span> Experience</h2>
-    <div class="xp-list">
+    <h2 class="section-title reveal"><span class="grad-text">02.</span> Where I've been</h2>
+    <div class="timeline">
 
-      <article class="glass xp reveal">
-        <div class="xp-head">
-          <h3>QA Engineer II · <span class="grad-text">Logward</span></h3>
-          <span class="xp-date">May 2023 — present</span>
+      <article class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="glass xp tilt" data-hover>
+          <div class="xp-head">
+            <h3>QA Engineer II · <span class="grad-text">Logward</span></h3>
+            <span class="xp-date">May 2023 — present</span>
+          </div>
+          <p class="xp-desc">
+            Supply-chain logistics platform. Automation frameworks in REST Assured and Playwright wired
+            into Jenkins, releases validated and signed off, production watched through Grafana, Kibana
+            and Jaeger. Kubernetes on Rancher, AWS underneath everything.
+          </p>
+          <div class="xp-tags"><span>REST Assured</span><span>Playwright</span><span>Jenkins</span><span>Kubernetes</span><span>AWS</span></div>
         </div>
-        <p class="xp-desc">
-          Supply-chain logistics platform. Automation frameworks in REST Assured and Playwright wired
-          into Jenkins, releases validated and signed off, production watched through Grafana, Kibana
-          and Jaeger. Kubernetes on Rancher, AWS underneath everything.
-        </p>
-        <div class="xp-tags"><span>REST Assured</span><span>Playwright</span><span>Jenkins</span><span>Kubernetes</span><span>AWS</span></div>
       </article>
 
-      <article class="glass xp reveal">
-        <div class="xp-head">
-          <h3>QA Engineer · <span class="grad-text">DocEngage</span></h3>
-          <span class="xp-date">Jan 2022 — May 2023</span>
+      <article class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="glass xp tilt" data-hover>
+          <div class="xp-head">
+            <h3>QA Engineer · <span class="grad-text">DocEngage</span></h3>
+            <span class="xp-date">Jan 2022 — May 2023</span>
+          </div>
+          <p class="xp-desc">
+            Healthcare — EHR and HCRM products. Test strategies, FRDs and RTMs authored; functional,
+            integration, regression and mobile testing executed; junior QA engineers mentored.
+          </p>
+          <div class="xp-tags"><span>API testing</span><span>Postman</span><span>Mobile</span><span>Jira</span></div>
         </div>
-        <p class="xp-desc">
-          Healthcare — EHR and HCRM products. Test strategies, FRDs and RTMs authored; functional,
-          integration, regression and mobile testing executed; junior QA engineers mentored.
-        </p>
-        <div class="xp-tags"><span>API testing</span><span>Postman</span><span>Mobile</span><span>Jira</span></div>
       </article>
 
-      <article class="glass xp reveal">
-        <div class="xp-head">
-          <h3>Test Engineer · <span class="grad-text">TrackNerd GPS</span></h3>
-          <span class="xp-date">Feb 2020 — Jan 2022</span>
+      <article class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="glass xp tilt" data-hover>
+          <div class="xp-head">
+            <h3>Test Engineer · <span class="grad-text">TrackNerd GPS</span></h3>
+            <span class="xp-date">Feb 2020 — Jan 2022</span>
+          </div>
+          <p class="xp-desc">
+            GPS fleet tracking. Test plans and cases designed from scratch, end-to-end API testing,
+            client onboarding and technical support — the full-stack QA experience of a small team.
+          </p>
+          <div class="xp-tags"><span>Test design</span><span>API testing</span><span>CRM</span></div>
         </div>
-        <p class="xp-desc">
-          GPS fleet tracking. Test plans and cases designed from scratch, end-to-end API testing,
-          client onboarding and technical support — the full-stack QA experience of a small team.
-        </p>
-        <div class="xp-tags"><span>Test design</span><span>API testing</span><span>CRM</span></div>
       </article>
 
-      <article class="glass xp xp--edu reveal">
-        <div class="xp-head">
-          <h3>B.Tech, Computer Science · <span class="grad-text">DIET Meerut</span></h3>
-          <span class="xp-date">2016 — 2020</span>
+      <article class="tl-item reveal">
+        <div class="tl-dot tl-dot--edu"></div>
+        <div class="glass xp tilt" data-hover>
+          <div class="xp-head">
+            <h3>B.Tech, Computer Science · <span class="grad-text">DIET Meerut</span></h3>
+            <span class="xp-date">2016 — 2020</span>
+          </div>
+          <p class="xp-desc xp-desc--last">First class with distinction. Specialised training in Core Java and ethical hacking.</p>
         </div>
-        <p class="xp-desc">First class with distinction. Specialised training in Core Java and ethical hacking.</p>
       </article>
 
     </div>
@@ -232,21 +282,25 @@
 
   <!-- ===================== SKILLS ===================== -->
   <section class="section" id="skills">
-    <h2 class="section-title reveal"><span class="grad-text">03.</span> Skills</h2>
+    <h2 class="section-title reveal"><span class="grad-text">03.</span> What I work with</h2>
     <div class="skills-grid">
-      <div class="glass skill-group reveal">
+      <div class="glass skill-group reveal tilt" data-hover>
+        <span class="skill-icon">⚙</span>
         <h3>Automation</h3>
         <div class="xp-tags"><span>Selenium</span><span>Playwright</span><span>REST Assured</span><span>TestNG</span><span>JMeter</span></div>
       </div>
-      <div class="glass skill-group reveal">
+      <div class="glass skill-group reveal tilt" data-hover>
+        <span class="skill-icon">∞</span>
         <h3>CI/CD &amp; Cloud</h3>
         <div class="xp-tags"><span>Jenkins</span><span>Git</span><span>Docker</span><span>Kubernetes</span><span>AWS</span></div>
       </div>
-      <div class="glass skill-group reveal">
+      <div class="glass skill-group reveal tilt" data-hover>
+        <span class="skill-icon">◉</span>
         <h3>Observability</h3>
         <div class="xp-tags"><span>Grafana</span><span>Kibana</span><span>Jaeger</span><span>FullStory</span></div>
       </div>
-      <div class="glass skill-group reveal">
+      <div class="glass skill-group reveal tilt" data-hover>
+        <span class="skill-icon">⛁</span>
         <h3>Data &amp; Messaging</h3>
         <div class="xp-tags"><span>MongoDB</span><span>MySQL</span><span>Kafka</span><span>RabbitMQ</span></div>
       </div>
@@ -257,37 +311,42 @@
   <section class="section" id="words">
     <h2 class="section-title reveal"><span class="grad-text">04.</span> Kind words</h2>
     <div class="quotes-grid">
-      <blockquote class="glass quote reveal">
-        <p>"His bug reports were clear and easy to understand, so fixing problems was faster for us. I'd gladly work with him again."</p>
-        <cite>Khemraj Gurjar — SDE, Amazon</cite>
+      <blockquote class="glass quote reveal tilt" data-hover>
+        <span class="quote-mark">“</span>
+        <p>His bug reports were clear and easy to understand, so fixing problems was faster for us. I'd gladly work with him again.</p>
+        <cite><b>Khemraj Gurjar</b> — SDE, Amazon</cite>
       </blockquote>
-      <blockquote class="glass quote reveal">
-        <p>"Arjun carefully looks at requirements, grasps the product, and creates a solid test plan. This foresight ensures nothing gets missed."</p>
-        <cite>Ayush Mishra — SDE, Kotak</cite>
+      <blockquote class="glass quote reveal tilt" data-hover>
+        <span class="quote-mark">“</span>
+        <p>Arjun carefully looks at requirements, grasps the product, and creates a solid test plan. This foresight ensures nothing gets missed.</p>
+        <cite><b>Ayush Mishra</b> — SDE, Kotak</cite>
       </blockquote>
-      <blockquote class="glass quote reveal">
-        <p>"I've never seen anyone embrace 'constant improvement' like Arjun. He's always the first to jump in when newer members run into issues."</p>
-        <cite>Monalisa P. Mallik — Frontend &amp; AWS</cite>
+      <blockquote class="glass quote reveal tilt" data-hover>
+        <span class="quote-mark">“</span>
+        <p>I've never seen anyone embrace 'constant improvement' like Arjun. He's always the first to jump in when newer members run into issues.</p>
+        <cite><b>Monalisa P. Mallik</b> — Frontend &amp; AWS</cite>
       </blockquote>
     </div>
     <p class="quotes-more reveal">
-      <a href="https://www.linkedin.com/in/arjunchaurasiya/details/recommendations/" target="_blank" rel="noopener">All seven recommendations on LinkedIn →</a>
+      <a href="https://www.linkedin.com/in/arjunchaurasiya/details/recommendations/" target="_blank" rel="noopener" data-hover>All seven recommendations on LinkedIn →</a>
     </p>
   </section>
 
   <!-- ===================== CONTACT ===================== -->
   <section class="section section--contact" id="contact">
+    <p class="contact-kicker reveal">04. What's next?</p>
     <h2 class="contact-big reveal">Let's build something<br><span class="grad-text">reliable</span> together.</h2>
     <p class="contact-sub reveal">My inbox is always open — for a role, a project, or a good conversation.</p>
-    <a class="btn btn--grad btn--big reveal" href="mailto:arjunkmr1997@gmail.com">arjunkmr1997@gmail.com</a>
+    <a class="btn btn--grad btn--big magnetic reveal" href="mailto:arjunkmr1997@gmail.com" data-hover>Say hello ✦</a>
     <div class="contact-links reveal">
-      <a href="https://www.linkedin.com/in/arjunchaurasiya/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/Arjun-chaurasiya" target="_blank" rel="noopener">GitHub</a>
-      <a href="cv/Arjun_Chaurasiya_Senior_SQA_Engineer.pdf" target="_blank">CV</a>
+      <a href="https://www.linkedin.com/in/arjunchaurasiya/" target="_blank" rel="noopener" data-hover>LinkedIn</a>
+      <a href="https://github.com/Arjun-chaurasiya" target="_blank" rel="noopener" data-hover>GitHub</a>
+      <a href="cv/Arjun_Chaurasiya_Senior_SQA_Engineer.pdf" target="_blank" data-hover>CV</a>
     </div>
   </section>
 
   <footer class="footer">
+    <div class="footer-giant" aria-hidden="true">ARJUN</div>
     <p>© 2026 Arjun Chaurasiya — same person, several universes.</p>
   </footer>
 
@@ -299,9 +358,65 @@
 (function () {
   'use strict';
 
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var finePointer = window.matchMedia('(pointer: fine)').matches;
+
+  /* ================= PRELOADER ================= */
+  var loader  = document.getElementById('loader');
+  var numEl   = document.getElementById('loader-num');
+  var fillEl  = document.getElementById('loader-bar-fill');
+
+  function finishLoad() {
+    loader.classList.add('loader--done');
+    document.body.classList.add('loaded');
+    setTimeout(function () { loader.remove(); }, 900);
+  }
+
+  if (reduced) {
+    finishLoad();
+  } else {
+    var p = 0;
+    var liv = setInterval(function () {
+      p += Math.floor(Math.random() * 12) + 4;
+      if (p >= 100) { p = 100; clearInterval(liv); setTimeout(finishLoad, 250); }
+      numEl.textContent = p;
+      fillEl.style.width = p + '%';
+    }, 70);
+  }
+
+  /* ================= HERO NAME LETTERS ================= */
+  document.querySelectorAll('.hn-line').forEach(function (line) {
+    var text = line.dataset.text || '';
+    text.split('').forEach(function (ch, i) {
+      var s = document.createElement('span');
+      s.className = 'hn-ch';
+      s.textContent = ch;
+      s.style.transitionDelay = (0.55 + i * 0.045) + 's';
+      line.appendChild(s);
+    });
+  });
+
+  /* ================= ROLE ROTATOR ================= */
+  var roles = ['QA Engineer', 'Automation Specialist', 'API Test Architect', 'Release Owner', 'Bug Whisperer'];
+  var roleEl = document.getElementById('role-text');
+  var rIdx = 0, cIdx = 0, deleting = false;
+
+  function typeLoop() {
+    var word = roles[rIdx];
+    if (!deleting) {
+      cIdx++;
+      if (cIdx === word.length) { deleting = true; setTimeout(typeLoop, 1700); roleEl.textContent = word; return; }
+    } else {
+      cIdx--;
+      if (cIdx === 0) { deleting = false; rIdx = (rIdx + 1) % roles.length; }
+    }
+    roleEl.textContent = word.slice(0, cIdx);
+    setTimeout(typeLoop, deleting ? 38 : 75);
+  }
+  if (reduced) { roleEl.textContent = roles[0]; } else { setTimeout(typeLoop, 1400); }
+
   /* ================= 3D BACKGROUND ================= */
   var canvas = document.getElementById('bg3d');
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   try {
     if (typeof THREE === 'undefined') throw new Error('three missing');
@@ -311,60 +426,92 @@
     renderer.setSize(window.innerWidth, window.innerHeight);
 
     var scene  = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 200);
+    var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 220);
     camera.position.z = 26;
 
     var isMobile = window.innerWidth < 700;
 
     /* starfield */
-    var starCount = isMobile ? 500 : 1100;
+    var starCount = isMobile ? 600 : 1400;
     var starGeo = new THREE.BufferGeometry();
     var starPos = new Float32Array(starCount * 3);
-    for (var i = 0; i < starCount * 3; i++) starPos[i] = (Math.random() - 0.5) * 120;
+    for (var i = 0; i < starCount * 3; i++) starPos[i] = (Math.random() - 0.5) * 130;
     starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
     var stars = new THREE.Points(starGeo, new THREE.PointsMaterial({
-      color: 0x8b8bb0, size: 0.12, transparent: true, opacity: 0.7
+      color: 0x9a9ac8, size: 0.13, transparent: true, opacity: 0.75
     }));
     scene.add(stars);
 
     /* particle globe */
-    var globeCount = isMobile ? 700 : 1600;
+    var globeCount = isMobile ? 900 : 2200;
     var globeGeo = new THREE.BufferGeometry();
     var globePos = new Float32Array(globeCount * 3);
     for (var g = 0; g < globeCount; g++) {
       var phi = Math.acos(2 * Math.random() - 1);
       var theta = Math.random() * Math.PI * 2;
-      var r = 9 + (Math.random() - 0.5) * 0.4;
+      var r = 9.5 + (Math.random() - 0.5) * 0.5;
       globePos[g * 3]     = r * Math.sin(phi) * Math.cos(theta);
       globePos[g * 3 + 1] = r * Math.cos(phi);
       globePos[g * 3 + 2] = r * Math.sin(phi) * Math.sin(theta);
     }
     globeGeo.setAttribute('position', new THREE.BufferAttribute(globePos, 3));
-    var globe = new THREE.Points(globeGeo, new THREE.PointsMaterial({
-      color: 0x8b5cf6, size: 0.085, transparent: true, opacity: 0.85
-    }));
+    var globeMat = new THREE.PointsMaterial({ color: 0x8b5cf6, size: 0.09, transparent: true, opacity: 0.9 });
+    var globe = new THREE.Points(globeGeo, globeMat);
     scene.add(globe);
 
-    /* wireframe shells */
+    /* wireframe shells + orbit ring */
     var ico = new THREE.Mesh(
-      new THREE.IcosahedronGeometry(11.5, 1),
-      new THREE.MeshBasicMaterial({ color: 0x06b6d4, wireframe: true, transparent: true, opacity: 0.10 })
+      new THREE.IcosahedronGeometry(12, 1),
+      new THREE.MeshBasicMaterial({ color: 0x06b6d4, wireframe: true, transparent: true, opacity: 0.09 })
     );
     scene.add(ico);
 
+    var ring = new THREE.Mesh(
+      new THREE.TorusGeometry(14.5, 0.04, 8, 120),
+      new THREE.MeshBasicMaterial({ color: 0x8b5cf6, transparent: true, opacity: 0.35 })
+    );
+    ring.rotation.x = Math.PI / 2.4;
+    scene.add(ring);
+
+    var ring2 = new THREE.Mesh(
+      new THREE.TorusGeometry(16.5, 0.025, 8, 120),
+      new THREE.MeshBasicMaterial({ color: 0x06b6d4, transparent: true, opacity: 0.2 })
+    );
+    ring2.rotation.x = Math.PI / 1.9;
+    ring2.rotation.y = 0.4;
+    scene.add(ring2);
+
     var torus = new THREE.Mesh(
       new THREE.TorusKnotGeometry(2.4, 0.55, 90, 12),
-      new THREE.MeshBasicMaterial({ color: 0x8b5cf6, wireframe: true, transparent: true, opacity: 0.22 })
+      new THREE.MeshBasicMaterial({ color: 0x8b5cf6, wireframe: true, transparent: true, opacity: 0.25 })
     );
-    torus.position.set(isMobile ? 0 : 17, 6, -8);
+    torus.position.set(isMobile ? 0 : 18, 7, -8);
     scene.add(torus);
 
     var octa = new THREE.Mesh(
-      new THREE.OctahedronGeometry(1.6, 0),
-      new THREE.MeshBasicMaterial({ color: 0x06b6d4, wireframe: true, transparent: true, opacity: 0.3 })
+      new THREE.OctahedronGeometry(1.7, 0),
+      new THREE.MeshBasicMaterial({ color: 0x06b6d4, wireframe: true, transparent: true, opacity: 0.35 })
     );
-    octa.position.set(isMobile ? 0 : -16, -7, -6);
+    octa.position.set(isMobile ? 0 : -17, -8, -6);
     scene.add(octa);
+
+    /* shooting stars */
+    var shootCount = 5;
+    var shootGeo = new THREE.BufferGeometry();
+    var shootPos = new Float32Array(shootCount * 3);
+    var shootVel = [];
+    function resetShoot(s) {
+      shootPos[s * 3]     = -60 + Math.random() * 40;
+      shootPos[s * 3 + 1] = 10 + Math.random() * 25;
+      shootPos[s * 3 + 2] = -20 - Math.random() * 20;
+      shootVel[s] = { x: 0.35 + Math.random() * 0.4, y: -(0.12 + Math.random() * 0.15), delay: Math.random() * 400 };
+    }
+    for (var s = 0; s < shootCount; s++) resetShoot(s);
+    shootGeo.setAttribute('position', new THREE.BufferAttribute(shootPos, 3));
+    var shoots = new THREE.Points(shootGeo, new THREE.PointsMaterial({
+      color: 0xffffff, size: 0.34, transparent: true, opacity: 0.9
+    }));
+    scene.add(shoots);
 
     /* mouse + scroll reactivity */
     var mouseX = 0, mouseY = 0, targX = 0, targY = 0;
@@ -380,26 +527,42 @@
     });
 
     var clock = new THREE.Clock();
+    var hue = { h: 0.75 };
 
     function frame() {
       var t = clock.getElapsedTime();
       targX += (mouseX - targX) * 0.05;
       targY += (mouseY - targY) * 0.05;
 
-      globe.rotation.y = t * 0.08 + targX * 0.6;
-      globe.rotation.x = targY * 0.4;
-      ico.rotation.y   = -t * 0.04 + targX * 0.3;
-      ico.rotation.x   = t * 0.02 + targY * 0.2;
-      stars.rotation.y = t * 0.012;
-      torus.rotation.x = t * 0.3;
-      torus.rotation.y = t * 0.18;
-      octa.rotation.x  = -t * 0.25;
-      octa.rotation.z  = t * 0.2;
+      /* slow hue breathing violet ↔ indigo */
+      hue.h = 0.72 + Math.sin(t * 0.18) * 0.06;
+      globeMat.color.setHSL(hue.h, 0.75, 0.66);
+
+      globe.rotation.y = t * 0.09 + targX * 0.7;
+      globe.rotation.x = targY * 0.45;
+      ico.rotation.y   = -t * 0.045 + targX * 0.35;
+      ico.rotation.x   = t * 0.025 + targY * 0.22;
+      ring.rotation.z  = t * 0.06;
+      ring2.rotation.z = -t * 0.045;
+      stars.rotation.y = t * 0.014;
+      torus.rotation.x = t * 0.32;
+      torus.rotation.y = t * 0.2;
+      octa.rotation.x  = -t * 0.27;
+      octa.rotation.z  = t * 0.22;
+
+      /* shooting stars */
+      for (var s = 0; s < shootCount; s++) {
+        if (shootVel[s].delay > 0) { shootVel[s].delay--; continue; }
+        shootPos[s * 3]     += shootVel[s].x;
+        shootPos[s * 3 + 1] += shootVel[s].y;
+        if (shootPos[s * 3] > 70) resetShoot(s);
+      }
+      shootGeo.attributes.position.needsUpdate = true;
 
       var sy = window.scrollY || 0;
-      camera.position.y = -sy * 0.004;
-      camera.position.x = targX * 2;
-      camera.lookAt(0, -sy * 0.004, 0);
+      camera.position.y = -sy * 0.0045;
+      camera.position.x = targX * 2.4;
+      camera.lookAt(0, -sy * 0.0045, 0);
 
       renderer.render(scene, camera);
       if (!reduced) requestAnimationFrame(frame);
@@ -410,6 +573,57 @@
   } catch (err) {
     canvas.style.display = 'none';
     window.__bg3dReady = false;
+  }
+
+  /* ================= CUSTOM CURSOR ================= */
+  if (finePointer && !reduced) {
+    document.body.classList.add('has-cursor');
+    var dot  = document.getElementById('cursor-dot');
+    var ringEl = document.getElementById('cursor-ring');
+    var cx = -100, cy = -100, rx = -100, ry = -100;
+
+    document.addEventListener('mousemove', function (e) {
+      cx = e.clientX; cy = e.clientY;
+      dot.style.transform = 'translate(' + cx + 'px,' + cy + 'px)';
+    }, { passive: true });
+
+    (function ringLoop() {
+      rx += (cx - rx) * 0.16;
+      ry += (cy - ry) * 0.16;
+      ringEl.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
+      requestAnimationFrame(ringLoop);
+    })();
+
+    document.querySelectorAll('[data-hover]').forEach(function (el) {
+      el.addEventListener('mouseenter', function () { ringEl.classList.add('cursor-ring--big'); });
+      el.addEventListener('mouseleave', function () { ringEl.classList.remove('cursor-ring--big'); });
+    });
+  }
+
+  /* ================= MAGNETIC BUTTONS ================= */
+  if (finePointer && !reduced) {
+    document.querySelectorAll('.magnetic').forEach(function (el) {
+      el.addEventListener('mousemove', function (e) {
+        var b = el.getBoundingClientRect();
+        var dx = e.clientX - (b.left + b.width / 2);
+        var dy = e.clientY - (b.top + b.height / 2);
+        el.style.transform = 'translate(' + dx * 0.22 + 'px,' + dy * 0.22 + 'px)';
+      });
+      el.addEventListener('mouseleave', function () { el.style.transform = ''; });
+    });
+  }
+
+  /* ================= TILT CARDS ================= */
+  if (finePointer && !reduced) {
+    document.querySelectorAll('.tilt').forEach(function (card) {
+      card.addEventListener('mousemove', function (e) {
+        var b = card.getBoundingClientRect();
+        var px = (e.clientX - b.left) / b.width - 0.5;
+        var py = (e.clientY - b.top) / b.height - 0.5;
+        card.style.transform = 'perspective(800px) rotateX(' + (-py * 6) + 'deg) rotateY(' + (px * 8) + 'deg) translateY(-4px)';
+      });
+      card.addEventListener('mouseleave', function () { card.style.transform = ''; });
+    });
   }
 
   /* ================= REVEAL ON SCROLL ================= */
@@ -446,10 +660,13 @@
     stats.forEach(function (el) { sio.observe(el); });
   }
 
-  /* ================= NAV BG ON SCROLL ================= */
+  /* ================= NAV + PROGRESS ================= */
   var nav = document.querySelector('.nav');
+  var progress = document.getElementById('progress');
   window.addEventListener('scroll', function () {
     nav.classList.toggle('nav--solid', window.scrollY > 40);
+    var dh = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (dh > 0 ? (window.scrollY / dh) * 100 : 0) + '%';
   }, { passive: true });
 })();
 </script>

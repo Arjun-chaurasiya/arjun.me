@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3 am arjun</title>
+  <meta name="description" content="the 3 am universe of arjun.me — unpolished thoughts, lowercase only.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://arjun.me/3am.html">
+  <link rel="shortcut icon" href="img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --void:  #070708;
+      --dim:   #44444a;
+      --dimmer:#33333a;
+      --soft:  #9a9aa8;
+      --mid:   #55555f;
+    }
+
+    body {
+      background: var(--void);
+      color: var(--soft);
+      font-family: 'JetBrains Mono', monospace;
+      min-height: 100vh;
+    }
+
+    ::selection { background: #1d1d24; color: #ccccda; }
+
+    .am-wrap {
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 72px 24px 140px;
+    }
+
+    .am-clock {
+      font-size: 12px;
+      color: var(--dim);
+      margin-bottom: 8px;
+    }
+
+    .am-greeting {
+      font-size: 12px;
+      color: var(--dimmer);
+      margin-bottom: 56px;
+    }
+
+    .am-thought {
+      font-size: 14.5px;
+      line-height: 2;
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(6px);
+      animation: am-in 0.9s ease forwards;
+    }
+
+    .am-thought time {
+      display: block;
+      font-size: 11px;
+      color: var(--dimmer);
+      margin-bottom: 6px;
+    }
+
+    @keyframes am-in {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .am-cursor {
+      display: inline-block;
+      width: 8px;
+      height: 17px;
+      background: var(--mid);
+      vertical-align: -3px;
+      margin-left: 2px;
+      animation: am-blink 1.1s steps(1) infinite;
+    }
+
+    @keyframes am-blink { 50% { opacity: 0; } }
+
+    .am-meta {
+      margin-top: 72px;
+      font-size: 12px;
+      color: var(--mid);
+      line-height: 2.2;
+    }
+
+    .am-meta a { color: var(--mid); }
+    .am-meta a:hover { color: var(--soft); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .am-thought { animation: none; opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body data-universe="3am">
+
+  <main class="am-wrap">
+
+    <p class="am-clock" id="am-clock">--:-- am · bangalore</p>
+    <p class="am-greeting" id="am-greeting">the thoughts live here. lowercase only. enter quietly.</p>
+
+    <div id="am-feed"></div>
+
+    <div class="am-meta">
+      <p>chai count today: <span id="am-chai">—</span></p>
+      <p>none of this is edited. that's the point.</p>
+      <p><a href="index.html">back to daylight →</a></p>
+    </div>
+
+  </main>
+
+  <script>
+    (function () {
+      'use strict';
+
+      /* PLACEHOLDER THOUGHTS — replace with your own. one entry per thought. */
+      var THOUGHTS = [
+        {
+          t: '03:12 am',
+          text: 'the best bug i ever found, i found because i was too tired to assume anything worked.',
+        },
+        {
+          t: '02:47 am',
+          text: 'testing software taught me to test my own certainties. mostly they fail too.',
+        },
+        {
+          t: '03:31 am',
+          text: 'everyone writes "expected vs actual" in bug reports. nobody writes it in their diary. maybe we should.',
+        },
+        {
+          t: '01:58 am',
+          text: 'meerut taught me to want things. bangalore taught me to build them. 3 am teaches me to question both.',
+        },
+        {
+          t: '03:44 am',
+          text: 'a green pipeline at this hour feels like the city saying goodnight.',
+        },
+      ];
+
+      /* live clock, lowercase */
+      var clockEl = document.getElementById('am-clock');
+      var greetEl = document.getElementById('am-greeting');
+
+      function tick() {
+        var d = new Date();
+        var h = d.getHours(), m = d.getMinutes();
+        var ampm = h >= 12 ? 'pm' : 'am';
+        var hh = h % 12 || 12;
+        clockEl.textContent = hh + ':' + (m < 10 ? '0' : '') + m + ' ' + ampm + ' · bangalore';
+        if (h >= 6 && h < 23) {
+          greetEl.textContent = "you're early. it's not 3 am yet — but the thoughts don't mind.";
+        }
+      }
+      tick();
+      setInterval(tick, 30000);
+
+      /* deterministic chai count for the day */
+      var today = new Date();
+      document.getElementById('am-chai').textContent =
+        3 + ((today.getDate() + today.getMonth()) % 4);
+
+      /* render thoughts; latest one types itself */
+      var feed = document.getElementById('am-feed');
+
+      THOUGHTS.forEach(function (th, i) {
+        var div = document.createElement('div');
+        div.className = 'am-thought';
+        div.style.animationDelay = (0.25 + i * 0.35) + 's';
+        var stamp = document.createElement('time');
+        stamp.textContent = th.t;
+        var body = document.createElement('p');
+        div.appendChild(stamp);
+        div.appendChild(body);
+        feed.appendChild(div);
+
+        if (i === 0) {
+          /* typewriter for the newest thought */
+          var cursor = document.createElement('span');
+          cursor.className = 'am-cursor';
+          body.appendChild(cursor);
+          var idx = 0;
+          var iv = setInterval(function () {
+            if (idx >= th.text.length) { clearInterval(iv); return; }
+            cursor.insertAdjacentText('beforebegin', th.text[idx++]);
+          }, 34);
+        } else {
+          body.textContent = th.text;
+        }
+      });
+    })();
+  </script>
+  <script src="js/universe.js"></script>
+</body>
+</html>
